@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group">
                         <label for="tgl_kembali">Tanggal BRM Kembali</label>
-                        <input class="form-control" id="tgl_kembali" name="tgl_kembali" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="dd-mm-yyyy"/>
+                        <input type="date" class="form-control" id="tgl_kembali" name="tgl_kembali" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="dd-mm-yyyy"/>
                     </div>
                     <input type="submit" class="btn btn-primary me-2" name="submit" value="Ubah">
                     </form>
