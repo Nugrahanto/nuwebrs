@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group">
                         <label for="tgl_pulang">Tanggal Pulang</label>
-                        <input type="text" class="form-control" id="tgl_pulang" name="tgl_pulang" placeholder="Tanggal Pulang" readonly/>
+                        <input type="date" class="form-control" id="tgl_pulang" name="tgl_pulang" placeholder="Tanggal Pulang"/>
                     </div>
                     <div class="form-group">
                         <label for="tgl_haruskembali">Tanggal Harus Kembali</label>
