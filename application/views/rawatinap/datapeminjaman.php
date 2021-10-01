@@ -16,7 +16,7 @@
                     </div>
                     <div class="form-group">
                         <label for="tgl_lahir">Tanggal Lahir</label>
-                        <input class="form-control" id="tgl_lahir" name="tgl_lahir" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="dd-mm-yyyy" required/>
+                        <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="dd-mm-yyyy" required/>
                     </div>
                     <div class="form-group">
                         <label for="jekel">Jenis Kelamin</label>
