@@ -60,15 +60,20 @@ class peminjaman extends CI_Controller
     {
         if ($this->session->userdata('level') == 2) {
             if ($this->input->post('submit')) {
-                if ($this->peminjamanModel->do_insert() == TRUE) {
+                if ($this->peminjamanModel->do_insert() == 1) {
                     $this->session->set_flashdata('message', '
                         <div class="alert alert-success" role="alert">
                         Berhasil menambahkan peminjaman baru</div>');
                     redirect('peminjaman', 'refresh');
-                } else {
+                } else if ($this->peminjamanModel->do_insert() == 0) {
                     $this->session->set_flashdata('message', '
                         <div class="alert alert-danger" role="alert">
                         Gagal menambahkan peminjaman baru</div>');
+                    redirect('peminjaman', 'refresh');
+                } else {
+                    $this->session->set_flashdata('message', '
+                        <div class="alert alert-danger" role="alert">
+                        Gagal menambahkan peminjaman baru, Nomor RM masih dalam status dipinjam</div>');
                     redirect('peminjaman', 'refresh');
                 }
             }
