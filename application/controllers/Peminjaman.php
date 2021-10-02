@@ -51,8 +51,8 @@ class peminjaman extends CI_Controller
 
     public function cetak()
     { 
-        $no_rm = $this->uri->segment(3);
-        $data['dataRM'] = $this->peminjamanModel->cetak($no_rm);
+        $id = $this->uri->segment(3);
+        $data['dataRM'] = $this->peminjamanModel->cetak($id);
         $this->load->view('print/tracer', $data);
     }
 

@@ -9,7 +9,7 @@ class laporanketerlambatanModel extends CI_Model
                         ->result();
     }
     public function update_laporanketerlambatan() {
-        $no_rm = $this->input->post('no_rm');
+        $id_pengembalian = $this->input->post('id_pengembalian');
         $nama_pasien = $this->input->post('nama_pasien');
         $tgl_lahir = $this->input->post('tgl_lahir');
         $jekel = $this->input->post('jekel');
@@ -24,7 +24,7 @@ class laporanketerlambatanModel extends CI_Model
             'bayar' => $bayar
             );
 
-        $this->db->where('no_rm', $no_rm)
+        $this->db->where('id_pengembalian', $id_pengembalian)
                  ->update('pengembalian', $data);
 
         if ($this->db->affected_rows() > 0) {
@@ -33,8 +33,8 @@ class laporanketerlambatanModel extends CI_Model
 			return FALSE;
 		}
     }
-    public function delete_laporanketerlambatan($no_rm) {
-        return $this->db->where('no_rm', $no_rm)
+    public function delete_laporanketerlambatan($id_pengembalian) {
+        return $this->db->where('id_pengembalian', $id_pengembalian)
                         ->delete('pengembalian');
     }
 }

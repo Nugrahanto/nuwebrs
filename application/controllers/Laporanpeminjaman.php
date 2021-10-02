@@ -46,8 +46,8 @@ class laporanpeminjaman extends CI_Controller
 		}
 	} 
     public function delete_laporanpeminjaman() {
-        $no_rm = $this->input->post('no_rm');
-        if ($this->laporanpeminjamanModel->delete_laporanpeminjaman($no_rm)) {
+        $id_peminjaman = $this->input->post('id_peminjaman');
+        if ($this->laporanpeminjamanModel->delete_laporanpeminjaman($id_peminjaman)) {
             $this->session->set_flashdata('message', '
                 <div class="alert alert-success" role="alert">
                 Berhasil menghapus data peminjaman</div>');

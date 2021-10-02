@@ -482,6 +482,7 @@
   <script>
     $(document).ready(function(){
       $(document).on('click','#laporanpeminjaman',function(){
+        var id = $(this).data('id');
         var norm = $(this).data('norm');
         var namapasien = $(this).data('namapasien');
         var tgllahir = $(this).data('tgllahir');
@@ -489,6 +490,7 @@
         var ruangan = $(this).data('ruangan');
         var tglpinjam = $(this).data('tglpinjam');
 
+        $('#id_peminjaman').val(id);
         $('#no_rm').val(norm);
         $('#nama_pasien').val(namapasien);
         $('#tgl_lahir').val(tgllahir);
@@ -507,6 +509,7 @@
   <script>
     $(document).ready(function(){
       $(document).on('click','#laporanpengembalian',function(){  
+        var id = $(this).data('id');
         var norm = $(this).data('norm');
         var namapasien = $(this).data('namapasien');
         var tgllahir = $(this).data('tgllahir');
@@ -517,6 +520,7 @@
         var tglharuskembali= $(this).data('tglharuskembali');
         var tglkembali= $(this).data('tglkembali');
 
+        $('#id_pengembalian').val(id);
         $('#no_rm').val(norm);
         $('#nama_pasien').val(namapasien);
         $('#tgl_lahir').val(tgllahir);
@@ -538,27 +542,28 @@
   <script>
     $(document).ready(function(){
       $(document).on('click','#laporanketerlambatan',function(){
-          
-          var norm = $(this).data('norm');
-          var namapasien = $(this).data('namapasien');
-          var tgllahir = $(this).data('tgllahir');
-          var jekel = $(this).data('jekel');
-          var ruangan = $(this).data('ruangan');
-          var bayar = $(this).data('bayar');
-          var tglpulang = $(this).data('tglpulang');
-          var tglharuskembali= $(this).data('tglharuskembali');
-          var tglkembali= $(this).data('tglkembali');
+        var id = $(this).data('id');
+        var norm = $(this).data('norm');
+        var namapasien = $(this).data('namapasien');
+        var tgllahir = $(this).data('tgllahir');
+        var jekel = $(this).data('jekel');
+        var ruangan = $(this).data('ruangan');
+        var bayar = $(this).data('bayar');
+        var tglpulang = $(this).data('tglpulang');
+        var tglharuskembali= $(this).data('tglharuskembali');
+        var tglkembali= $(this).data('tglkembali');
 
-          $('#no_rm').val(norm);
-          $('#nama_pasien').val(namapasien);
-          $('#tgl_lahir').val(tgllahir);
-          $('#jekel').val(jekel);
-          $("input[name=jekel][value=" + jekel + "]").prop('checked', true);
-          $('#ruangan').val(ruangan);
-          $('#bayar').val(bayar);
-          $('#tgl_pulang').val(tglpulang);
-          $('#tgl_haruskembali').val(tglharuskembali);
-          $('#tgl_kembali').val(tglkembali);
+        $('#id_pengembalian').val(id);
+        $('#no_rm').val(norm);
+        $('#nama_pasien').val(namapasien);
+        $('#tgl_lahir').val(tgllahir);
+        $('#jekel').val(jekel);
+        $("input[name=jekel][value=" + jekel + "]").prop('checked', true);
+        $('#ruangan').val(ruangan);
+        $('#bayar').val(bayar);
+        $('#tgl_pulang').val(tglpulang);
+        $('#tgl_haruskembali').val(tglharuskembali);
+        $('#tgl_kembali').val(tglkembali);
       });
       $(document).on('click','#deleteketerlambatan',function(){
         var id = $(this).data('id');

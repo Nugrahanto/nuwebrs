@@ -40,9 +40,9 @@ class peminjamanModel extends CI_Model
             ->get('peminjaman')
             ->row();
     }
-    public function cetak($no_rm)
+    public function cetak($id)
     {
-        return $this->db->where('no_rm', $no_rm)
+        return $this->db->where('id_peminjaman', $id)
             ->get('peminjaman')
             ->row();
     }

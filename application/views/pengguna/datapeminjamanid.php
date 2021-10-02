@@ -29,7 +29,7 @@
                         <label for="tgl_pinjam">Tanggal Pinjam BRM</label>
                         <input type="text" class="form-control" id="tgl_pinjam" name="tgl_pinjam" value="<?= $dataRM->tgl_pinjam ?>" readonly>
                     </div>
-                    <a href="<?= base_url('peminjaman/cetak/'.$dataRM->no_rm.''); ?>" target="_blank">
+                    <a href="<?= base_url('peminjaman/cetak/'.$dataRM->id_peminjaman.''); ?>" target="_blank">
                         <button type="button" class="btn btn-primary me-2">Cetak Tracer</button>
                     </a>
                     </form>

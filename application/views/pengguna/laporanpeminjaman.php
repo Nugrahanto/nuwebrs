@@ -32,7 +32,7 @@
                             <td><?= $data->ruangan ?></td>
                             <td><?= $data->tgl_pinjam ?></td>
                             <td>
-                            <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanpeminjaman" data-toggle="modal" data-target="#editModal" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=$data->tgl_lahir?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->ruangan?>" data-tglpinjam="<?=$data->tgl_pinjam?>">
+                            <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanpeminjaman" data-toggle="modal" data-target="#editModal" data-id="<?= $data->id_peminjaman ?>" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=$data->tgl_lahir?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->ruangan?>" data-tglpinjam="<?=$data->tgl_pinjam?>">
                                 Edit 
                             </button>
                             <button type="button" class="btn btn-sm btn-outline-danger" id="deletepeminjaman" data-toggle="modal" data-target="#deleteModal" data-id="<?=$data->no_rm?>">
@@ -61,6 +61,7 @@
               </div>
               <form method="post" role="form" enctype="multipart/form-data" action="<?php echo base_url(); ?>laporanpeminjaman/update_laporanpeminjaman">
                 <div class="modal-body">
+                <input type="text" id="id_peminjaman" name="id_peminjaman" hidden>
                   <div class="form-group">
                       <label for="no_rm">Nomor RM</label>
                       <input type="text" class="form-control" id="no_rm" name="no_rm" placeholder="Nomor RM" readonly>

@@ -47,8 +47,8 @@ class laporanpengembalian extends CI_Controller
 		}
     } 
     public function delete_laporanpengembalian() {
-        $no_rm = $this->input->post('no_rm');
-        if ($this->laporanpengembalianModel->delete_laporanpengembalian($no_rm)) {
+        $id_pengembalian = $this->input->post('id_pengembalian');
+        if ($this->laporanpengembalianModel->delete_laporanpengembalian($id_pengembalian)) {
             $this->session->set_flashdata('message', '
                 <div class="alert alert-success" role="alert">
                 Berhasil menghapus data pengembalian</div>');

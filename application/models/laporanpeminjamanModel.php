@@ -9,7 +9,7 @@ class laporanpeminjamanModel extends CI_Model
             ->result();
     }
     public function update_laporanpeminjaman() {
-        $no_rm = $this->input->post('no_rm');
+        $id_peminjaman = $this->input->post('id_peminjaman');
         $nama_pasien = $this->input->post('nama_pasien');
         $tgl_lahir = $this->input->post('tgl_lahir');
         $jekel = $this->input->post('jekel');
@@ -22,7 +22,7 @@ class laporanpeminjamanModel extends CI_Model
             'ruangan' => $ruangan
             );
 
-        $this->db->where('no_rm', $no_rm)
+        $this->db->where('id_peminjaman', $id_peminjaman)
                  ->update('peminjaman', $data);
 
         if ($this->db->affected_rows() > 0) {
@@ -31,8 +31,8 @@ class laporanpeminjamanModel extends CI_Model
 			return FALSE;
 		}
     } 
-    public function delete_laporanpeminjaman($no_rm) {
-        return $this->db->where('no_rm', $no_rm)
+    public function delete_laporanpeminjaman($id_peminjaman) {
+        return $this->db->where('id_peminjaman', $id_peminjaman)
                         ->delete('peminjaman');
     }
 }
