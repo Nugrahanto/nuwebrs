@@ -138,28 +138,26 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          <hr class="sidebar-divider my-0">
+          <li class="nav-item nav-category">Data</li>
           <li class="nav-item <?php if($this->uri->segment(1) == "pengguna"){ echo 'active';}?>">
             <a class="nav-link" href="<?php echo base_url(); ?>pengguna">
               <i class="mdi mdi-account menu-icon"></i>
               <span class="menu-title">Data Pengguna</span>
             </a>
           </li>
-          <hr class="sidebar-divider my-0">
           <li class="nav-item <?php if($this->uri->segment(1) == "peminjaman"){ echo 'active';}?>">
             <a class="nav-link" href="<?php echo base_url(); ?>peminjaman">
               <i class="mdi mdi-folder-plus menu-icon"></i>
               <span class="menu-title">Data Peminjaman</span>
             </a>
           </li>
-          <hr class="sidebar-divider my-0">
           <li class="nav-item <?php if($this->uri->segment(1) == "pengembalian"){ echo 'active';}?>">
             <a class="nav-link" href="<?php echo base_url(); ?>pengembalian">
               <i class="mdi mdi-folder-remove menu-icon"></i>
               <span class="menu-title">Data Pengembalian</span>
             </a>
           </li>
-          <hr class="sidebar-divider my-0">
+          <li class="nav-item nav-category">Laporan</li>
           <li class="nav-item <?php 
           $url = $this->uri->segment(1);
           if(strpos($url, 'laporan') !== false) {
@@ -179,7 +177,7 @@
               </ul>
             </div>
           </li>
-          <hr class="sidebar-divider my-0">
+          <li class="nav-item nav-category">Lainnya</li>
           <li class="nav-item <?php if($this->uri->segment(1) == "grafik"){ echo 'active';}?>">
             <a class="nav-link" href="index.html">
               <i class="menu-icon mdi mdi-chart-line"></i>
