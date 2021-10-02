@@ -90,7 +90,9 @@
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="icon-bell"></i>
-              <?php if($notiftoday + $notifterlambat != 0){echo '<span class="count"></span>';} ?>
+              <?php if($notiftoday + $notifterlambat != 0){ ?>
+                <span class="count text-white"><?= $notiftoday + $notifterlambat; ?></span>
+              <?php } ?>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="countDropdown">
               <div class="text-center bg-primary text-white py-3">

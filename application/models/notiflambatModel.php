@@ -8,7 +8,7 @@ class notiflambatModel extends CI_Model
         date_default_timezone_set('Asia/Jakarta');
         $getdate = date("Y-m-d");
         return $this->db->where('tgl_haruskembali', $getdate)
-                        ->where('tgl_kembali =', 'null')
+                        ->where('tgl_kembali =', null)
                         ->from('pengembalian')
                         ->count_all_results();
     }
@@ -18,7 +18,7 @@ class notiflambatModel extends CI_Model
         date_default_timezone_set('Asia/Jakarta');
         $getdate = date("Y-m-d");
         return $this->db->where('tgl_haruskembali <', $getdate)
-                        ->where('tgl_kembali =', 'null')
+                        ->where('tgl_kembali =', null)
                         ->from('pengembalian')
                         ->count_all_results();
     }
@@ -28,7 +28,7 @@ class notiflambatModel extends CI_Model
         date_default_timezone_set('Asia/Jakarta');
         $getdate = date("Y-m-d");
         return $this->db->where('tgl_haruskembali', $getdate)
-                        ->where('tgl_kembali =', 'null')
+                        ->where('tgl_kembali =', null)
                         ->get('pengembalian')
                         ->result();
     }
@@ -38,7 +38,7 @@ class notiflambatModel extends CI_Model
         date_default_timezone_set('Asia/Jakarta');
         $getdate = date("Y-m-d");
         return $this->db->where('tgl_haruskembali <', $getdate)
-                        ->where('tgl_kembali =', 'null')
+                        ->where('tgl_kembali =', null)
                         ->get('pengembalian')
                         ->result();
     }
