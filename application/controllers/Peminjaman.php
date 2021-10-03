@@ -81,4 +81,21 @@ class peminjaman extends CI_Controller
             redirect('login', 'refresh');
         }
     }
+    public function get_auto_fill_rm()
+    {
+        if (isset($_GET['term'])) {
+            $result = $this->peminjamanModel->search_no_rm($_GET['term']);
+            if (count($result) > 0) {
+                foreach ($result as $row) {
+                    $arr_result[] = array(
+                        'label'         => $row->no_rm,
+                        'nama_pasien'   => $row->nama_pasien,
+                        'tgl_lahir'     => $row->tgl_lahir,
+                        'jekel'         => $row->jekel,
+                    );
+                    echo json_encode($arr_result);
+                }
+            }
+        }
+    }
 }

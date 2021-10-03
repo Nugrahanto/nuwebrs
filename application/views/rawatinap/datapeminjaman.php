@@ -7,8 +7,8 @@
                     <?= $this->session->flashdata('message'); ?>
                     <form method="post" role="form" enctype="multipart/form-data" action="<?php echo base_url(); ?>peminjaman/tambah_peminjaman">
                     <div class="form-group">
-                        <label for="userno_rmname">Nomor RM</label>
-                        <input type="text" class="form-control" id="no_rm" name="no_rm" placeholder="Masukkan Nomor RM" required/>
+                        <label for="no_rm_auto">Nomor RM</label>
+                        <input type="text" class="form-control" id="no_rm_auto" name="no_rm" placeholder="Masukkan Nomor RM" required/>
                     </div>
                     <div class="form-group">
                         <label for="nama_pasien">Nama Pasien</label>
@@ -24,7 +24,7 @@
                             <div class="col-sm-2">
                               <div class="form-check">
                                 <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="jekel" id="jekel1" value="Laki-Laki" required/>
+                                <input type="radio" class="form-check-input" name="jekel" id="jekel" value="Laki-Laki" required/>
                                 Laki-Laki
                                 </label>
                               </div>
@@ -32,7 +32,7 @@
                             <div class="col-sm-2">
                               <div class="form-check">
                                 <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="jekel" id="jekel2" value="Perempuan" required/>
+                                <input type="radio" class="form-check-input" name="jekel" id="jekel" value="Perempuan" required/>
                                 Perempuan
                                 </label>
                               </div>

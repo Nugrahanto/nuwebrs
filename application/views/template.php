@@ -479,6 +479,21 @@
 
     });
   </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('#no_rm_auto').autocomplete({
+            source: "<?php echo site_url('peminjaman/get_auto_fill_rm'); ?>",
+
+            select: function(event, ui) {
+                $('[name="no_rm"]').val(ui.item.label);
+                $('[name="nama_pasien"]').val(ui.item.nama_pasien);
+                $('[name="tgl_lahir"]').val(ui.item.tgl_lahir);
+                $('[name=jekel][value=' + ui.item.jekel + ']').prop("checked", true);
+            }
+        });
+
+    });
+  </script>
   <script>
     $(document).ready(function(){
       $(document).on('click','#laporanpeminjaman',function(){

@@ -33,8 +33,9 @@ class pengembalian extends CI_Controller
             $this->load->view('template', $data);
         } else {
             redirect('auth', 'refresh');
+        } 
     } 
-} public function get_auto_fill_ri()
+    public function get_auto_fill_ri()
     {
         if (isset($_GET['term'])) {
             $result = $this->pengembalianModel->search_no_ri($_GET['term']);

@@ -3,7 +3,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class peminjamanModel extends CI_Model
 {
-
+    public function search_no_rm($norm)
+    {
+        $sql = "select peminjaman.* from peminjaman,
+        (select no_rm,max(id_peminjaman) as id_peminjaman
+             from peminjaman
+             group by no_rm) max_rm
+          where peminjaman.no_rm=max_rm.no_rm
+          and peminjaman.id_peminjaman=max_rm.id_peminjaman
+          and peminjaman.no_rm like '".$norm."%'";
+        return $query = $this->db->query($sql)->result();
+    }
     public function do_insert()
     {
         $no_rm = $this->input->post('no_rm');

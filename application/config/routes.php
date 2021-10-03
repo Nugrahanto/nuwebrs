@@ -55,6 +55,7 @@ $route['laporanlate'] = "laporanketerlambatan";
 $route['laporanuser'] = "laporanpengguna";
 $route['peminjaman/tambah_peminjaman'] = "peminjaman/tambah_peminjaman";
 $route['peminjaman/cetak'] = "peminjaman/cetak";
+$route['peminjaman/get_auto_fill_rm'] = "peminjaman/get_auto_fill_rm";
 $route['laporan/(:any)'] = "laporanpeminjaman/index";
 $route['peminjaman/(:any)'] = "peminjaman/index/$1";
 $route['default_controller'] = 'auth';
