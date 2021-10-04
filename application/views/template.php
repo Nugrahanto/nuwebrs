@@ -378,10 +378,10 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="<?php echo base_url(); ?>assets/js/inputmask.js"></script>
-  <script src="<?php echo base_url(); ?>assets/js/dashboard.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/Chart.roundedBarCharts.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/data-table.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/alerts.js"></script>
+  <!-- <script src="<?php echo base_url(); ?>assets/js/chartDashboard.js"></script> -->
   <!-- End custom js for this page-->
   <!-- start - This is for export functionality only -->
   <script src="<?= base_url('assets/'); ?>vendors/datatables/dataTables.buttons.min.js"></script>
@@ -612,32 +612,338 @@
   </script>
 
   <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'bar',
-        // The data for our dataset
+    <?php
+    $level = "";
+    $jumlahPeng = null;
+    foreach ($penggunaChart as $data)
+    {
+      $lvl = "";
+      if ($data->level == "1") { 
+        $lvl = "Admin";
+      } else if ($data->level == "2"){
+        $lvl = "Unit RI";
+      } else if ($data->level == "3"){
+        $lvl = "Kepala RM";
+      }
+        $level     .= "'$lvl'". ", ";
+        $jumPeng       = $data->count;
+        $jumlahPeng   .= "$jumPeng". ", ";
+    }
+    ?>
+    var penggunaChart = document.getElementById("penggunaChart").getContext("2d");
+
+    var myChart = new Chart(penggunaChart, {
+        type: 'pie',
         data: {
-            labels: [<?php echo $ruangan; ?>],
-            datasets: [{
-                label:'Data Peminjaman ',
-                backgroundColor: ['rgb(255, 99, 132)', 'rgba(56, 86, 255, 0.87)', 'rgb(60, 179, 113)','rgb(175, 238, 239)'],
-                borderColor: ['rgb(255, 99, 132)'],
-                data: [<?php echo $jumlah; ?>]
-            }]
+          labels: [<?php echo $level; ?>],
+          datasets: [{
+            data: [<?php echo $jumlahPeng; ?>],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.5)',
+              'rgba(54, 162, 235, 0.5)',
+              'rgba(255, 206, 86, 0.5)'
+            ],
+            borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)'
+            ]
+          }]
         },
-        // Configuration options go here
         options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:true
-                    }
-                }]
+          responsive: true,
+          animation: {
+            animateScale: true,
+            animateRotate: true
+          }
+       }
+   });
+  </script>
+  
+  <script>
+    <?php
+    $ruangan = "";
+    $jumlahRu = null;
+    foreach ($ruanganpeminjamanChart as $data)
+    {
+      $ruang    = $data->ruangan;
+      $ruangan  .= "'$ruang'". ", ";
+      $jumRu      = $data->count;
+      $jumlahRu   .= "$jumRu". ", ";
+    }
+    ?>
+    var peminjamanruanganChart = document.getElementById("peminjamanruanganChart").getContext("2d");
+
+    var myChart = new Chart(peminjamanruanganChart, {
+        type: 'bar',
+        data: {
+          labels: [<?php echo $ruangan; ?>],
+          datasets: [{
+            label: 'Peminjaman',
+            data: [<?php echo $jumlahRu; ?>],
+            backgroundColor: [
+              'rgba(54, 162, 235, 0.5)',
+              'rgba(54, 162, 235, 0.5)',
+              'rgba(54, 162, 235, 0.5)',
+              'rgba(54, 162, 235, 0.5)',
+              'rgba(54, 162, 235, 0.5)'
+            ],
+            borderColor: [
+              'rgba(54, 162, 235, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(54, 162, 235, 1)'
+            ],
+            borderWidth: 1,
+            fill: false
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          },
+          legend: {
+            display: false
+          },
+          elements: {
+            point: {
+              radius: 0
             }
+          }
+       }
+   });
+  </script>
+
+<script>
+    <?php
+    $ruangan = "";
+    $jumlahRu = null;
+    foreach ($ruanganpengembalianChart as $data)
+    {
+      $ruang    = $data->ruangan;
+      $ruangan  .= "'$ruang'". ", ";
+      $jumRu      = $data->count;
+      $jumlahRu   .= "$jumRu". ", ";
+    }
+    ?>
+    var pengembalianruanganChart = document.getElementById("pengembalianruanganChart").getContext("2d");
+
+    var myChart = new Chart(pengembalianruanganChart, {
+        type: 'bar',
+        data: {
+          labels: [<?php echo $ruangan; ?>],
+          datasets: [{
+            label: 'Pengembalian',
+            data: [<?php echo $jumlahRu; ?>],
+            backgroundColor: [
+              'rgba(255, 206, 86, 0.5)',
+              'rgba(255, 206, 86, 0.5)',
+              'rgba(255, 206, 86, 0.5)',
+              'rgba(255, 206, 86, 0.5)',
+              'rgba(255, 206, 86, 0.5)'
+            ],
+            borderColor: [
+              'rgba(255, 206, 86, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(255, 206, 86, 1)'
+            ],
+            borderWidth: 1,
+            fill: false
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          },
+          legend: {
+            display: false
+          },
+          elements: {
+            point: {
+              radius: 0
+            }
+          }
+       }
+   });
+  </script>
+
+<script>
+    <?php
+    $ruangan = "";
+    $jumlahRu = null;
+    foreach ($ruanganketerlambatanChart as $data)
+    {
+      $ruang    = $data->ruangan;
+      $ruangan  .= "'$ruang'". ", ";
+      $jumRu      = $data->count;
+      $jumlahRu   .= "$jumRu". ", ";
+    }
+    ?>
+    var keterlambatanruanganChart = document.getElementById("keterlambatanruanganChart").getContext("2d");
+
+    var myChart = new Chart(keterlambatanruanganChart, {
+        type: 'bar',
+        data: {
+          labels: [<?php echo $ruangan; ?>],
+          datasets: [{
+            label: 'Keterlambatan',
+            data: [<?php echo $jumlahRu; ?>],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.5)',
+              'rgba(255, 99, 132, 0.5)',
+              'rgba(255, 99, 132, 0.5)',
+              'rgba(255, 99, 132, 0.5)',
+              'rgba(255, 99, 132, 0.5)'
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(255, 99, 132, 1)',
+              'rgba(255, 99, 132, 1)',
+              'rgba(255, 99, 132, 1)',
+              'rgba(255, 99, 132, 1)'
+            ],
+            borderWidth: 1,
+            fill: false
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          },
+          legend: {
+            display: false
+          },
+          elements: {
+            point: {
+              radius: 0
+            }
+          }
+       }
+   });
+  </script>
+
+  <script>
+    var graphGradient = document.getElementById("peminjamanWeek").getContext('2d');
+    var graphGradient2 = document.getElementById("peminjamanWeek").getContext('2d');
+    var saleGradientBg = graphGradient.createLinearGradient(5, 0, 5, 100);
+    saleGradientBg.addColorStop(0, 'rgba(26, 115, 232, 0.18)');
+    saleGradientBg.addColorStop(1, 'rgba(26, 115, 232, 0.02)');
+    var saleGradientBg2 = graphGradient2.createLinearGradient(100, 0, 50, 150);
+    saleGradientBg2.addColorStop(0, 'rgba(0, 208, 255, 0.19)');
+    saleGradientBg2.addColorStop(1, 'rgba(0, 208, 255, 0.03)');
+    var salesTopData = {
+        labels: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+        datasets: [{
+            label: 'This week',
+            data: [0, 3, 0, 0, 0, 0, 0],
+            backgroundColor: saleGradientBg,
+            borderColor: [
+                '#4e73df',
+            ],
+            borderWidth: 1.5,
+            fill: true, // 3: no fill
+            pointBorderWidth: 1,
+            pointRadius: [4, 4, 4, 4, 4, 4, 4],
+            pointHoverRadius: [2, 2, 2, 2, 2, 2, 2],
+            pointBackgroundColor: ['#4e73df', '#4e73df', '#4e73df', '#4e73df','#4e73df', '#4e73df', '#4e73df'],
+            pointBorderColor: ['#fff','#fff','#fff','#fff','#fff','#fff','#fff'],
+        },{
+          label: 'Last week',
+          data: [0, 0, 0, 0, 0, 0, 0],
+          backgroundColor: saleGradientBg2,
+          borderColor: [
+              '#52CDFF',
+          ],
+          borderWidth: 1.5,
+          fill: true, // 3: no fill
+          pointBorderWidth: 1,
+          pointRadius: [4, 4, 4, 4, 4, 4, 4],
+          pointHoverRadius: [2, 2, 2, 2, 2, 2, 2],
+          pointBackgroundColor: ['#52CDFF', '#52CDFF', '#52CDFF', '#52CDFF','#52CDFF', '#52CDFF', '#52CDFF'],
+            pointBorderColor: ['#fff','#fff','#fff','#fff','#fff','#fff','#fff'],
+      }]
+    };
+
+    var salesTopOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+        scales: {
+            yAxes: [{
+                gridLines: {
+                    display: true,
+                    drawBorder: false,
+                    color:"#F0F0F0",
+                    zeroLineColor: '#F0F0F0',
+                },
+                ticks: {
+                  beginAtZero: false,
+                  autoSkip: true,
+                  maxTicksLimit: 4,
+                  fontSize: 10,
+                  color:"#6B778C"
+                }
+            }],
+            xAxes: [{
+              gridLines: {
+                  display: false,
+                  drawBorder: false,
+              },
+              ticks: {
+                beginAtZero: false,
+                autoSkip: true,
+                maxTicksLimit: 7,
+                fontSize: 10,
+                color:"#6B778C"
+              }
+          }],
+        },
+        legend:false,
+        legendCallback: function (chart) {
+          var text = [];
+          text.push('<div class="chartjs-legend"><ul>');
+          for (var i = 0; i < chart.data.datasets.length; i++) {
+            console.log(chart.data.datasets[i]); // see what's inside the obj.
+            text.push('<li>');
+            text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
+            text.push(chart.data.datasets[i].label);
+            text.push('</li>');
+          }
+          text.push('</ul></div>');
+          return text.join("");
+        },
+        
+        elements: {
+            line: {
+                tension: 0.4,
+            }
+        },
+        tooltips: {
+            backgroundColor: 'rgba(31, 59, 179, 1)',
         }
+    }
+    var salesTop = new Chart(graphGradient, {
+        type: 'line',
+        data: salesTopData,
+        options: salesTopOptions
     });
-</script>
+    document.getElementById('peminjaman-line-legend').innerHTML = salesTop.generateLegend();
+  </script>
 </body>
 
 
