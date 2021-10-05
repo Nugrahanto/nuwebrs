@@ -3,7 +3,7 @@
         <div class="col-sm-12">
             <div class="home-tab">
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
-                    <ul class="nav nav-tabs" role="tablist">
+                    <!-- <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#mingguan" role="tab" aria-controls="mingguan" aria-selected="true">Mingguan</a>
                     </li>
@@ -13,7 +13,7 @@
                     <li class="nav-item">
                         <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#tahunan" role="tab" aria-controls="tahunan" aria-selected="false">Tahunan</a>
                     </li>
-                    </ul>
+                    </ul> -->
                     <div>
                     <!-- <div class="btn-wrapper">
                         <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
@@ -30,7 +30,7 @@
                                     <div>
                                         <p class="statistics-title">Peminjaman</p>
                                         <h3 class="rate-percentage"><?= $countPeminjaman; ?></h3>
-                                        <?php 
+                                        <!-- <?php 
                                         if($countPeminjaman >= $countyesterdayPeminjaman) { ?>
                                             <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i>
                                                 <span>
@@ -58,12 +58,12 @@
                                                     ?>
                                                 </span>
                                             </p>
-                                        <?php } ?>
+                                        <?php } ?> -->
                                     </div>
                                     <div>
                                     <p class="statistics-title">Pengembalian</p>
                                     <h3 class="rate-percentage"><?= $countPengembalian; ?></h3>
-                                    <?php 
+                                    <!-- <?php 
                                         if($countPengembalian >= $countyesterdayPengembalian) { ?>
                                             <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i>
                                                 <span>
@@ -91,12 +91,12 @@
                                                     ?>
                                                 </span>
                                             </p>
-                                        <?php } ?>
+                                        <?php } ?> -->
                                     </div>
                                     <div>
                                         <p class="statistics-title">Keterlambatan</p>
                                         <h3 class="rate-percentage"><?= $countKeterlambatan; ?></h3>
-                                        <?php 
+                                        <!-- <?php 
                                         if($countKeterlambatan >= $countyesterdayKeterlambatan) { ?>
                                             <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i>
                                                 <span>
@@ -124,7 +124,7 @@
                                                     ?>
                                                 </span>
                                             </p>
-                                        <?php } ?>
+                                        <?php } ?> -->
                                     </div>
                                 </div>
                                 <div class="row flex-grow">
@@ -134,7 +134,7 @@
                                                 <div class="d-sm-flex justify-content-between align-items-start">
                                                     <div>
                                                         <h4 class="card-title card-title-dash">Data Peminjaman</h4>
-                                                        <!-- <h5 class="card-subtitle card-subtitle-dash">Data grafik peminjaman</h5> -->
+                                                        <h5 class="card-subtitle card-subtitle-dash">Data grafik peminjaman</h5>
                                                         <br>
                                                         <br>
                                                         <br>

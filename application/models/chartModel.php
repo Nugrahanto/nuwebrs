@@ -7,8 +7,7 @@ class chartModel extends CI_Model {
     {
         date_default_timezone_set('Asia/Jakarta');
         $weekNumber = date("W");
-        return $this->db->where('WEEK(tgl_pinjam)', $weekNumber)
-                        ->from('peminjaman')
+        return $this->db->from('peminjaman')
                         ->count_all_results();
     }
 
@@ -25,8 +24,7 @@ class chartModel extends CI_Model {
     {
         date_default_timezone_set('Asia/Jakarta');
         $weekNumber = date("W");
-        return $this->db->where('WEEK(tgl_kembali)', $weekNumber)
-                        ->from('pengembalian')
+        return $this->db->from('pengembalian')
                         ->count_all_results();
     }
 
@@ -43,8 +41,7 @@ class chartModel extends CI_Model {
     {
         date_default_timezone_set('Asia/Jakarta');
         $weekNumber = date("W");
-        return $this->db->where('WEEK(tgl_kembali)', $weekNumber)
-                        ->where('tgl_kembali > tgl_haruskembali')
+        return $this->db->where('tgl_kembali > tgl_haruskembali')
                         ->from('pengembalian')
                         ->count_all_results();
     }
@@ -69,7 +66,7 @@ class chartModel extends CI_Model {
     {
         date_default_timezone_set('Asia/Jakarta');
         $weekNumber = date("W");
-        $sql = "SELECT ruangan, COUNT(*) as count FROM peminjaman WHERE WEEK(tgl_pinjam) = $weekNumber GROUP BY ruangan ORDER BY ruangan ASC";
+        $sql = "SELECT ruangan, COUNT(*) as count FROM peminjaman GROUP BY ruangan ORDER BY ruangan ASC";
         return $query = $this->db->query($sql)->result();
     }
 
@@ -77,7 +74,7 @@ class chartModel extends CI_Model {
     {
         date_default_timezone_set('Asia/Jakarta');
         $weekNumber = date("W");
-        $sql = "SELECT ruangan, COUNT(*) as count FROM pengembalian WHERE WEEK(tgl_kembali) = 40 GROUP BY ruangan ORDER BY ruangan ASC";
+        $sql = "SELECT ruangan, COUNT(*) as count FROM pengembalian GROUP BY ruangan ORDER BY ruangan ASC";
         return $query = $this->db->query($sql)->result();
     }
 
@@ -85,7 +82,7 @@ class chartModel extends CI_Model {
     {
         date_default_timezone_set('Asia/Jakarta');
         $weekNumber = date("W");
-        $sql = "SELECT ruangan, COUNT(*) as count FROM pengembalian WHERE WEEK(tgl_kembali) = 40 AND tgl_kembali > tgl_haruskembali GROUP BY ruangan ORDER BY ruangan ASC";
+        $sql = "SELECT ruangan, COUNT(*) as count FROM pengembalian WHERE tgl_kembali > tgl_haruskembali GROUP BY ruangan ORDER BY ruangan ASC";
         return $query = $this->db->query($sql)->result();
     }
 
