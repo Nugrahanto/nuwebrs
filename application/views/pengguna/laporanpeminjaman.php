@@ -35,7 +35,7 @@
                             <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanpeminjaman" data-toggle="modal" data-target="#editModal" data-id="<?= $data->id_peminjaman ?>" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=$data->tgl_lahir?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->ruangan?>" data-tglpinjam="<?=$data->tgl_pinjam?>">
                                 Edit 
                             </button>
-                            <button type="button" class="btn btn-sm btn-outline-danger" id="deletepeminjaman" data-toggle="modal" data-target="#deleteModal" data-id="<?=$data->no_rm?>">
+                            <button type="button" class="btn btn-sm btn-outline-danger" id="deletepeminjaman" data-toggle="modal" data-target="#deleteModal" data-id="<?=$data->id_peminjaman?>" data-norm="<?=$data->no_rm?>">
                               Hapus
                             </button>
                             </td>
@@ -124,8 +124,8 @@
               </div>
               <form method="post" role="form" enctype="multipart/form-data" action="<?php echo base_url(); ?>laporanpeminjaman/delete_laporanpeminjaman">
                 <div class="modal-body">
-                  <input type="text" class="form-control" id="rm" name="no_rm" readonly hidden>
-                  <p>Anda yakin ingin mengapus data nomor RM <span class="text-danger" id="id"></span>?</p>
+                  <input type="text" class="form-control" id="id" name="id_peminjaman" readonly hidden>
+                  <p>Anda yakin ingin mengapus data nomor RM <span class="text-danger" id="norm"></span>?</p>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

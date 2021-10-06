@@ -54,7 +54,7 @@
                               <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanketerlambatan" data-toggle="modal" data-target="#editModal" data-id="<?=$data->id_pengembalian?>" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=$data->tgl_lahir?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->ruangan?>" data-bayar="<?=$data->bayar?>" data-tglpulang="<?=$data->tgl_pulang?>" data-tglharuskembali="<?=$data->tgl_haruskembali?>" data-tglkembali="<?=$data->tgl_kembali?>">
                                   Edit 
                               </button>
-                              <button type="button" class="btn btn-sm btn-outline-danger" id="deleteketerlambatan" data-toggle="modal" data-target="#deleteModal" data-id="<?=$data->no_rm?>">
+                              <button type="button" class="btn btn-sm btn-outline-danger" id="deleteketerlambatan" data-toggle="modal" data-target="#deleteModal" data-id="<?=$data->id_pengembalian?>" data-norm="<?=$data->no_rm?>">
                                 Hapus
                               </button>
                             </td>
@@ -78,7 +78,7 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <form method="post" role="form" enctype="multipart/form-data" action="<?php echo base_url(); ?>laporanpeminjaman/update_laporanpeminjaman">
+              <form method="post" role="form" enctype="multipart/form-data" action="<?php echo base_url(); ?>laporanketerlambatan/update_laporanketerlambatan">
                 <div class="modal-body">
                 <input type="text" id="id_pengembalian" name="id_pengembalian" hidden>
                   <div class="form-group">
@@ -116,15 +116,31 @@
                       <label for="ruangan">Ruangan</label>
                       <select class="form-control" id="ruangan" name="ruangan" required>
                         <option value="Maternal">Maternal</option>
-                          <option value="Neo">Neo</option>
-                          <option value="General">General</option>
-                          <option value="Anak">Anak</option>
-                          <option value="Pavilium">Pavilium</option>
+                        <option value="Neo">Neo</option>
+                        <option value="General">General</option>
+                        <option value="Anak">Anak</option>
+                        <option value="Pavilium">Pavilium</option>
                       </select>
                   </div>
                   <div class="form-group">
-                      <label for="tgl_pinjam">Tanggal Pinjam BRM</label>
-                      <input type="text" class="form-control" id="tgl_pinjam" name="tgl_pinjam" placeholder="Tanggal Pinjam BRM" readonly>
+                      <label for="bayar">Pembayaran</label>
+                      <select class="form-control" id="bayar" name="bayar" required>
+                        <option value="BPJS">BPJS</option>
+                        <option value="Umum">Umum</option>
+                        <option value="Asuransi">Asuransi</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="tgl_pulang">Tanggal Pulang</label>
+                      <input type="text" class="form-control" id="tgl_pulang" name="tgl_pulang" placeholder="Tanggal Pulang" readonly>
+                  </div>
+                  <div class="form-group">
+                      <label for="tgl_haruskembali">Tanggal Harus Kembali</label>
+                      <input type="text" class="form-control" id="tgl_haruskembali" name="tgl_haruskembali" placeholder="Tanggal Harus Kembali" readonly>
+                  </div>
+                  <div class="form-group">
+                      <label for="tgl_kembali">Tanggal Kembali</label>
+                      <input type="text" class="form-control" id="tgl_kembali" name="tgl_kembali" placeholder="Tanggal Kembali" readonly>
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -143,8 +159,8 @@
               </div>
               <form method="post" role="form" enctype="multipart/form-data" action="<?php echo base_url(); ?>laporanketerlambatan/delete_laporanketerlambatan">
                 <div class="modal-body">
-                  <input type="text" class="form-control" id="rm" name="no_rm" readonly hidden>
-                  <p>Anda yakin ingin mengapus data nomor RM <span class="text-danger" id="id"></span>?</p>
+                  <input type="text" class="form-control" id="id" name="id_pengembalian" readonly hidden>
+                  <p>Anda yakin ingin mengapus data nomor RM <span class="text-danger" id="norm"></span>?</p>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

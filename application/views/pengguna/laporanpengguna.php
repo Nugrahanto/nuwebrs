@@ -78,7 +78,7 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <form method="post" role="form" enctype="multipart/form-data" action="<?php echo base_url(); ?>laporanpengguna/delete_laporanpengguna/">
+              <form method="post" role="form" enctype="multipart/form-data" action="<?php echo base_url(); ?>laporanpengguna/update_laporanpengguna">
                 <div class="modal-body">
                   <input type="text" id="id_pengguna" name="id_pengguna" hidden>
                   <div class="form-group">
@@ -121,8 +121,8 @@
               </div>
               <form method="post" role="form" enctype="multipart/form-data" action="<?php echo base_url(); ?>laporanpengguna/delete_laporanpengguna">
                 <div class="modal-body">
-                  <input type="text" class="form-control" id="idpeng" name="id_pengguna" readonly hidden>
-                  <p>Anda yakin ingin mengapus data username <span class="text-danger" id="unametxt"></span>?</p>
+                  <input type="text" class="form-control" id="id" name="id_pengguna" readonly hidden>
+                  <p>Anda yakin ingin mengapus data username <span class="text-danger" id="uname"></span>?</p>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

@@ -509,15 +509,15 @@
         $('#no_rm').val(norm);
         $('#nama_pasien').val(namapasien);
         $('#tgl_lahir').val(tgllahir);
-        $('#jekel').val(jekel);
         $("input[name=jekel][value=" + jekel + "]").prop('checked', true);
         $('#ruangan').val(ruangan);
         $('#tgl_pinjam').val(tglpinjam);
       });
       $(document).on('click','#deletepeminjaman',function(){
         var id = $(this).data('id');
-        $('#id').text(id);
-        $('#rm').val(id);
+        var norm = $(this).data('norm');
+        $('#id').val(id);
+        $('#norm').text(norm);
       });
     });
   </script>
@@ -539,7 +539,6 @@
         $('#no_rm').val(norm);
         $('#nama_pasien').val(namapasien);
         $('#tgl_lahir').val(tgllahir);
-        $('#jekel').val(jekel);
         $("input[name=jekel][value=" + jekel + "]").prop('checked', true);
         $('#ruangan').val(ruangan);
         $('#bayar').val(bayar);
@@ -549,8 +548,9 @@
       });
       $(document).on('click','#deletepengembalian',function(){
         var id = $(this).data('id');
-        $('#id').text(id);
-        $('#rm').val(id);
+        var norm = $(this).data('norm');
+        $('#id').val(id);
+        $('#norm').text(norm);
       });
     });
   </script>
@@ -572,7 +572,6 @@
         $('#no_rm').val(norm);
         $('#nama_pasien').val(namapasien);
         $('#tgl_lahir').val(tgllahir);
-        $('#jekel').val(jekel);
         $("input[name=jekel][value=" + jekel + "]").prop('checked', true);
         $('#ruangan').val(ruangan);
         $('#bayar').val(bayar);
@@ -582,8 +581,9 @@
       });
       $(document).on('click','#deleteketerlambatan',function(){
         var id = $(this).data('id');
-        $('#id').text(id);
-        $('#rm').val(id);
+        var norm = $(this).data('norm');
+        $('#id').val(id);
+        $('#norm').text(norm);
       });
     });
   </script>
@@ -603,10 +603,10 @@
         $('#status').val(status);
       });
       $(document).on('click','#deletepengguna',function(){
-        var idpeng = $(this).data('id');
+        var id = $(this).data('id');
         var uname = $(this).data('username');
-        $('#unametxt').text(uname);
-        $('#idpeng').val(idpeng);
+        $('#uname').text(uname);
+        $('#id').val(id);
       });
     });
   </script>
