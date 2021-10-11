@@ -177,13 +177,13 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item nav-category">Lainnya</li>
+          <!-- <li class="nav-item nav-category">Lainnya</li>
           <li class="nav-item <?php if($this->uri->segment(1) == "grafik"){ echo 'active';}?>">
             <a class="nav-link" href="index.html">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title" >Grafik</span>
             </a>
-          </li>
+          </li> -->
         <?php } else if ($this->session->userdata('level') == 2) { ?>
           <li class="nav-item <?php if($this->uri->segment(1) == "dashboard"){ echo 'active';}?>">
           <a class="nav-link" href="<?php echo base_url(); ?>dashboard">
@@ -204,13 +204,13 @@
               <span class="menu-title">Data Pengembalian</span>
             </a>
           </li>
-          <li class="nav-item nav-category">Lainnya</li>
+          <!-- <li class="nav-item nav-category">Lainnya</li>
           <li class="nav-item <?php if($this->uri->segment(1) == "grafik"){ echo 'active';}?>">
             <a class="nav-link" href="index.html">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Grafik</span>
             </a>
-          </li>
+          </li> -->
         <?php } else { ?>
           <li class="nav-item <?php if($this->uri->segment(1) == "dashboard"){ echo 'active';}?>">
             <a class="nav-link" href="<?php echo base_url(); ?>dashboard">
@@ -233,13 +233,13 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item nav-category">Lainnya</li>
+          <!-- <li class="nav-item nav-category">Lainnya</li>
           <li class="nav-item <?php if($this->uri->segment(1) == "grafik"){ echo 'active';}?>">
             <a class="nav-link" href="index.html">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Grafik</span>
             </a>
-          </li>
+          </li> -->
         <?php } ?>
         </ul>
       </nav>
@@ -381,7 +381,6 @@
   <script src="<?php echo base_url(); ?>assets/js/Chart.roundedBarCharts.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/data-table.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/alerts.js"></script>
-  <!-- <script src="<?php echo base_url(); ?>assets/js/chartDashboard.js"></script> -->
   <!-- End custom js for this page-->
   <!-- start - This is for export functionality only -->
   <script src="<?= base_url('assets/'); ?>vendors/datatables/dataTables.buttons.min.js"></script>
@@ -494,7 +493,7 @@
 
     });
   </script>
-  <script>
+  <script type="text/javascript">
     $(document).ready(function(){
       $(document).on('click','#laporanpeminjaman',function(){
         var id = $(this).data('id');
@@ -521,7 +520,7 @@
       });
     });
   </script>
-  <script>
+  <script type="text/javascript">
     $(document).ready(function(){
       $(document).on('click','#laporanpengembalian',function(){  
         var id = $(this).data('id');
@@ -554,7 +553,7 @@
       });
     });
   </script>
-  <script>
+  <script type="text/javascript">
     $(document).ready(function(){
       $(document).on('click','#laporanketerlambatan',function(){
         var id = $(this).data('id');
@@ -587,7 +586,7 @@
       });
     });
   </script>
-  <script>
+  <script type="text/javascript">
     $(document).ready(function(){
       $(document).on('click','#laporanpengguna',function(){
         var id = $(this).data('id');
@@ -611,25 +610,25 @@
     });
   </script>
 
-  <script>
-    <?php
-    $level = "";
-    $jumlahPeng = null;
-    foreach ($penggunaChart as $data)
-    {
-      $lvl = "";
-      if ($data->level == "1") { 
-        $lvl = "Admin";
-      } else if ($data->level == "2"){
-        $lvl = "Unit RI";
-      } else if ($data->level == "3"){
-        $lvl = "Kepala RM";
-      }
-        $level     .= "'$lvl'". ", ";
-        $jumPeng       = $data->count;
-        $jumlahPeng   .= "$jumPeng". ", ";
-    }
-    ?>
+  <script type="text/javascript">
+<?php
+$level = "";
+$jumlahPeng = null;
+foreach ($penggunaChart as $data)
+{
+  $lvl = "";
+  if ($data->level == "1") { 
+    $lvl = "Admin";
+  } else if ($data->level == "2"){
+    $lvl = "Unit RI";
+  } else if ($data->level == "3"){
+    $lvl = "Kepala RM";
+  }
+    $level     .= "'$lvl'". ", ";
+    $jumPeng       = $data->count;
+    $jumlahPeng   .= "$jumPeng". ", ";
+}
+?>
     var penggunaChart = document.getElementById("penggunaChart").getContext("2d");
 
     var myChart = new Chart(penggunaChart, {
@@ -661,18 +660,18 @@
    });
   </script>
   
-  <script>
-    <?php
-    $ruangan = "";
-    $jumlahRu = null;
-    foreach ($ruanganpeminjamanChart as $data)
-    {
-      $ruang    = $data->ruangan;
-      $ruangan  .= "'$ruang'". ", ";
-      $jumRu      = $data->count;
-      $jumlahRu   .= "$jumRu". ", ";
-    }
-    ?>
+  <script type="text/javascript">
+<?php
+$ruangan = "";
+$jumlahRu = null;
+foreach ($ruanganpeminjamanChart as $data)
+{
+  $ruang    = $data->ruangan;
+  $ruangan  .= "'$ruang'". ", ";
+  $jumRu      = $data->count;
+  $jumlahRu   .= "$jumRu". ", ";
+}
+?>
     var peminjamanruanganChart = document.getElementById("peminjamanruanganChart").getContext("2d");
 
     var myChart = new Chart(peminjamanruanganChart, {
@@ -716,22 +715,22 @@
               radius: 0
             }
           }
-       }
-   });
+        }
+    });
   </script>
 
-<script>
-    <?php
-    $ruangan = "";
-    $jumlahRu = null;
-    foreach ($ruanganpengembalianChart as $data)
-    {
-      $ruang    = $data->ruangan;
-      $ruangan  .= "'$ruang'". ", ";
-      $jumRu      = $data->count;
-      $jumlahRu   .= "$jumRu". ", ";
-    }
-    ?>
+  <script type="text/javascript">
+<?php
+$ruangan = "";
+$jumlahRu = null;
+foreach ($ruanganpengembalianChart as $data)
+{
+  $ruang    = $data->ruangan;
+  $ruangan  .= "'$ruang'". ", ";
+  $jumRu      = $data->count;
+  $jumlahRu   .= "$jumRu". ", ";
+}
+?>
     var pengembalianruanganChart = document.getElementById("pengembalianruanganChart").getContext("2d");
 
     var myChart = new Chart(pengembalianruanganChart, {
@@ -775,22 +774,22 @@
               radius: 0
             }
           }
-       }
-   });
+        }
+    });
   </script>
 
-<script>
-    <?php
-    $ruangan = "";
-    $jumlahRu = null;
-    foreach ($ruanganketerlambatanChart as $data)
-    {
-      $ruang    = $data->ruangan;
-      $ruangan  .= "'$ruang'". ", ";
-      $jumRu      = $data->count;
-      $jumlahRu   .= "$jumRu". ", ";
-    }
-    ?>
+  <script type="text/javascript">
+<?php
+$ruangan = "";
+$jumlahRu = null;
+foreach ($ruanganketerlambatanChart as $data)
+{
+  $ruang    = $data->ruangan;
+  $ruangan  .= "'$ruang'". ", ";
+  $jumRu      = $data->count;
+  $jumlahRu   .= "$jumRu". ", ";
+}
+?>
     var keterlambatanruanganChart = document.getElementById("keterlambatanruanganChart").getContext("2d");
 
     var myChart = new Chart(keterlambatanruanganChart, {
@@ -834,11 +833,11 @@
               radius: 0
             }
           }
-       }
-   });
+        }
+    });
   </script>
 
-  <script>
+  <script type="text/javascript">
     var graphGradient = document.getElementById("peminjamanWeek").getContext('2d');
     var graphGradient2 = document.getElementById("peminjamanWeek").getContext('2d');
     var saleGradientBg = graphGradient.createLinearGradient(5, 0, 5, 100);
@@ -850,8 +849,58 @@
     var salesTopData = {
         labels: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
         datasets: [{
-            label: 'This week',
-            data: [0, 3, 0, 0, 0, 0, 0],
+            label: 'Minggu ini',
+            data: [ <?php 
+                $weekNumber = date("W");
+                $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber)
+                        ->where('DAYOFWEEK(tgl_pinjam)', 1)
+                        ->from('peminjaman')
+                        ->count_all_results();
+                echo $day;
+              ?>, <?php 
+                $weekNumber = date("W");
+                $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber)
+                        ->where('DAYOFWEEK(tgl_pinjam)', 2)
+                        ->from('peminjaman')
+                        ->count_all_results();
+                echo $day;
+              ?>, <?php 
+                $weekNumber = date("W");
+                $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber)
+                        ->where('DAYOFWEEK(tgl_pinjam)', 3)
+                        ->from('peminjaman')
+                        ->count_all_results();
+                echo $day;
+              ?>, <?php 
+                $weekNumber = date("W");
+                $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber)
+                        ->where('DAYOFWEEK(tgl_pinjam)', 4)
+                        ->from('peminjaman')
+                        ->count_all_results();
+                echo $day;
+              ?>, <?php 
+                $weekNumber = date("W");
+                $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber)
+                          ->where('DAYOFWEEK(tgl_pinjam)', 5)
+                          ->from('peminjaman')
+                          ->count_all_results();
+                echo $day;
+              ?>, <?php 
+                $weekNumber = date("W");
+                $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber)
+                          ->where('DAYOFWEEK(tgl_pinjam)', 6)
+                          ->from('peminjaman')
+                          ->count_all_results();
+                echo $day;
+              ?>, <?php 
+                $weekNumber = date("W");
+                $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber)
+                        ->where('DAYOFWEEK(tgl_pinjam)', 7)
+                        ->from('peminjaman')
+                        ->count_all_results();
+                echo $day;
+              ?>
+              ],
             backgroundColor: saleGradientBg,
             borderColor: [
                 '#4e73df',
@@ -864,8 +913,58 @@
             pointBackgroundColor: ['#4e73df', '#4e73df', '#4e73df', '#4e73df','#4e73df', '#4e73df', '#4e73df'],
             pointBorderColor: ['#fff','#fff','#fff','#fff','#fff','#fff','#fff'],
         },{
-          label: 'Last week',
-          data: [0, 0, 0, 0, 0, 0, 0],
+          label: 'Minggu kemarin',
+          data: [<?php 
+              $weekNumber = date("W");
+              $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber-1)
+                        ->where('DAYOFWEEK(tgl_pinjam)', 1)
+                        ->from('peminjaman')
+                        ->count_all_results();
+              echo $day;
+            ?>, <?php 
+              $weekNumber = date("W");
+              $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber-1)
+                        ->where('DAYOFWEEK(tgl_pinjam)', 2)
+                        ->from('peminjaman')
+                        ->count_all_results();
+              echo $day;
+            ?>, <?php 
+              $weekNumber = date("W");
+              $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber-1)
+                        ->where('DAYOFWEEK(tgl_pinjam)', 3)
+                        ->from('peminjaman')
+                        ->count_all_results();
+              echo $day;
+            ?>, <?php 
+              $weekNumber = date("W");
+              $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber-1)
+                        ->where('DAYOFWEEK(tgl_pinjam)', 4)
+                        ->from('peminjaman')
+                        ->count_all_results();
+              echo $day;
+            ?>, <?php 
+              $weekNumber = date("W");
+              $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber-1)
+                        ->where('DAYOFWEEK(tgl_pinjam)', 5)
+                        ->from('peminjaman')
+                        ->count_all_results();
+              echo $day;
+            ?>, <?php 
+              $weekNumber = date("W");
+              $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber-1)
+                        ->where('DAYOFWEEK(tgl_pinjam)', 6)
+                        ->from('peminjaman')
+                        ->count_all_results();
+              echo $day;
+            ?>, <?php 
+              $weekNumber = date("W");
+              $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber-1)
+                        ->where('DAYOFWEEK(tgl_pinjam)', 7)
+                        ->from('peminjaman')
+                        ->count_all_results();
+              echo $day;
+            ?>
+            ],
           backgroundColor: saleGradientBg2,
           borderColor: [
               '#52CDFF',
@@ -945,7 +1044,5 @@
     document.getElementById('peminjaman-line-legend').innerHTML = salesTop.generateLegend();
   </script>
 </body>
-
-
 </html>
 

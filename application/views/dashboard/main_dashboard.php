@@ -134,7 +134,7 @@
                                                 <div class="d-sm-flex justify-content-between align-items-start">
                                                     <div>
                                                         <h4 class="card-title card-title-dash">Data Peminjaman</h4>
-                                                        <h5 class="card-subtitle card-subtitle-dash">Data grafik peminjaman</h5>
+                                                        <h5 style="font-size:10pt" class="card-subtitle card-subtitle-dash">Grafik peminjaman dalam mingguan</h5>
                                                         <br>
                                                         <br>
                                                         <br>
