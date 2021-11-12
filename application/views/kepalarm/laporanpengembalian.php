@@ -16,7 +16,6 @@
                             <th>Jenis Kelamin</th>
                             <th>Ruangan</th>
                             <th>Bayar</th>
-                            <th>Tanggal Pinjam BRM</th>
                             <th>Tanggal Pulang</th>
                             <th>Tanggal Harus Kembali</th>
                             <th>Tanggal BRM Kembali</th>
@@ -35,7 +34,6 @@
                             <td><?= $data->jekel ?></td>
                             <td><?= $data->ruangan ?></td>
                             <td><?= $data->bayar ?></td>
-                            <td><?= $data->tgl_pinjam ?></td>
                             <td><?= $data->tgl_pulang ?></td>
                             <td><?= $data->tgl_haruskembali ?></td>
                             <td><?= $data->tgl_kembali ?></td>
