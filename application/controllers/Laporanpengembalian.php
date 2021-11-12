@@ -60,4 +60,15 @@ class laporanpengembalian extends CI_Controller
             redirect('laporanpengembalian', 'refresh');
         }
 	}
+
+    public function cetak() {
+        if ($this->session->userdata('level') == 1) {
+            $data['title'] = 'Cetak Laporan Pengembalian';
+            $data['laporanpengembalian'] = $this->laporanpengembalianModel->get_laporanpengembalian();
+
+            $this->load->view('print/laporanpengembalian', $data);
+        } else {
+            redirect('auth', 'refresh');
+        }
+    }
 }

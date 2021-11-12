@@ -59,4 +59,15 @@ class laporanpeminjaman extends CI_Controller
             redirect('laporanpeminjaman', 'refresh');
         }
 	}
+
+    public function cetak() {
+        if ($this->session->userdata('level') == 1) {
+            $data['title'] = 'Cetak Laporan Peminjaman';
+            $data['laporanpeminjaman'] = $this->laporanpeminjamanModel->get_laporanpeminjaman();
+
+            $this->load->view('print/laporanpeminjaman', $data);
+        } else {
+            redirect('auth', 'refresh');
+        }
+    }
 }

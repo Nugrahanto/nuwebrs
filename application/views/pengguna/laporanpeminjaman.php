@@ -6,7 +6,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="table-responsive">
-                    <table id="" class="table export">
+                    <table id="" class="table exportpeminjaman">
                       <thead>
                         <tr>
                             <th>No</th>

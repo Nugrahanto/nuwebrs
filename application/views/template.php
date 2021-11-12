@@ -392,12 +392,135 @@
   <script src="<?= base_url('assets/'); ?>vendors/datatables/buttons.print.min.js"></script>
   <!-- end - This is for export functionality only -->
   <script type="text/javascript">
-    $('.export').DataTable({
+    $('.exportpeminjaman').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'pdf',
+                orientation: 'landscape',
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                },
+                customize: function (doc) {
+                  doc.content[1].table.widths = 
+                      Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+                }
+            },
+            {
+                extend: 'print',
+                text: 'Print',
+                action: function ( e, dt, node, config ) {
+                    window.open('laporanpeminjaman/cetak');
+                }
+            },
+            {
+                extend: 'excel',
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                }
+            }
+        ]
+    });
+    $('.buttons-pdf, .buttons-excel, .buttons-print').addClass('btn btn-primary me-1');
+  </script>
+  <script type="text/javascript">
+    $('.exportpengembalian').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'pdf',
+                orientation: 'landscape',
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                },
+                customize: function (doc) {
+                  doc.content[1].table.widths = 
+                      Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+                }
+            },
+            {
+                extend: 'print',
+                text: 'Print',
+                action: function ( e, dt, node, config ) {
+                    window.open('laporanpengembalian/cetak');
+                }
+            },
+            {
+                extend: 'excel',
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                }
+            }
+        ]
+    });
+    $('.buttons-pdf, .buttons-excel, .buttons-print').addClass('btn btn-primary me-1');
+  </script>
+  <script type="text/javascript">
+    $('.exportketerlambatan').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'pdf',
+                orientation: 'landscape',
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                },
+                customize: function (doc) {
+                  doc.content[1].table.widths = 
+                      Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+                }
+            },
+            {
+                extend: 'print',
+                text: 'Print',
+                action: function ( e, dt, node, config ) {
+                    window.open('laporanketerlambatan/cetak');
+                }
+            },
+            {
+                extend: 'excel',
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                }
+            }
+        ]
+    });
+    $('.buttons-pdf, .buttons-excel, .buttons-print').addClass('btn btn-primary me-1');
+  </script>
+  <script type="text/javascript">
+    $('.exportpengguna').DataTable({
         dom: 'Bfrtip',
         buttons: [
             {
                 extend: 'pdf',
                 className: 'btn-primary',
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                }
+            },
+            {
+                extend: 'print',
+                text: 'Print',
+                action: function ( e, dt, node, config ) {
+                    window.open('laporanpengguna/cetak');
+                }
+            },
+            {
+                extend: 'excel',
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                }
+            }
+        ]
+    });
+    $('.buttons-pdf, .buttons-excel').addClass('btn btn-primary me-1');
+  </script>
+  <script type="text/javascript">
+    $('.export').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'pdf',
                 orientation: 'landscape',
                 exportOptions: {
                     columns: ':not(:last-child)',
@@ -415,28 +538,7 @@
             }
         ]
     });
-    $('.buttons-pdf, .buttons-excel').addClass('btn btn-primary me-1');
-  </script>
-  <script type="text/javascript">
-    $('.exportpengguna').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            {
-                extend: 'pdf',
-                className: 'btn-primary',
-                exportOptions: {
-                    columns: ':not(:last-child)',
-                }
-            },
-            {
-                extend: 'excel',
-                exportOptions: {
-                    columns: ':not(:last-child)',
-                }
-            }
-        ]
-    });
-    $('.buttons-pdf, .buttons-excel').addClass('btn btn-primary me-1');
+    $('.buttons-pdf, .buttons-excel, .buttons-print').addClass('btn btn-primary me-1');
   </script>
   <script type="text/javascript">  
     $(document).ready(function() {

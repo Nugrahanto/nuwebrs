@@ -59,4 +59,15 @@ class laporanketerlambatan extends CI_Controller
             redirect('laporanketerlambatan', 'refresh');
         }
 	}
+
+    public function cetak() {
+        if ($this->session->userdata('level') == 1) {
+            $data['title'] = 'Cetak Laporan Keterlambatan';
+            $data['laporanketerlambatan'] = $this->laporanketerlambatanModel->get_laporanketerlambatan();
+
+            $this->load->view('print/laporanketerlambatan', $data);
+        } else {
+            redirect('auth', 'refresh');
+        }
+    }
 }

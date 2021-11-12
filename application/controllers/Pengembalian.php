@@ -75,7 +75,7 @@ class pengembalian extends CI_Controller
                 }
             }
         } else {
-            redirect('login', 'refresh');
+            redirect('auth', 'refresh');
         }
     }
     public function get_auto_fill_adm()

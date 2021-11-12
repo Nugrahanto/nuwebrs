@@ -56,4 +56,15 @@ class laporanpengguna extends CI_Controller
             redirect('laporanpengguna', 'refresh');
         }
     }
+
+    public function cetak() {
+        if ($this->session->userdata('level') == 1) {
+            $data['title'] = 'Cetak Laporan Pengguna';
+            $data['laporanpengguna'] = $this->laporanpenggunaModel->get_laporanpengguna();
+
+            $this->load->view('print/laporanpengguna', $data);
+        } else {
+            redirect('auth', 'refresh');
+        }
+    }
 }
