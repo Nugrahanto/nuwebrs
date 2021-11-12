@@ -6,7 +6,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="table-responsive">
-                    <table id="order-listing" class="table table-responsive">
+                    <table id="" class="table table-responsive exportketerlambatan">
                       <thead>
                         <tr>
                           <th>No</th>

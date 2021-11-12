@@ -66,6 +66,11 @@ class laporanketerlambatan extends CI_Controller
             $data['laporanketerlambatan'] = $this->laporanketerlambatanModel->get_laporanketerlambatan();
 
             $this->load->view('print/laporanketerlambatan', $data);
+        } else if ($this->session->userdata('level') == 3) {
+            $data['title'] = 'Cetak Laporan Keterlambatan';
+            $data['laporanketerlambatan'] = $this->laporanketerlambatanModel->get_laporanketerlambatan();
+
+            $this->load->view('print/laporanketerlambatan', $data);
         } else {
             redirect('auth', 'refresh');
         }

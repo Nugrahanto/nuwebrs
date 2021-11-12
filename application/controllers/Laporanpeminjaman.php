@@ -66,6 +66,11 @@ class laporanpeminjaman extends CI_Controller
             $data['laporanpeminjaman'] = $this->laporanpeminjamanModel->get_laporanpeminjaman();
 
             $this->load->view('print/laporanpeminjaman', $data);
+        } else if ($this->session->userdata('level') == 3) {
+            $data['title'] = 'Cetak Laporan Peminjaman';
+            $data['laporanpeminjaman'] = $this->laporanpeminjamanModel->get_laporanpeminjaman();
+
+            $this->load->view('print/laporanpeminjaman', $data);
         } else {
             redirect('auth', 'refresh');
         }
