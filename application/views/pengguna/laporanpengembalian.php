@@ -140,7 +140,7 @@
                       <input type="text" class="form-control" id="tgl_haruskembali" name="tgl_haruskembali" placeholder="Tanggal Harus Kembali" readonly>
                   </div>
                   <div class="form-group">
-                      <label for="tgl_kembali">Tanggal Kembali</label>
+                      <label for="tgl_kembali">Tanggal BRM Kembali</label>
                       <input type="text" class="form-control" id="tgl_kembali" name="tgl_kembali" placeholder="Tanggal Kembali" readonly>
                   </div>
                 </div>
