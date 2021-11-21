@@ -133,10 +133,6 @@
                       </select>
                   </div>
                   <div class="form-group">
-                      <label for="tgl_pinjam">Tanggal Pinjam BRM</label>
-                      <input type="text" class="form-control" id="tgl_pinjam" name="tgl_pinjam" placeholder="Tanggal Pinjam" readonly>
-                  </div>
-                  <div class="form-group">
                       <label for="tgl_pulang">Tanggal Pulang</label>
                       <input type="text" class="form-control" id="tgl_pulang" name="tgl_pulang" placeholder="Tanggal Pulang" readonly>
                   </div>
