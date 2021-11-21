@@ -35,7 +35,12 @@
                     <img src="<?= base_url() ?>/assets/images/logo.png" width="225px" height="110px"> </=>
                 </div>
 
-                <?= $this->session->flashdata('message'); ?>
+                <?php 
+                    $message = $this->session->flashdata('message'); 
+                    if (isset($message)) {
+                        echo $message;
+                        $this->session->unset_userdata('message');
+                    } ?>
                 <div class="ol-xl-10 col-lg-12 col-md-9">
                     <div class="p-5">
                         <form class="user" method="post" action="<?= base_url('auth'); ?>">
