@@ -4,7 +4,12 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Tambah Peminjaman</h4>
-                    <?= $this->session->flashdata('message'); ?>
+                    <?php 
+                    $message = $this->session->flashdata('message'); 
+                    if (isset($message)) {
+                        echo $message;
+                        $this->session->unset_userdata('message');
+                    } ?>
                     <form method="post" role="form" enctype="multipart/form-data" action="<?php echo base_url(); ?>peminjaman/tambah_peminjaman">
                     <div class="form-group">
                         <label for="no_rm_auto">Nomor RM</label>
