@@ -17,6 +17,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/favicon.png" />
 
 </head>
 
@@ -32,7 +33,7 @@
             <div class="card-body p-5">
                 <!-- Nested Row within Card Body -->
                 <div class="text-center">
-                    <img src="<?= base_url() ?>/assets/images/logo.png" width="225px" height="110px"> </=>
+                    <img src="<?= base_url() ?>/assets/images/logo.png" width="auto" height="110px"> </=>
                 </div>
 
                 <?php 
