@@ -39,7 +39,7 @@
                             <td><?= $data->tgl_kembali ?></td>
                             <td>
                                 <?php 
-                                    if ($data->tgl_kembali != "0000-00-00") { 
+                                    if (!empty($data->tgl_kembali && $data->tgl_kembali != "0000-00-00")) { 
                                         echo "<label class='badge badge-primary text-white'>Kembali</label>";
                                     } else {
                                         echo "<label class='badge badge-info text-white'>Dipinjam</label>";
