@@ -2,7 +2,12 @@
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Laporan Pengguna</h4>
-              <?= $this->session->flashdata('message'); ?>
+              <?php 
+                    $message = $this->session->flashdata('message'); 
+                    if (isset($message)) {
+                        echo $message;
+                        $this->session->unset_userdata('message');
+                    } ?>
               <div class="row">
                 <div class="col-12">
                   <div class="table-responsive">
