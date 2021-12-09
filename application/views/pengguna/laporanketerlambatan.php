@@ -35,14 +35,14 @@
                             <td><?=$no?></td>
                             <td><?= $data->no_rm ?></td>
                             <td><?= $data->nama_pasien ?></td>
-                            <td><?= $data->tgl_lahir ?></td>
+                            <td><?=date('d-m-Y', strtotime($data->tgl_lahir))?></td>
                             <td><?= $data->jekel ?></td>
                             <td><?= $data->ruangan ?></td>
                             <td><?= $data->bayar ?></td>
-                            <td><?= $data->tgl_pulang ?></td>
-                            <td><?= $data->tgl_haruskembali ?></td>
+                            <td><?=date('d-m-Y', strtotime($data->tgl_pulang))?></td>
+                            <td><?=date('d-m-Y', strtotime($data->tgl_haruskembali))?></td>
                             <td>
-                                <?= $data->tgl_kembali ?> 
+                                <?=date('d-m-Y', strtotime($data->tgl_kembali))?> 
                                 <?php 
                                 if ($data->tgl_kembali > $data->tgl_haruskembali){
                                 $tgl1 = strtotime($data->tgl_haruskembali); 
@@ -56,7 +56,7 @@
                                 </span>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanketerlambatan" data-toggle="modal" data-target="#editModal" data-id="<?=$data->id_pengembalian?>" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=$data->tgl_lahir?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->ruangan?>" data-bayar="<?=$data->bayar?>" data-tglpulang="<?=$data->tgl_pulang?>" data-tglharuskembali="<?=$data->tgl_haruskembali?>" data-tglkembali="<?=$data->tgl_kembali?>">
+                              <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanketerlambatan" data-toggle="modal" data-target="#editModal" data-id="<?=$data->id_pengembalian?>" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=date('d-m-Y', strtotime($data->tgl_lahir))?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->ruangan?>" data-bayar="<?=$data->bayar?>" data-tglpulang="<?=date('d-m-Y', strtotime($data->tgl_pulang))?>" data-tglharuskembali="<?=date('d-m-Y', strtotime($data->tgl_haruskembali))?>" data-tglkembali="<?=date('d-m-Y', strtotime($data->tgl_kembali))?>">
                                   Edit 
                               </button>
                               <button type="button" class="btn btn-sm btn-outline-danger" id="deleteketerlambatan" data-toggle="modal" data-target="#deleteModal" data-id="<?=$data->id_pengembalian?>" data-norm="<?=$data->no_rm?>">
@@ -96,7 +96,12 @@
                   </div>
                   <div class="form-group">
                       <label for="tgl_lahir">Tanggal Lahir</label>
-                      <input class="form-control" id="tgl_lahir" name="tgl_lahir" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" required/>
+                      <div class="input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                          </div>
+                          <input class="form-control" id="tgl_lahir_date" name="tgl_lahir" required/>
+                      </div>
                   </div>
                   <div class="form-group row">
                       <label for="jekel">Jenis Kelamin</label>

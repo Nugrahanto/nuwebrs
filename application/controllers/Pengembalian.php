@@ -42,12 +42,14 @@ class pengembalian extends CI_Controller
             if (count($result) > 0) {
                 foreach ($result as $row) {
                     date_default_timezone_set('Asia/Jakarta');
-                    $sekarang = date('Y-m-d');
-                    $expdate = date('Y-m-d', strtotime($sekarang . ' + 2 days'));
+                    $strotime = strtotime($row->tgl_lahir);
+                    $tgl_lahir = date('d-m-Y', $strotime);
+                    $sekarang = date('d-m-Y');
+                    $expdate = date('d-m-Y', strtotime($sekarang . ' + 2 days'));
                     $arr_result[] = array(
                         'label'            => $row->no_rm,
                         'nama_pasien'    => $row->nama_pasien,
-                        'tgl_lahir'        => $row->tgl_lahir,
+                        'tgl_lahir'        => $tgl_lahir,
                         'jekel'            => $row->jekel,
                         'ruangan'        => $row->ruangan,
                         'tgl_pulang' => $sekarang,
@@ -84,16 +86,19 @@ class pengembalian extends CI_Controller
             $result = $this->pengembalianModel->search_no_adm($_GET['term']);
             if (count($result) > 0) {
                 foreach ($result as $row) {
+                    $tgl_lahir = date('d-m-Y', strtotime($row->tgl_lahir));
+                    $tgl_pulang = date('d-m-Y', strtotime($row->tgl_pulang));
+                    $tgl_haruskembali = date('d-m-Y', strtotime($row->tgl_haruskembali));
                     $arr_result[] = array(
                         'label'             => $row->no_rm,
                         'id_pengembalian'   => $row->id_pengembalian,
                         'nama_pasien'       => $row->nama_pasien,
-                        'tgl_lahir'         => $row->tgl_lahir,
+                        'tgl_lahir'         => $tgl_lahir,
                         'jekel'             => $row->jekel,
                         'ruangan'           => $row->ruangan,
                         'bayar'             => $row->bayar,
-                        'tgl_pulang'        => $row->tgl_pulang,
-                        'tgl_haruskembali'  => $row->tgl_haruskembali,
+                        'tgl_pulang'        => $tgl_pulang,
+                        'tgl_haruskembali'  => $tgl_haruskembali,
                     );
                     echo json_encode($arr_result);
                 }

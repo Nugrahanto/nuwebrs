@@ -1,3 +1,7 @@
+.input-group-prepend{
+    height: 32px !important;
+}
+
 .auth .brand-logo img{
     width:100%;
 }

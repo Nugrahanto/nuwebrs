@@ -569,7 +569,7 @@
         $('#id_peminjaman').val(id);
         $('#no_rm').val(norm);
         $('#nama_pasien').val(namapasien);
-        $('#tgl_lahir').val(tgllahir);
+        $('#tgl_lahir_date').val(tgllahir);
         $("input[name=jekel][value=" + jekel + "]").prop('checked', true);
         $('#ruangan').val(ruangan);
         $('#tgl_pinjam').val(tglpinjam);
@@ -599,7 +599,7 @@
         $('#id_pengembalian').val(id);
         $('#no_rm').val(norm);
         $('#nama_pasien').val(namapasien);
-        $('#tgl_lahir').val(tgllahir);
+        $('#tgl_lahir_date').val(tgllahir);
         $("input[name=jekel][value=" + jekel + "]").prop('checked', true);
         $('#ruangan').val(ruangan);
         $('#bayar').val(bayar);
@@ -632,7 +632,7 @@
         $('#id_pengembalian').val(id);
         $('#no_rm').val(norm);
         $('#nama_pasien').val(namapasien);
-        $('#tgl_lahir').val(tgllahir);
+        $('#tgl_lahir_date').val(tgllahir);
         $("input[name=jekel][value=" + jekel + "]").prop('checked', true);
         $('#ruangan').val(ruangan);
         $('#bayar').val(bayar);
@@ -1104,6 +1104,46 @@ foreach ($ruanganketerlambatanChart as $data)
         options: salesTopOptions
     });
     document.getElementById('peminjaman-line-legend').innerHTML = salesTop.generateLegend();
+  </script>
+  <script type="text/javascript">
+      $(function () {
+        var date = new Date();
+        date.setDate(date.getDate());
+
+        $("#tgl_pulang_date").datepicker({
+          startDate: date,
+          format: "dd-mm-yyyy"
+        }).on("change", function() {
+          var pick = $('#tgl_pulang_date').datepicker('getDate', '+1d'); 
+          pick.setDate(pick.getDate()+2); 
+
+          var now = new Date(pick);
+          var day = ("0" + now.getDate()).slice(-2);
+          var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+          var today = (day)+"-"+"-"+(month)+"-"+now.getFullYear();
+
+          $('#tgl_haruskembali_date').val(today);
+        });
+      });
+  </script>
+
+  <script type="text/javascript">
+      $(function () {
+        $("#tgl_lahir_date").datepicker({
+          format: "dd-mm-yyyy",
+          useCurrent: false
+        });
+      });
+  </script>
+
+  <script type="text/javascript">
+      $(function () {
+        $("#tgl_kembali_date").datepicker({
+          format: "dd-mm-yyyy",
+          useCurrent: false
+        });
+      });
   </script>
 </body>
 </html>

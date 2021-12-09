@@ -15,7 +15,12 @@
                     </div>
                     <div class="form-group">
                         <label for="tgl_lahir">Tanggal Lahir</label>
-                        <input type="text" class="form-control" id="tgl_lahir" name="tgl_lahir" value="<?= $dataRM->tgl_lahir ?>" readonly>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="tgl_lahir" name="tgl_lahir" value="<?= $dataRM->tgl_lahir ?>" readonly>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="jekel">Jenis Kelamin</label>
@@ -27,7 +32,12 @@
                     </div>
                     <div class="form-group">
                         <label for="tgl_pinjam">Tanggal Pinjam BRM</label>
-                        <input type="text" class="form-control" id="tgl_pinjam" name="tgl_pinjam" value="<?= $dataRM->tgl_pinjam ?>" readonly>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="tgl_pinjam" name="tgl_pinjam" value="<?= $dataRM->tgl_pinjam ?>" readonly>
+                        </div>
                     </div>
                     <a href="<?= base_url('peminjaman/cetak/'.$dataRM->id_peminjaman.''); ?>" target="_blank">
                         <button type="button" class="btn btn-primary me-2">Cetak Tracer</button>

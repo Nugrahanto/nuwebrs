@@ -12,7 +12,7 @@ class laporanpengembalianModel extends CI_Model
     {
         $id_pengembalian = $this->input->post('id_pengembalian');
         $nama_pasien = $this->input->post('nama_pasien');
-        $tgl_lahir = $this->input->post('tgl_lahir');
+        $tgl_lahir = date("Y-m-d", strtotime($this->input->post('tgl_lahir')));
         $jekel = $this->input->post('jekel');
 	    $ruangan = $this->input->post('ruangan');   
 	    $bayar = $this->input->post('bayar');   

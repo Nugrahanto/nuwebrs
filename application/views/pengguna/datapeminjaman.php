@@ -15,7 +15,12 @@
                     </div>
                     <div class="form-group">
                         <label for="tgl_lahir">Tanggal Lahir</label>
-                        <input type="text" class="form-control" id="tgl_lahir" name="tgl_lahir" placeholder="Tanggal Lahir" readonly>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="tgl_lahir" name="tgl_lahir" placeholder="Tanggal Lahir" readonly>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="jekel">Jenis Kelamin</label>
@@ -27,7 +32,12 @@
                     </div>
                     <div class="form-group">
                         <label for="tgl_pinjam">Tanggal Pinjam BRM</label>
-                        <input type="text" class="form-control" id="tgl_pinjam" name="tgl_pinjam" placeholder="Tanggal Pinjam BRM" readonly>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="tgl_pinjam" name="tgl_pinjam" placeholder="Tanggal Pinjam BRM" readonly>
+                        </div>
                     </div>
                     <button type="button" class="btn btn-primary me-2" disabled>Cetak Tracer</button>
                     </form>

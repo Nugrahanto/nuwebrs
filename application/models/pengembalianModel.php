@@ -20,12 +20,12 @@ class pengembalianModel extends CI_Model
     {
         $no_rm = $this->input->post('no_rm');
         $nama_pasien = $this->input->post('nama_pasien');
-        $tgl_lahir = $this->input->post('tgl_lahir');
+        $tgl_lahir = date("Y-m-d", strtotime($this->input->post('tgl_lahir')));
         $jekel = $this->input->post('jekel');
         $ruangan = $this->input->post('ruangan');
         $bayar = $this->input->post('bayar');
-        $tgl_pulang = $this->input->post('tgl_pulang');
-        $tgl_haruskembali = $this->input->post('tgl_haruskembali');
+        $tgl_pulang = date("Y-m-d", strtotime($this->input->post('tgl_pulang')));
+        $tgl_haruskembali = date('Y-m-d', strtotime($tgl_pulang. ' + 2 days'));
 
         $data = array(
             'id_pengembalian'  => NULL,
@@ -36,7 +36,8 @@ class pengembalianModel extends CI_Model
             'ruangan'          => $ruangan,
             'bayar'            => $bayar,
             'tgl_pulang'       => $tgl_pulang,
-            'tgl_haruskembali' => $tgl_haruskembali
+            'tgl_haruskembali' => $tgl_haruskembali,
+            'tgl_kembali'      => NULL
 
         );
         $this->db->insert('pengembalian', $data);

@@ -32,12 +32,12 @@
                             <td><?=$no?></td>
                             <td><?= $data->no_rm ?></td>
                             <td><?= $data->nama_pasien ?></td>
-                            <td><?= $data->tgl_lahir ?></td>
+                            <td><?=date('d-m-Y', strtotime($data->tgl_lahir))?></td>
                             <td><?= $data->jekel ?></td>
                             <td><?= $data->ruangan ?></td>
-                            <td><?= $data->tgl_pinjam ?></td>
+                            <td><?=date('d-m-Y', strtotime($data->tgl_pinjam))?></td>
                             <td>
-                            <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanpeminjaman" data-toggle="modal" data-target="#editModal" data-id="<?= $data->id_peminjaman ?>" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=$data->tgl_lahir?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->ruangan?>" data-tglpinjam="<?=$data->tgl_pinjam?>">
+                            <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanpeminjaman" data-toggle="modal" data-target="#editModal" data-id="<?= $data->id_peminjaman ?>" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=date('d-m-Y', strtotime($data->tgl_lahir))?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->ruangan?>" data-tglpinjam="<?=$data->tgl_pinjam?>">
                                 Edit 
                             </button>
                             <button type="button" class="btn btn-sm btn-outline-danger" id="deletepeminjaman" data-toggle="modal" data-target="#deleteModal" data-id="<?=$data->id_peminjaman?>" data-norm="<?=$data->no_rm?>">
@@ -77,7 +77,12 @@
                   </div>
                   <div class="form-group">
                       <label for="tgl_lahir">Tanggal Lahir</label>
-                      <input class="form-control" id="tgl_lahir" name="tgl_lahir" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" required/>
+                      <div class="input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                          </div>
+                          <input class="form-control" id="tgl_lahir_date" name="tgl_lahir" required/>
+                      </div>
                   </div>
                   <div class="form-group row">
                       <label for="jekel">Jenis Kelamin</label>

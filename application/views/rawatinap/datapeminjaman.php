@@ -21,7 +21,12 @@
                     </div>
                     <div class="form-group">
                         <label for="tgl_lahir">Tanggal Lahir</label>
-                        <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="dd-mm-yyyy" required/>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                            </div>
+                            <input class="form-control" id="tgl_lahir_date" name="tgl_lahir" placeholder="Pilih Tanggal Lahir" required/>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="jekel">Jenis Kelamin</label>
