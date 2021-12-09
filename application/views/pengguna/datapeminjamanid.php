@@ -19,7 +19,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="tgl_lahir" name="tgl_lahir" value="<?= $dataRM->tgl_lahir ?>" readonly>
+                            <input type="text" class="form-control" id="tgl_lahir" name="tgl_lahir" value="<?=date('d-m-Y', strtotime($dataRM->tgl_lahir))?>" readonly>
                         </div>
                     </div>
                     <div class="form-group">
@@ -36,7 +36,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="tgl_pinjam" name="tgl_pinjam" value="<?= $dataRM->tgl_pinjam ?>" readonly>
+                            <input type="text" class="form-control" id="tgl_pinjam" name="tgl_pinjam" value="<?=date('d-m-Y', strtotime($dataRM->tgl_pinjam))?>" readonly>
                         </div>
                     </div>
                     <a href="<?= base_url('peminjaman/cetak/'.$dataRM->id_peminjaman.''); ?>" target="_blank">
