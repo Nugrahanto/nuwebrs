@@ -529,6 +529,7 @@
 
             select: function(event, ui) {
                 $('[name="no_rm"]').val(ui.item.label);
+                $('[name="id_peminjaman"]').val(ui.item.id_peminjaman);
                 $('[name="nama_pasien"]').val(ui.item.nama_pasien);
                 $('[name="tgl_lahir"]').val(ui.item.tgl_lahir);
                 $('[name="jekel"]').val(ui.item.jekel);
@@ -586,6 +587,7 @@
     $(document).ready(function(){
       $(document).on('click','#laporanpengembalian',function(){  
         var id = $(this).data('id');
+        var idpem = $(this).data('idpem');
         var norm = $(this).data('norm');
         var namapasien = $(this).data('namapasien');
         var tgllahir = $(this).data('tgllahir');
@@ -597,6 +599,7 @@
         var tglkembali= $(this).data('tglkembali');
 
         $('#id_pengembalian').val(id);
+        $('#id_peminjaman').val(idpem);
         $('#no_rm').val(norm);
         $('#nama_pasien').val(namapasien);
         $('#tgl_lahir_date').val(tgllahir);
@@ -619,6 +622,7 @@
     $(document).ready(function(){
       $(document).on('click','#laporanketerlambatan',function(){
         var id = $(this).data('id');
+        var idpem = $(this).data('idpem');
         var norm = $(this).data('norm');
         var namapasien = $(this).data('namapasien');
         var tgllahir = $(this).data('tgllahir');
@@ -630,6 +634,7 @@
         var tglkembali= $(this).data('tglkembali');
 
         $('#id_pengembalian').val(id);
+        $('#id_peminjaman').val(idpem);
         $('#no_rm').val(norm);
         $('#nama_pasien').val(namapasien);
         $('#tgl_lahir_date').val(tgllahir);

@@ -11,6 +11,7 @@ class AuthModel extends CI_Model {
             if (password_verify($password, $query->row()->password)) {
                 $data = array(
                     'username' => $query->row()->username,
+                    'id' => $query->row()->id_pengguna,
                     'level' => $query->row()->level,
                     'status' => $query->row()->status,
                     'logged_in' => TRUE
@@ -26,6 +27,3 @@ class AuthModel extends CI_Model {
 	}
 
 }
-
-/* End of file Cek.php */
-/* Location: ./application/models/Cek.php */

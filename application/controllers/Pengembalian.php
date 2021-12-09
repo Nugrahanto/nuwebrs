@@ -48,12 +48,13 @@ class pengembalian extends CI_Controller
                     $expdate = date('d-m-Y', strtotime($sekarang . ' + 2 days'));
                     $arr_result[] = array(
                         'label'            => $row->no_rm,
-                        'nama_pasien'    => $row->nama_pasien,
+                        'id_peminjaman'    => $row->id_peminjaman,
+                        'nama_pasien'      => $row->nama_pasien,
                         'tgl_lahir'        => $tgl_lahir,
                         'jekel'            => $row->jekel,
-                        'ruangan'        => $row->ruangan,
-                        'tgl_pulang' => $sekarang,
-                        'tgl_haruskembali'    => $expdate,
+                        'ruangan'          => $row->ruangan,
+                        'tgl_pulang'       => $sekarang,
+                        'tgl_haruskembali' => $expdate,
                     );
                     echo json_encode($arr_result);
                 }

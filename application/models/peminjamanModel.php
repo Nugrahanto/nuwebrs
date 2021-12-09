@@ -30,18 +30,21 @@ class peminjamanModel extends CI_Model
         if($countrm == 6){
             $check = $this->db->where('no_rm', $no_rm)
                           ->where('tgl_kembali', null)
+                          ->join('peminjaman', 'peminjaman.id_peminjaman = pengembalian.id_peminjaman')
                           ->get('pengembalian')
                           ->row();
 
             if (is_null($check)){
                 $data = array(
-                    'id_peminjaman'  => NULL,
-                    'no_rm'  => $no_rm,
-                    'nama_pasien'    => $nama_pasien,
-                    'tgl_lahir'    => $tgl_lahir,
-                    'jekel'    => $jekel,
-                    'ruangan'        => $ruangan,
-                    'tgl_pinjam' => $date
+                    'id_peminjaman' => NULL,
+                    'no_rm'         => $no_rm,
+                    'nama_pasien'   => $nama_pasien,
+                    'tgl_lahir'     => $tgl_lahir,
+                    'jekel'         => $jekel,
+                    'ruangan'       => $ruangan,
+                    'tgl_pinjam'    => $date,
+                    'created_by'    => $this->session->userdata('id'),
+                    'created_on'    => date("Y-m-d H:i:s")
         
                 );
                 $this->db->insert('peminjaman', $data);

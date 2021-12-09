@@ -64,8 +64,6 @@ class chartModel extends CI_Model {
 
     public function get_ruangan_peminjaman()
     {
-        date_default_timezone_set('Asia/Jakarta');
-        $weekNumber = date("W");
         $sql = "SELECT ruangan, COUNT(*) as count FROM peminjaman GROUP BY ruangan ORDER BY ruangan ASC";
         return $query = $this->db->query($sql)->result();
     }
@@ -74,7 +72,7 @@ class chartModel extends CI_Model {
     {
         date_default_timezone_set('Asia/Jakarta');
         $weekNumber = date("W");
-        $sql = "SELECT ruangan, COUNT(*) as count FROM pengembalian GROUP BY ruangan ORDER BY ruangan ASC";
+        $sql = "SELECT ruangan, COUNT(*) as count FROM pengembalian LEFT JOIN peminjaman ON peminjaman.id_peminjaman = pengembalian.id_peminjaman GROUP BY ruangan ORDER BY ruangan ASC";
         return $query = $this->db->query($sql)->result();
     }
 
@@ -82,7 +80,7 @@ class chartModel extends CI_Model {
     {
         date_default_timezone_set('Asia/Jakarta');
         $weekNumber = date("W");
-        $sql = "SELECT ruangan, COUNT(*) as count FROM pengembalian WHERE tgl_kembali > tgl_haruskembali GROUP BY ruangan ORDER BY ruangan ASC";
+        $sql = "SELECT ruangan, COUNT(*) as count FROM pengembalian LEFT JOIN peminjaman ON peminjaman.id_peminjaman = pengembalian.id_peminjaman WHERE tgl_kembali > tgl_haruskembali GROUP BY ruangan ORDER BY ruangan ASC";
         return $query = $this->db->query($sql)->result();
     }
 

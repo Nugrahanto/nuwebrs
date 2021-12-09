@@ -15,6 +15,7 @@
                         <label for="no_rm_ri">Nomor RM</label>
                         <input type="text" class="form-control" id="no_rm_ri" name="no_rm" placeholder="Cari Nomor RM" required/>
                     </div>
+                    <input type="text" class="form-control" id="id_peminjaman" name="id_peminjaman" placeholder="ID Peminjaman" required hidden/>
                     <div class="form-group">
                         <label for="nama_pasien">Nama Pasien</label>
                         <input type="text" class="form-control" id="nama_pasien" name="nama_pasien" placeholder="Nama Pasien" readonly/>
@@ -51,7 +52,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                             </div>
-                            <input class="form-control" id="tgl_pulang_date" name="tgl_pulang_date" placeholder="Tanggal Pulang"/>
+                            <input class="form-control" id="tgl_pulang_date" name="tgl_pulang" placeholder="Tanggal Pulang"/>
                         </div>
                     </div>
                     <div class="form-group">

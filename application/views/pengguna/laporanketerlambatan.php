@@ -56,7 +56,7 @@
                                 </span>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanketerlambatan" data-toggle="modal" data-target="#editModal" data-id="<?=$data->id_pengembalian?>" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=date('d-m-Y', strtotime($data->tgl_lahir))?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->ruangan?>" data-bayar="<?=$data->bayar?>" data-tglpulang="<?=date('d-m-Y', strtotime($data->tgl_pulang))?>" data-tglharuskembali="<?=date('d-m-Y', strtotime($data->tgl_haruskembali))?>" data-tglkembali="<?=date('d-m-Y', strtotime($data->tgl_kembali))?>">
+                              <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanketerlambatan" data-toggle="modal" data-target="#editModal" data-id="<?=$data->id_pengembalian?>" data-idpem="<?= $data->id_peminjaman?>" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=date('d-m-Y', strtotime($data->tgl_lahir))?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->ruangan?>" data-bayar="<?=$data->bayar?>" data-tglpulang="<?=date('d-m-Y', strtotime($data->tgl_pulang))?>" data-tglharuskembali="<?=date('d-m-Y', strtotime($data->tgl_haruskembali))?>" data-tglkembali="<?=date('d-m-Y', strtotime($data->tgl_kembali))?>">
                                   Edit 
                               </button>
                               <button type="button" class="btn btn-sm btn-outline-danger" id="deleteketerlambatan" data-toggle="modal" data-target="#deleteModal" data-id="<?=$data->id_pengembalian?>" data-norm="<?=$data->no_rm?>">
@@ -86,6 +86,7 @@
               <form method="post" role="form" enctype="multipart/form-data" action="<?php echo base_url(); ?>laporanketerlambatan/update_laporanketerlambatan">
                 <div class="modal-body">
                 <input type="text" id="id_pengembalian" name="id_pengembalian" hidden>
+                <input type="text" id="id_peminjaman" name="id_peminjaman" hidden>
                   <div class="form-group">
                       <label for="no_rm">Nomor RM</label>
                       <input type="text" class="form-control" id="no_rm" name="no_rm" placeholder="Nomor RM" readonly>

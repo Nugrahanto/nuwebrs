@@ -13,7 +13,9 @@ class Auth extends CI_Controller
     {
         if ($this->session->userdata('logged_in') == FALSE) {
             $this->session->unset_userdata('username');
+            $this->session->unset_userdata('id');
             $this->session->unset_userdata('level');
+            $this->session->unset_userdata('status');
             
             $this->form_validation->set_rules(
                 'username',
@@ -78,6 +80,7 @@ class Auth extends CI_Controller
     {
         $data = array(
             'username' => '',
+            'id' => '',
             'level' => '',
             'status' => '',
             'logged_in' => FALSE

@@ -9,6 +9,7 @@ class notiflambatModel extends CI_Model
         $getdate = date("Y-m-d");
         return $this->db->where('tgl_haruskembali', $getdate)
                         ->where('tgl_kembali =', null)
+                        ->join('peminjaman', 'peminjaman.id_peminjaman=pengembalian.id_peminjaman')
                         ->from('pengembalian')
                         ->count_all_results();
     }
@@ -19,6 +20,7 @@ class notiflambatModel extends CI_Model
         $getdate = date("Y-m-d");
         return $this->db->where('tgl_haruskembali <', $getdate)
                         ->where('tgl_kembali =', null)
+                        ->join('peminjaman', 'peminjaman.id_peminjaman=pengembalian.id_peminjaman')
                         ->from('pengembalian')
                         ->count_all_results();
     }
@@ -29,6 +31,7 @@ class notiflambatModel extends CI_Model
         $getdate = date("Y-m-d");
         return $this->db->where('tgl_haruskembali', $getdate)
                         ->where('tgl_kembali =', null)
+                        ->join('peminjaman', 'peminjaman.id_peminjaman=pengembalian.id_peminjaman')
                         ->get('pengembalian')
                         ->result();
     }
@@ -39,6 +42,7 @@ class notiflambatModel extends CI_Model
         $getdate = date("Y-m-d");
         return $this->db->where('tgl_haruskembali <', $getdate)
                         ->where('tgl_kembali =', null)
+                        ->join('peminjaman', 'peminjaman.id_peminjaman=pengembalian.id_peminjaman')
                         ->get('pengembalian')
                         ->result();
     }
