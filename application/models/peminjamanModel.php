@@ -44,8 +44,7 @@ class peminjamanModel extends CI_Model
                     'ruangan'       => $ruangan,
                     'tgl_pinjam'    => $date,
                     'created_by'    => $this->session->userdata('id'),
-                    'created_on'    => date("Y-m-d H:i:s")
-        
+                    'created_on'    => date("Y-m-d H:i:s")        
                 );
                 $this->db->insert('peminjaman', $data);
         
@@ -67,10 +66,20 @@ class peminjamanModel extends CI_Model
             ->get('peminjaman')
             ->row();
     }
+
     public function cetak($id)
     {
-        return $this->db->where('id_peminjaman', $id)
-            ->get('peminjaman')
-            ->row();
+        $data = array(
+            'is_printed' => 1
+            );
+
+        $this->db->where('id_peminjaman', $id)
+                 ->update('peminjaman', $data);
+
+        if ($this->db->affected_rows() > 0) {
+			return $this->db->where('id_peminjaman', $id)
+                            ->get('peminjaman')
+                            ->row();
+		}
     }
 }

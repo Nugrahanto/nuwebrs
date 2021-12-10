@@ -8,8 +8,9 @@ class notifModel extends CI_Model
         date_default_timezone_set('Asia/Jakarta');
         $getdate = date("Y-m-d");
         return $this->db->where('tgl_pinjam', $getdate)
-            ->from('peminjaman')
-            ->count_all_results();
+                        ->where('is_printed', 0)
+                        ->from('peminjaman')
+                        ->count_all_results();
     }
     public function notifyesterday()
     {
@@ -17,16 +18,18 @@ class notifModel extends CI_Model
         $sekarang = date('Y-m-d');
         $yesterday = date('Y-m-d', strtotime($sekarang . ' - 1 days'));
         return $this->db->where('tgl_pinjam', $yesterday)
-            ->from('peminjaman')
-            ->count_all_results();
+                        ->where('is_printed', 0)
+                        ->from('peminjaman')
+                        ->count_all_results();
     }
     public function get_notiftoday()
     {
         date_default_timezone_set('Asia/Jakarta');
         $getdate = date("Y-m-d");
         return $this->db->where('tgl_pinjam', $getdate)
-            ->get('peminjaman')
-            ->result();
+                        ->where('is_printed', 0)
+                        ->get('peminjaman')
+                        ->result();
     }
     public function get_notifyesterday()
     {
@@ -34,7 +37,8 @@ class notifModel extends CI_Model
         $sekarang = date('Y-m-d');
         $yesterday = date('Y-m-d', strtotime($sekarang . ' - 1 days'));
         return $this->db->where('tgl_pinjam', $yesterday)
-            ->get('peminjaman')
-            ->result();
+                        ->where('is_printed', 0)
+                        ->get('peminjaman')
+                        ->result();
     }
 }

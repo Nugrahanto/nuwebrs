@@ -39,9 +39,14 @@
                             <input type="text" class="form-control" id="tgl_pinjam" name="tgl_pinjam" value="<?=date('d-m-Y', strtotime($dataRM->tgl_pinjam))?>" readonly>
                         </div>
                     </div>
-                    <a href="<?= base_url('peminjaman/cetak/'.$dataRM->id_peminjaman.''); ?>" target="_blank">
-                        <button type="button" class="btn btn-primary me-2">Cetak Tracer</button>
-                    </a>
+                    <?php 
+                    if($dataRM->is_printed == 0){ ?>
+                        <a href="<?= base_url('peminjaman/cetak/'.$dataRM->id_peminjaman.''); ?>">
+                            <button type="button" class="btn btn-primary me-2">Cetak Tracer</button>
+                        </a>
+                    <?php } else { ?>
+                        <button type="button" class="btn btn-danger me-2 text-white" disabled>Cetak Tracer</button>
+                    <?php } ?>
                     </form>
                 </div>
             </div>

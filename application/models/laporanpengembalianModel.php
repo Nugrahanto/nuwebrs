@@ -64,7 +64,7 @@ class laporanpengembalianModel extends CI_Model
                 return FALSE;
             }
         }
-    }   
+    }
     
     public function delete_laporanpengembalian($id_pengembalian) {
         return $this->db->where('id_pengembalian', $id_pengembalian)
