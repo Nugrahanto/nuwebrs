@@ -19,26 +19,40 @@ class pengembalianModel extends CI_Model
     public function do_insert()
     {
         date_default_timezone_set('Asia/Jakarta');
+        $no_rm = $this->input->post('no_rm');
+        $ruangan = $this->input->post('ruangan');
+
         $id_peminjaman = $this->input->post('id_peminjaman');
         $bayar = $this->input->post('bayar');
         $tgl_pulang = date("Y-m-d", strtotime($this->input->post('tgl_pulang')));
         $tgl_haruskembali = date('Y-m-d', strtotime($tgl_pulang. ' + 2 days'));
 
-        $data = array(
-            'id_pengembalian'  => NULL,
-            'id_peminjaman'    => $id_peminjaman,
-            'bayar'            => $bayar,
-            'tgl_pulang'       => $tgl_pulang,
-            'tgl_haruskembali' => $tgl_haruskembali,
-            'tgl_kembali'      => NULL,
-            'created_by'       => $this->session->userdata('id'),
-            'created_on'       => date("Y-m-d H:i:s")
+        $check = $this->db->where('no_rm', $no_rm)
+                          ->where('ruangan', $ruangan)
+                          ->where('tgl_kembali', NULL, FALSE)
+                          ->join('peminjaman', 'peminjaman.id_peminjaman = pengembalian.id_peminjaman')
+                          ->get('pengembalian')
+                          ->row();
 
-        );
-        $this->db->insert('pengembalian', $data);
-
-        if ($this->db->affected_rows() > 0) {
-            return TRUE;
+        if (is_null($check)){
+            $data = array(
+                'id_pengembalian'  => NULL,
+                'id_peminjaman'    => $id_peminjaman,
+                'bayar'            => $bayar,
+                'tgl_pulang'       => $tgl_pulang,
+                'tgl_haruskembali' => $tgl_haruskembali,
+                'tgl_kembali'      => NULL,
+                'created_by'       => $this->session->userdata('id'),
+                'created_on'       => date("Y-m-d H:i:s")
+    
+            );
+            $this->db->insert('pengembalian', $data);
+    
+            if ($this->db->affected_rows() > 0) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
         } else {
             return FALSE;
         }
