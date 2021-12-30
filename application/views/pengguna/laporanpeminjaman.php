@@ -32,10 +32,10 @@
                             <td><?=$no?></td>
                             <td><?= $data->no_rm ?></td>
                             <td><?= $data->nama_pasien ?></td>
-                            <td><?=date('d-m-Y', strtotime($data->tgl_lahir))?></td>
+                            <td><?=date('Y-m-d', strtotime($data->tgl_lahir))?></td>
                             <td><?= $data->jekel ?></td>
                             <td><?= $data->ruangan ?></td>
-                            <td><?=date('d-m-Y', strtotime($data->tgl_pinjam))?></td>
+                            <td><?=date('Y-m-d', strtotime($data->tgl_pinjam))?></td>
                             <td>
                             <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanpeminjaman" data-toggle="modal" data-target="#editModal" data-id="<?= $data->id_peminjaman ?>" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=date('d-m-Y', strtotime($data->tgl_lahir))?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->ruangan?>" data-tglpinjam="<?=$data->tgl_pinjam?>">
                                 Edit 
