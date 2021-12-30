@@ -35,14 +35,14 @@
                             <td><?=$no?></td>
                             <td><?= $data->no_rm ?></td>
                             <td><?= $data->nama_pasien ?></td>
-                            <td><?=date('d-m-Y', strtotime($data->tgl_lahir))?></td>
+                            <td><?=date('Y-m-d', strtotime($data->tgl_lahir))?></td>
                             <td><?= $data->jekel ?></td>
                             <td><?= $data->ruangan ?></td>
                             <td><?= $data->bayar ?></td>
-                            <td><?=date('d-m-Y', strtotime($data->tgl_pulang))?></td>
-                            <td><?=date('d-m-Y', strtotime($data->tgl_haruskembali))?></td>
+                            <td><?=date('Y-m-d', strtotime($data->tgl_pulang))?></td>
+                            <td><?=date('Y-m-d', strtotime($data->tgl_haruskembali))?></td>
                             <td>
-                                <?=date('d-m-Y', strtotime($data->tgl_kembali))?> 
+                                <?=date('Y-m-d', strtotime($data->tgl_kembali))?> 
                                 <?php 
                                 if ($data->tgl_kembali > $data->tgl_haruskembali){
                                 $tgl1 = strtotime($data->tgl_haruskembali); 
