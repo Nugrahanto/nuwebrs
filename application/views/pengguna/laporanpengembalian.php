@@ -36,14 +36,14 @@
                             <td><?=$no?></td>
                             <td><?= $data->no_rm ?></td>
                             <td><?= $data->nama_pasien ?></td>
-                            <td><?=date('d-m-Y', strtotime($data->tgl_lahir))?></td>
+                            <td><?=date('Y-m-d', strtotime($data->tgl_lahir))?></td>
                             <td><?= $data->jekel ?></td>
                             <td><?= $data->ruangan ?></td>
                             <td><?= $data->bayar ?></td>
-                            <td><?=date('d-m-Y', strtotime($data->tgl_pulang))?></td>
-                            <td><?=date('d-m-Y', strtotime($data->tgl_haruskembali))?></td>
+                            <td><?=date('Y-m-d', strtotime($data->tgl_pulang))?></td>
+                            <td><?=date('Y-m-d', strtotime($data->tgl_haruskembali))?></td>
                             <td><?php if(!empty($data->tgl_kembali)){
-                              echo date('d-m-Y', strtotime($data->tgl_kembali));
+                              echo date('Y-m-d', strtotime($data->tgl_kembali));
                               }?></td>
                             <td>
                                 <?php 
