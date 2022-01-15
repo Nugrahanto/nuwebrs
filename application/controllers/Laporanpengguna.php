@@ -21,6 +21,13 @@ class laporanpengguna extends CI_Controller
             $data['get_notifyesterday'] = $this->notifModel->get_notifyesterday();
 
             $this->load->view('template', $data);
+        } else if ($this->session->userdata('level') == 3) {
+            $data['title'] = 'Laporan Pengguna';
+            $data['main_view'] = 'kepalarm/laporanpengguna';
+            $data['laporanpengguna'] = $this->laporanpenggunaModel->get_laporanpengguna();
+
+            $this->load->view('template', $data);
+            
         } else {
             redirect('auth', 'refresh');
         }
@@ -63,7 +70,12 @@ class laporanpengguna extends CI_Controller
             $data['laporanpengguna'] = $this->laporanpenggunaModel->get_laporanpengguna();
 
             $this->load->view('print/laporanpengguna', $data);
-        } else {
+        } else if ($this->session->userdata('level') == 3) {
+            $data['title'] = 'Cetak Laporan Pengguna';
+            $data['laporanpengguna'] = $this->laporanpenggunaModel->get_laporanpengguna();
+
+            $this->load->view('print/laporanpengguna', $data); 
+    }else {
             redirect('auth', 'refresh');
         }
     }
