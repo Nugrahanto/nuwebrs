@@ -3,7 +3,7 @@
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Pengembalian Berkas</h4>
+                    <h4 class="card-title">Kepulangan Pasien</h4>
                     <?php 
                     $message = $this->session->flashdata('message'); 
                     if (isset($message)) {
