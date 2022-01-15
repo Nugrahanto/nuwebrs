@@ -201,7 +201,7 @@
           <li class="nav-item <?php if($this->uri->segment(1) == "pengembalian"){ echo 'active';}?>">
           <a class="nav-link" href="<?php echo base_url(); ?>pengembalian">
               <i class="mdi mdi-folder-remove menu-icon"></i>
-              <span class="menu-title">Data Pengembalian</span>
+              <span class="menu-title">Data Kepulangan</span>
             </a>
           </li>
           <!-- <li class="nav-item nav-category">Lainnya</li>
@@ -230,6 +230,7 @@
                 <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>laporanloan"> Laporan Peminjaman </a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>laporanreturn"> Laporan Pengembalian </a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>laporanlate"> Laporan Keterlambatan </a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>laporanuser"> Laporan Pengguna </a></li>
               </ul>
             </div>
           </li>
