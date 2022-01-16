@@ -50,11 +50,19 @@
                 <td><?= $data->nama_pasien ?></td>
                 <td><?= $data->tgl_lahir ?></td>
                 <td><?= $data->jekel ?></td>
-                <td><?= $data->ruangan ?></td>
+                <td><?= $data->nama_ruangan ?></td>
                 <td><?= $data->bayar ?></td>
                 <td><?= $data->tgl_pulang ?></td>
                 <td><?= $data->tgl_haruskembali ?></td>
-                <td><?= $data->tgl_kembali ?></td>
+                <td>
+                    <?php 
+                        if (!empty($data->tgl_kembali)) { 
+                            echo $data->tgl_kembali;
+                        } else {
+                            echo "-";
+                        } 
+                    ?>
+                </td>
                 <td>
                     <?php 
                         if (!empty($data->tgl_kembali && $data->tgl_kembali != "0000-00-00")) { 

@@ -22,20 +22,20 @@ class Dashboard extends CI_Controller
             $data['get_notiftoday'] = $this->notifModel->get_notiftoday();
             $data['get_notifyesterday'] = $this->notifModel->get_notifyesterday();
 
-            $data['penggunaChart'] = $this->chartModel->get_pengguna();
-            $data['ruanganpeminjamanChart'] = $this->chartModel->get_ruangan_peminjaman();
-            $data['ruanganpengembalianChart'] = $this->chartModel->get_ruangan_pengembalian();
-            $data['ruanganketerlambatanChart'] = $this->chartModel->get_ruangan_keterlambatan();
+            // $data['penggunaChart'] = $this->chartModel->get_pengguna();
+            // $data['ruanganpeminjamanChart'] = $this->chartModel->get_ruangan_peminjaman();
+            // $data['ruanganpengembalianChart'] = $this->chartModel->get_ruangan_pengembalian();
+            // $data['ruanganketerlambatanChart'] = $this->chartModel->get_ruangan_keterlambatan();
 
-            $data['countPeminjaman'] = $this->chartModel->get_count_peminjaman();
-            $data['countPengembalian'] = $this->chartModel->get_count_pengembalian();
-            $data['countKeterlambatan'] = $this->chartModel->get_count_keterlambatan();
+            // $data['countPeminjaman'] = $this->chartModel->get_count_peminjaman();
+            // $data['countPengembalian'] = $this->chartModel->get_count_pengembalian();
+            // $data['countKeterlambatan'] = $this->chartModel->get_count_keterlambatan();
 
-            $data['countyesterdayPeminjaman'] = $this->chartModel->yesterday_get_count_peminjaman();
-            $data['countyesterdayPengembalian'] = $this->chartModel->yesterday_get_count_pengembalian();
-            $data['countyesterdayKeterlambatan'] = $this->chartModel->yesterday_get_count_keterlambatan();
+            // $data['countyesterdayPeminjaman'] = $this->chartModel->yesterday_get_count_peminjaman();
+            // $data['countyesterdayPengembalian'] = $this->chartModel->yesterday_get_count_pengembalian();
+            // $data['countyesterdayKeterlambatan'] = $this->chartModel->yesterday_get_count_keterlambatan();
 
-            $data['dataWeekly'] = $this->chartModel->get_weekly_linechart();
+            // $data['dataWeekly'] = $this->chartModel->get_weekly_linechart();
             // print_r($data);
             // exit();
 

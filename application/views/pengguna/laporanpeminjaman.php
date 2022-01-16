@@ -34,13 +34,13 @@
                             <td><?= $data->nama_pasien ?></td>
                             <td><?=date('Y-m-d', strtotime($data->tgl_lahir))?></td>
                             <td><?= $data->jekel ?></td>
-                            <td><?= $data->ruangan ?></td>
+                            <td><?= $data->nama_ruangan ?></td>
                             <td><?=date('Y-m-d', strtotime($data->tgl_pinjam))?></td>
                             <td>
-                            <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanpeminjaman" data-toggle="modal" data-target="#editModal" data-id="<?= $data->id_peminjaman ?>" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=date('d-m-Y', strtotime($data->tgl_lahir))?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->ruangan?>" data-tglpinjam="<?=$data->tgl_pinjam?>">
+                            <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanpeminjaman" data-toggle="modal" data-target="#editModal" data-id="<?= $data->id_history ?>" data-idpass="<?=$data->id_pasien?>" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=date('d-m-Y', strtotime($data->tgl_lahir))?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->id_ruangan?>" data-tglpinjam="<?=$data->tgl_pinjam?>">
                                 Edit 
                             </button>
-                            <button type="button" class="btn btn-sm btn-outline-danger" id="deletepeminjaman" data-toggle="modal" data-target="#deleteModal" data-id="<?=$data->id_peminjaman?>" data-norm="<?=$data->no_rm?>">
+                            <button type="button" class="btn btn-sm btn-outline-danger" id="deletepeminjaman" data-toggle="modal" data-target="#deleteModal" data-id="<?=$data->id_history?>" data-norm="<?=$data->no_rm?>">
                               Hapus
                             </button>
                             </td>
@@ -67,6 +67,7 @@
               <form method="post" role="form" enctype="multipart/form-data" action="<?php echo base_url(); ?>laporanpeminjaman/update_laporanpeminjaman">
                 <div class="modal-body">
                 <input type="text" id="id_peminjaman" name="id_peminjaman" hidden>
+                <input type="text" id="id_pasien" name="id_pasien" hidden>
                   <div class="form-group">
                       <label for="no_rm">Nomor RM</label>
                       <input type="text" class="form-control" id="no_rm" name="no_rm" placeholder="Nomor RM" readonly>
@@ -106,11 +107,10 @@
                   <div class="form-group">
                       <label for="ruangan">Ruangan</label>
                       <select class="form-control" id="ruangan" name="ruangan" required>
-                        <option value="Maternal">Maternal</option>
-                          <option value="Neo">Neo</option>
-                          <option value="General">General</option>
-                          <option value="Anak">Anak</option>
-                          <option value="Pavilium">Pavilium</option>
+                          <?php 
+                          foreach ($ruangan as $data) { ?>
+                            <option value="<?= $data->id_ruangan; ?>"><?= $data->nama_ruangan; ?></option>
+                          <?php } ?>
                       </select>
                   </div>
                   <div class="form-group">

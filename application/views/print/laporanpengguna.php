@@ -28,8 +28,9 @@
         <thead>
             <tr>
                 <th>No</th>
+                <th>Nama</th>
                 <th>Username</th>
-                <th>Password</th>
+                <th>No. Telp</th>
                 <th>Level</th>
                 <th>Status</th>
             </tr>
@@ -40,21 +41,10 @@
             foreach ($laporanpengguna as $data) { ?>
             <tr>
                 <td><?=$no?></td>
+                <td><?= $data->nama_pegawai ?></td>
                 <td><?= $data->username ?></td>
-                <td><?= $data->password ?></td>
-                <td>
-                    <?php 
-                        $txt = "";
-                        if ($data->level == "1") { 
-                            $txt = "Admin";
-                        } else if ($data->level == "2"){
-                            $txt = "Unit RI";
-                        } else if ($data->level == "3"){
-                            $txt = "Kepala RM";
-                        }
-                        echo "<span>$txt</span>";
-                    ?>
-                </td>
+                <td><?= $data->telp ?></td>
+                <td><?= $data->nama_level ?></td>
                 <td class="text-center">
                     <?php 
                         $txt = "";

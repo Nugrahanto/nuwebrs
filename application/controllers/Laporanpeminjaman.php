@@ -14,6 +14,7 @@ class laporanpeminjaman extends CI_Controller
             $data['title'] = 'Laporan Peminjaman';
             $data['main_view'] = 'pengguna/laporanpeminjaman';
             $data['laporanpeminjaman'] = $this->laporanpeminjamanModel->get_laporanpeminjaman();
+            $data['ruangan'] = $this->laporanpeminjamanModel->get_ruangan();
             $data['notiftoday'] = $this->notifModel->notiftoday();
             $data['notifyesterday'] = $this->notifModel->notifyesterday();
             $data['get_notiftoday'] = $this->notifModel->get_notiftoday();

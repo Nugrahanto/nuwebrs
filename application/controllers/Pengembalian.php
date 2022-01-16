@@ -92,11 +92,11 @@ class pengembalian extends CI_Controller
                     $tgl_haruskembali = date('d-m-Y', strtotime($row->tgl_haruskembali));
                     $arr_result[] = array(
                         'label'             => $row->no_rm,
-                        'id_pengembalian'   => $row->id_pengembalian,
+                        'id_pengembalian'   => $row->id_history,
                         'nama_pasien'       => $row->nama_pasien,
                         'tgl_lahir'         => $tgl_lahir,
                         'jekel'             => $row->jekel,
-                        'ruangan'           => $row->ruangan,
+                        'ruangan'           => $row->nama_ruangan,
                         'bayar'             => $row->bayar,
                         'tgl_pulang'        => $tgl_pulang,
                         'tgl_haruskembali'  => $tgl_haruskembali,

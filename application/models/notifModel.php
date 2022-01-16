@@ -9,7 +9,9 @@ class notifModel extends CI_Model
         $getdate = date("Y-m-d");
         return $this->db->where('tgl_pinjam', $getdate)
                         ->where('is_printed', 0)
-                        ->from('peminjaman')
+                        ->join('tb_pasien', 'tb_history.id_pasien = tb_pasien.id_pasien')
+                        ->join('tb_ruangan', 'tb_history.id_ruangan = tb_ruangan.id_ruangan')
+                        ->from('tb_history')
                         ->count_all_results();
     }
     public function notifyesterday()
@@ -19,7 +21,9 @@ class notifModel extends CI_Model
         $yesterday = date('Y-m-d', strtotime($sekarang . ' - 1 days'));
         return $this->db->where('tgl_pinjam', $yesterday)
                         ->where('is_printed', 0)
-                        ->from('peminjaman')
+                        ->join('tb_pasien', 'tb_history.id_pasien = tb_pasien.id_pasien')
+                        ->join('tb_ruangan', 'tb_history.id_ruangan = tb_ruangan.id_ruangan')
+                        ->from('tb_history')
                         ->count_all_results();
     }
     public function get_notiftoday()
@@ -28,7 +32,9 @@ class notifModel extends CI_Model
         $getdate = date("Y-m-d");
         return $this->db->where('tgl_pinjam', $getdate)
                         ->where('is_printed', 0)
-                        ->get('peminjaman')
+                        ->join('tb_pasien', 'tb_history.id_pasien = tb_pasien.id_pasien')
+                        ->join('tb_ruangan', 'tb_history.id_ruangan = tb_ruangan.id_ruangan')
+                        ->get('tb_history')
                         ->result();
     }
     public function get_notifyesterday()
@@ -38,7 +44,9 @@ class notifModel extends CI_Model
         $yesterday = date('Y-m-d', strtotime($sekarang . ' - 1 days'));
         return $this->db->where('tgl_pinjam', $yesterday)
                         ->where('is_printed', 0)
-                        ->get('peminjaman')
+                        ->join('tb_pasien', 'tb_history.id_pasien = tb_pasien.id_pasien')
+                        ->join('tb_ruangan', 'tb_history.id_ruangan = tb_ruangan.id_ruangan')
+                        ->get('tb_history')
                         ->result();
     }
 }

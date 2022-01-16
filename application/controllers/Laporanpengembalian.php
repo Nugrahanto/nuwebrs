@@ -15,6 +15,7 @@ class laporanpengembalian extends CI_Controller
             $data['title'] = 'Laporan Pengembalian';
             $data['main_view'] = 'pengguna/laporanpengembalian';
             $data['laporanpengembalian'] = $this->laporanpengembalianModel->get_laporanpengembalian();
+            $data['ruangan'] = $this->laporanpengembalianModel->get_ruangan();
             $data['notiftoday'] = $this->notifModel->notiftoday();
             $data['notifyesterday'] = $this->notifModel->notifyesterday();
             $data['get_notiftoday'] = $this->notifModel->get_notiftoday();

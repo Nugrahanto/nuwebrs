@@ -260,8 +260,8 @@
                   <div class="modal-body">
                       <?php
                       foreach ($get_notiftoday as $data) { ?>
-                          <a href="<?php echo base_url(); ?>peminjaman/<?= $data->id_peminjaman; ?>">
-                            <p> Permintaan berkas <?= $data->no_rm ?> atas nama <?= $data->nama_pasien ?></p>
+                          <a href="<?php echo base_url(); ?>peminjaman/<?= $data->id_history; ?>">
+                            <p> Permintaan berkas <?= $data->no_rm ?> atas nama <?= $data->nama_pasien ?> ruangan <?= $data->nama_ruangan ?></p>
                           </a>
                       <?php } ?>
                   </div>
@@ -281,8 +281,8 @@
                   <div class="modal-body">
                       <?php
                       foreach ($get_notifyesterday as $data) { ?>
-                          <a href="<?php echo base_url(); ?>peminjaman/<?= $data->id_peminjaman; ?>">
-                            <p> Permintaan berkas <?= $data->no_rm ?> atas nama <?= $data->nama_pasien ?></p>
+                          <a href="<?php echo base_url(); ?>peminjaman/<?= $data->id_history; ?>">
+                          <p> Permintaan berkas <?= $data->no_rm ?> atas nama <?= $data->nama_pasien ?> ruangan <?= $data->nama_ruangan ?></p>
                           </a>
                       <?php } ?>
                   </div>
@@ -304,13 +304,13 @@
                       <?php
                       foreach ($get_notiftoday as $data) { ?>
                           <div>
-                              <p> Berkas <?= $data->no_rm ?> atas nama <?= $data->nama_pasien ?> harus kembali hari ini</p>
+                              <p> Berkas <?= $data->no_rm ?> atas nama <?= $data->nama_pasien ?> di ruangan <?= $data->nama_ruangan ?> harus kembali hari ini</p>
                           </div>
                       <?php } ?>
                       <?php
                       foreach ($get_notifterlambat as $data) { ?>
                           <div>
-                              <p class="text-danger"> Berkas <?= $data->no_rm ?> atas nama <?= $data->nama_pasien ?> batas waktu pengembalian telah terlewat</p>
+                              <p class="text-danger"> Berkas <?= $data->no_rm ?> atas nama <?= $data->nama_pasien ?> di ruangan <?= $data->nama_ruangan ?> batas waktu pengembalian telah terlewat</p>
                           </div>
                       <?php } ?>
                   </div>
@@ -561,6 +561,7 @@
     $(document).ready(function(){
       $(document).on('click','#laporanpeminjaman',function(){
         var id = $(this).data('id');
+        var idpass = $(this).data('idpass');
         var norm = $(this).data('norm');
         var namapasien = $(this).data('namapasien');
         var tgllahir = $(this).data('tgllahir');
@@ -569,6 +570,7 @@
         var tglpinjam = $(this).data('tglpinjam');
 
         $('#id_peminjaman').val(id);
+        $('#id_pasien').val(idpass);
         $('#no_rm').val(norm);
         $('#nama_pasien').val(namapasien);
         $('#tgl_lahir_date').val(tgllahir);
@@ -588,7 +590,7 @@
     $(document).ready(function(){
       $(document).on('click','#laporanpengembalian',function(){  
         var id = $(this).data('id');
-        var idpem = $(this).data('idpem');
+        var idpass = $(this).data('idpass');
         var norm = $(this).data('norm');
         var namapasien = $(this).data('namapasien');
         var tgllahir = $(this).data('tgllahir');
@@ -600,7 +602,7 @@
         var tglkembali= $(this).data('tglkembali');
 
         $('#id_pengembalian').val(id);
-        $('#id_peminjaman').val(idpem);
+        $('#id_pasien').val(idpass);
         $('#no_rm').val(norm);
         $('#nama_pasien').val(namapasien);
         $('#tgl_lahir_date').val(tgllahir);
@@ -623,7 +625,7 @@
     $(document).ready(function(){
       $(document).on('click','#laporanketerlambatan',function(){
         var id = $(this).data('id');
-        var idpem = $(this).data('idpem');
+        var idpass = $(this).data('idpass');
         var norm = $(this).data('norm');
         var namapasien = $(this).data('namapasien');
         var tgllahir = $(this).data('tgllahir');
@@ -635,7 +637,7 @@
         var tglkembali= $(this).data('tglkembali');
 
         $('#id_pengembalian').val(id);
-        $('#id_peminjaman').val(idpem);
+        $('#id_pasien').val(idpass);
         $('#no_rm').val(norm);
         $('#nama_pasien').val(namapasien);
         $('#tgl_lahir_date').val(tgllahir);
@@ -658,14 +660,18 @@
     $(document).ready(function(){
       $(document).on('click','#laporanpengguna',function(){
         var id = $(this).data('id');
+        var nama = $(this).data('nama');
         var username = $(this).data('username');
         var password = $(this).data('password');
+        var telp = $(this).data('telp');
         var level = $(this).data('level');
         var status = $(this).data('status');
 
         $('#id_pengguna').val(id);
+        $('#nama').val(nama);
         $('#username').val(username);
         $('#password').val(password);
+        $('#telp').val(telp);
         $('#level').val(level);
         $('#status').val(status);
       });

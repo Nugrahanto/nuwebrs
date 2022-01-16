@@ -5,28 +5,40 @@ class laporanpenggunaModel extends CI_Model
 {
     public function get_laporanpengguna()
     {
-        return $this->db->get('pengguna')
-            ->result();
-    } 
+        return $this->db->join('tb_level', 'tb_level.id_level = tb_pegawai.id_level')
+                ->get('tb_pegawai')
+                ->result();
+    }
+
+    public function get_level()
+    {
+        return $this->db->get('tb_level')
+                    ->result();
+    }
+
     public function update_laporanpengguna() 
     {
         $id_pengguna = $this->input->post('id_pengguna');
+        $level = $this->input->post('level');
+        $nama = $this->input->post('nama');
         $username = $this->input->post('username');
         $password = $this->input->post('password');
-        $level = $this->input->post('level');
+        $notelp = $this->input->post('notelp');
         $status = $this->input->post('status');
 
         $passwordhash = password_hash($password, PASSWORD_DEFAULT);
 
         $data = array(
+            'id_level' => $level,
+            'nama_pegawai' => $nama,
             'username' => $username,
             'password' => $passwordhash,
-            'level' => $level,
+            'telp' => $notelp,
             'status' => $status
             );
 
-        $this->db->where('id_pengguna', $id_pengguna)
-                 ->update('pengguna', $data);
+        $this->db->where('id_pegawai', $id_pengguna)
+                 ->update('tb_pegawai', $data);
 
         if ($this->db->affected_rows() > 0) {
 			return TRUE;
@@ -36,7 +48,7 @@ class laporanpenggunaModel extends CI_Model
     }
     public function delete_laporanpengguna($id_pengguna) 
     {
-        return $this->db->where('id_pengguna', $id_pengguna)
-                        ->delete('pengguna');
+        return $this->db->where('id_pegawai', $id_pengguna)
+                        ->delete('tb_pegawai');
     }
 }

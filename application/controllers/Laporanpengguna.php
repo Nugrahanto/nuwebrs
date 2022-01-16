@@ -15,6 +15,7 @@ class laporanpengguna extends CI_Controller
             $data['title'] = 'Laporan Pengguna';
             $data['main_view'] = 'pengguna/laporanpengguna';
             $data['laporanpengguna'] = $this->laporanpenggunaModel->get_laporanpengguna();
+            $data['level'] = $this->laporanpenggunaModel->get_level();
             $data['notiftoday'] = $this->notifModel->notiftoday();
             $data['notifyesterday'] = $this->notifModel->notifyesterday();
             $data['get_notiftoday'] = $this->notifModel->get_notiftoday();

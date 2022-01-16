@@ -38,7 +38,7 @@
                             <td><?= $data->nama_pasien ?></td>
                             <td><?=date('Y-m-d', strtotime($data->tgl_lahir))?></td>
                             <td><?= $data->jekel ?></td>
-                            <td><?= $data->ruangan ?></td>
+                            <td><?= $data->nama_ruangan ?></td>
                             <td><?= $data->bayar ?></td>
                             <td><?=date('Y-m-d', strtotime($data->tgl_pulang))?></td>
                             <td><?=date('Y-m-d', strtotime($data->tgl_haruskembali))?></td>
@@ -55,10 +55,10 @@
                                 ?>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanpengembalian" data-toggle="modal" data-target="#editModal" data-id="<?= $data->id_pengembalian ?>" data-idpem="<?= $data->id_peminjaman?>" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=date('d-m-Y', strtotime($data->tgl_lahir))?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->ruangan?>" data-bayar="<?=$data->bayar?>" data-tglpulang="<?=date('d-m-Y', strtotime($data->tgl_pulang))?>" data-tglharuskembali="<?=date('d-m-Y', strtotime($data->tgl_haruskembali))?>" data-tglkembali="<?php if(!empty($data->tgl_kembali)){echo date('d-m-Y', strtotime($data->tgl_kembali));}?>">
+                              <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanpengembalian" data-toggle="modal" data-target="#editModal" data-id="<?= $data->id_history ?>" data-idpass="<?=$data->id_pasien?>" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=date('d-m-Y', strtotime($data->tgl_lahir))?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->id_ruangan?>" data-bayar="<?=$data->bayar?>" data-tglpulang="<?=date('d-m-Y', strtotime($data->tgl_pulang))?>" data-tglharuskembali="<?=date('d-m-Y', strtotime($data->tgl_haruskembali))?>" data-tglkembali="<?php if(!empty($data->tgl_kembali)){echo date('d-m-Y', strtotime($data->tgl_kembali));}?>">
                                   Edit 
                               </button>
-                              <button type="button" class="btn btn-sm btn-outline-danger" id="deletepengembalian" data-toggle="modal" data-target="#deleteModal" data-id="<?=$data->id_pengembalian?>" data-norm="<?=$data->no_rm?>">
+                              <button type="button" class="btn btn-sm btn-outline-danger" id="deletepengembalian" data-toggle="modal" data-target="#deleteModal" data-id="<?=$data->id_history?>" data-norm="<?=$data->no_rm?>">
                               Hapus
                             </button>
                             </td>
@@ -85,7 +85,7 @@
               <form method="post" role="form" enctype="multipart/form-data" action="<?php echo base_url(); ?>laporanpengembalian/update_laporanpengembalian">
                 <div class="modal-body">
                 <input type="text" id="id_pengembalian" name="id_pengembalian" hidden>
-                <input type="text" id="id_peminjaman" name="id_peminjaman" hidden>
+                <input type="text" id="id_pasien" name="id_pasien" hidden>
                   <div class="form-group">
                       <label for="no_rm">Nomor RM</label>
                       <input type="text" class="form-control" id="no_rm" name="no_rm" placeholder="Nomor RM" readonly>
@@ -125,11 +125,10 @@
                   <div class="form-group">
                       <label for="ruangan">Ruangan</label>
                       <select class="form-control" id="ruangan" name="ruangan" required>
-                        <option value="Maternal">Maternal</option>
-                        <option value="Neo">Neo</option>
-                        <option value="General">General</option>
-                        <option value="Anak">Anak</option>
-                        <option value="Pavilium">Pavilium</option>
+                        <?php 
+                        foreach ($ruangan as $data) { ?>
+                          <option value="<?= $data->id_ruangan; ?>"><?= $data->nama_ruangan; ?></option>
+                        <?php } ?>
                       </select>
                   </div>
                   <div class="form-group">

@@ -93,7 +93,7 @@ No.RM           : <?php echo $dataRM->no_rm;?><br>
 Nama Pasien     : <?php echo $dataRM->nama_pasien;?> <br>
 Tanggal Lahir   : <?php echo $dataRM->tgl_lahir;?> <br>
 Jenis Kelamin   : <?php echo $dataRM->jekel;?> <br>
-Ruangan         : <?php echo $dataRM->ruangan;?> <br>
+Ruangan         : <?php echo $dataRM->nama_ruangan;?> <br>
 Tanggal Pinjam  : <?php echo $dataRM->tgl_pinjam;?> 
 </pre>
             </div>

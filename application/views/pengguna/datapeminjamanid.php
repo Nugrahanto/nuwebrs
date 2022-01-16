@@ -28,7 +28,7 @@
                     </div>
                     <div class="form-group">
                         <label for="ruangan">Ruangan</label>
-                        <input type="text" class="form-control" id="ruangan" name="ruangan" value="<?= $dataRM->ruangan ?>" readonly>
+                        <input type="text" class="form-control" id="ruangan" name="ruangan" value="<?= $dataRM->nama_ruangan ?>" readonly>
                     </div>
                     <div class="form-group">
                         <label for="tgl_pinjam">Tanggal Pinjam BRM</label>
@@ -41,7 +41,7 @@
                     </div>
                     <?php 
                     if($dataRM->is_printed == 0){ ?>
-                        <a href="<?= base_url('peminjaman/cetak/'.$dataRM->id_peminjaman.''); ?>">
+                        <a href="<?= base_url('peminjaman/cetak/'.$dataRM->id_history.''); ?>">
                             <button type="button" class="btn btn-primary me-2">Cetak Tracer</button>
                         </a>
                     <?php } else { ?>

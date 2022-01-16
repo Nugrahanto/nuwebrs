@@ -10,64 +10,54 @@
                     } ?>
               <div class="row">
                 <div class="col-12">
-                  <div class="table-responsive">
-                    <table id="" class="table exportpengguna">
-                      <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>Level</th>
-                            <th>Status</th>
-                            <th>Aksi</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                        $no = 1;
-                        foreach ($laporanpengguna as $data) { ?>
-                        <tr>
-                            <td><?=$no?></td>
-                            <td><?= $data->username ?></td>
-                            <td><?= $data->password ?></td>
-                            <td>
-                                <?php 
-                                    $txt = "";
-                                    if ($data->level == "1") { 
-                                        $txt = "Admin";
-                                    } else if ($data->level == "2"){
-                                        $txt = "Unit RI";
-                                    } else if ($data->level == "3"){
-                                        $txt = "Kepala RM";
-                                    }
-                                    echo "<span>$txt</span>";
-                                ?>
-                            </td>
-                            <td class="text-center">
-                                <?php 
-                                    $txt = "";
-                                    if ($data->status == "1") { 
-                                        $txt = "Aktif";
-                                        echo "<label class='badge badge-primary text-white'>$txt</label>";
-                                    } else {
-                                        $txt = "Tidak Aktif";
-                                        echo "<label class='badge badge-info text-white'>$txt</label>";
-                                    } 
-                                ?>
-                            </td>
-                            <td>
-                              <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanpengguna" data-toggle="modal" data-target="#editModal" data-id="<?=$data->id_pengguna?>" data-username="<?=$data->username?>" data-password="<?=$data->password?>" data-level="<?=$data->level?>" data-status="<?=$data->status?>">
-                                  Edit 
-                              </button>
-                              <button type="button" class="btn btn-sm btn-outline-danger" id="deletepengguna" data-toggle="modal" data-target="#deleteModal" data-id="<?=$data->id_pengguna?>" data-username="<?=$data->username?>">
-                                Hapus
-                              </button>
-                            </td>
-                        </tr>
-                        <?php $no++; } ?>
-                      </tbody>
-                    </table>
-                  </div>
+                  <table id="" class="table table-responsive exportpengguna">
+                    <thead>
+                      <tr>
+                          <th>No</th>
+                          <th>Nama</th>
+                          <th>Username</th>
+                          <th>Password</th>
+                          <th>No. Telp</th>
+                          <th>Level</th>
+                          <th>Status</th>
+                          <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      $no = 1;
+                      foreach ($laporanpengguna as $data) { ?>
+                      <tr>
+                          <td><?=$no?></td>
+                          <td><?= $data->nama_pegawai ?></td>
+                          <td><?= $data->username ?></td>
+                          <td><?= str_repeat ('*', strlen ($data->password)) ?></td>
+                          <td><?= $data->telp ?></td>
+                          <td><?= $data->nama_level ?></td>
+                          <td class="text-center">
+                              <?php 
+                                  $txt = "";
+                                  if ($data->status == "1") { 
+                                      $txt = "Aktif";
+                                      echo "<label class='badge badge-primary text-white'>$txt</label>";
+                                  } else {
+                                      $txt = "Tidak Aktif";
+                                      echo "<label class='badge badge-info text-white'>$txt</label>";
+                                  } 
+                              ?>
+                          </td>
+                          <td>
+                            <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanpengguna" data-toggle="modal" data-target="#editModal" data-id="<?=$data->id_pegawai?>" data-nama="<?=$data->nama_pegawai?>" data-username="<?=$data->username?>" data-password="<?=$data->password?>" data-telp="<?=$data->telp?>" data-level="<?=$data->id_level?>" data-status="<?=$data->status?>">
+                                Edit 
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-danger" id="deletepengguna" data-toggle="modal" data-target="#deleteModal" data-id="<?=$data->id_pegawai?>" data-username="<?=$data->username?>">
+                              Hapus
+                            </button>
+                          </td>
+                      </tr>
+                      <?php $no++; } ?>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -87,6 +77,10 @@
                 <div class="modal-body">
                   <input type="text" id="id_pengguna" name="id_pengguna" hidden>
                   <div class="form-group">
+                      <label for="nama">Nama Pegawai</label>
+                      <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama" required>
+                  </div>
+                  <div class="form-group">
                       <label for="username">Username</label>
                       <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
                   </div>
@@ -95,11 +89,16 @@
                       <input type="text" class="form-control" id="password" name="password" placeholder="Password" required>
                   </div>
                   <div class="form-group">
+                      <label for="telp">No. Telp</label>
+                      <input type="text" class="form-control" id="telp" name="notelp" placeholder="No. Telp" required>
+                  </div>
+                  <div class="form-group">
                       <label for="level">Level</label>
                       <select class="form-control" id="level" name="level" required>
-                        <option value="1">Admin </option>
-                        <option value="2">Unit RI </option>
-                        <option value="3">Kepala RM </option>
+                        <?php 
+                        foreach ($level as $data) { ?>
+                        <option value="<?= $data->id_level; ?>"><?= $data->nama_level; ?></option>
+                        <?php } ?>
                       </select>
                   </div>
                   <div class="form-group">

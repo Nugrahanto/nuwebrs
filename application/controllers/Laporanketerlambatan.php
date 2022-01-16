@@ -14,6 +14,7 @@ class laporanketerlambatan extends CI_Controller
             $data['title'] = 'Laporan Keterlambatan';
             $data['main_view'] = 'pengguna/laporanketerlambatan';
             $data['laporanketerlambatan'] = $this->laporanketerlambatanModel->get_laporanketerlambatan();
+            $data['ruangan'] = $this->laporanketerlambatanModel->get_ruangan();
             $data['notiftoday'] = $this->notifModel->notiftoday();
             $data['notifyesterday'] = $this->notifModel->notifyesterday();
             $data['get_notiftoday'] = $this->notifModel->get_notiftoday();

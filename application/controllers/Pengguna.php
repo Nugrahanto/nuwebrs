@@ -16,11 +16,11 @@ class pengguna extends CI_Controller
 
             $data['title'] = 'Data Pengguna';
             $data['main_view'] = 'pengguna/datapengguna';
+            $data['get_level'] = $this->penggunaModel->get_level();
             $data['notiftoday'] = $this->notifModel->notiftoday();
             $data['notifyesterday'] = $this->notifModel->notifyesterday();
             $data['get_notiftoday'] = $this->notifModel->get_notiftoday();
             $data['get_notifyesterday'] = $this->notifModel->get_notifyesterday();
-
             $this->load->view('template', $data);
         } else {
             redirect('auth', 'refresh');

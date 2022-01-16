@@ -9,8 +9,9 @@ class notiflambatModel extends CI_Model
         $getdate = date("Y-m-d");
         return $this->db->where('tgl_haruskembali', $getdate)
                         ->where('tgl_kembali =', null)
-                        ->join('peminjaman', 'peminjaman.id_peminjaman=pengembalian.id_peminjaman')
-                        ->from('pengembalian')
+                        ->join('tb_pasien', 'tb_history.id_pasien = tb_pasien.id_pasien')
+                        ->join('tb_ruangan', 'tb_history.id_ruangan = tb_ruangan.id_ruangan')
+                        ->from('tb_history')
                         ->count_all_results();
     }
 
@@ -20,8 +21,9 @@ class notiflambatModel extends CI_Model
         $getdate = date("Y-m-d");
         return $this->db->where('tgl_haruskembali <', $getdate)
                         ->where('tgl_kembali =', null)
-                        ->join('peminjaman', 'peminjaman.id_peminjaman=pengembalian.id_peminjaman')
-                        ->from('pengembalian')
+                        ->join('tb_pasien', 'tb_history.id_pasien = tb_pasien.id_pasien')
+                        ->join('tb_ruangan', 'tb_history.id_ruangan = tb_ruangan.id_ruangan')
+                        ->from('tb_history')
                         ->count_all_results();
     }
 
@@ -31,8 +33,9 @@ class notiflambatModel extends CI_Model
         $getdate = date("Y-m-d");
         return $this->db->where('tgl_haruskembali', $getdate)
                         ->where('tgl_kembali =', null)
-                        ->join('peminjaman', 'peminjaman.id_peminjaman=pengembalian.id_peminjaman')
-                        ->get('pengembalian')
+                        ->join('tb_pasien', 'tb_history.id_pasien = tb_pasien.id_pasien')
+                        ->join('tb_ruangan', 'tb_history.id_ruangan = tb_ruangan.id_ruangan')
+                        ->get('tb_history')
                         ->result();
     }
 
@@ -42,8 +45,9 @@ class notiflambatModel extends CI_Model
         $getdate = date("Y-m-d");
         return $this->db->where('tgl_haruskembali <', $getdate)
                         ->where('tgl_kembali =', null)
-                        ->join('peminjaman', 'peminjaman.id_peminjaman=pengembalian.id_peminjaman')
-                        ->get('pengembalian')
+                        ->join('tb_pasien', 'tb_history.id_pasien = tb_pasien.id_pasien')
+                        ->join('tb_ruangan', 'tb_history.id_ruangan = tb_ruangan.id_ruangan')
+                        ->get('tb_history')
                         ->result();
     }
     
