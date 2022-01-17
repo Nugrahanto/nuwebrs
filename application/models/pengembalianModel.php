@@ -4,59 +4,38 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class pengembalianModel extends CI_Model
 {
 
-    // public function search_no_ri($norm)
-    // {
-    //     $sql = "select peminjaman.* from peminjaman,
-    //     (select no_rm,max(id_peminjaman) as id_peminjaman
-    //          from peminjaman
-    //          group by no_rm) max_rm
-    //       where peminjaman.no_rm=max_rm.no_rm
-    //       and peminjaman.id_peminjaman=max_rm.id_peminjaman
-    //       and peminjaman.no_rm like '".$norm."%'";
-    //     return $query = $this->db->query($sql)->result();
-    // }
+    public function search_no_ri($norm)
+    {
+        $this->db->join('tb_pasien', 'tb_pasien.id_pasien=tb_history.id_pasien');
+        $this->db->join('tb_ruangan', 'tb_ruangan.id_ruangan=tb_history.id_ruangan');
+        $this->db->like('no_rm', $norm, 'both');
+        $this->db->where('tgl_pulang', null);
+        return $this->db->get('tb_history')->result();
+    }
 
-    // public function do_insert()
-    // {
-    //     date_default_timezone_set('Asia/Jakarta');
-    //     $no_rm = $this->input->post('no_rm');
-    //     $ruangan = $this->input->post('ruangan');
+    public function do_insert()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $id_peminjaman = $this->input->post('id_peminjaman');
+        $bayar = $this->input->post('bayar');
+        $tgl_pulang = date("Y-m-d", strtotime($this->input->post('tgl_pulang')));
+        $tgl_haruskembali = date('Y-m-d', strtotime($tgl_pulang. ' + 2 days'));
 
-    //     $id_peminjaman = $this->input->post('id_peminjaman');
-    //     $bayar = $this->input->post('bayar');
-    //     $tgl_pulang = date("Y-m-d", strtotime($this->input->post('tgl_pulang')));
-    //     $tgl_haruskembali = date('Y-m-d', strtotime($tgl_pulang. ' + 2 days'));
+        $data = array(
+            'bayar'            => $bayar,
+            'tgl_pulang'       => $tgl_pulang,
+            'tgl_haruskembali' => $tgl_haruskembali
 
-    //     $check = $this->db->where('no_rm', $no_rm)
-    //                       ->where('ruangan', $ruangan)
-    //                       ->where('tgl_kembali', NULL, FALSE)
-    //                       ->join('peminjaman', 'peminjaman.id_peminjaman = pengembalian.id_peminjaman')
-    //                       ->get('pengembalian')
-    //                       ->row();
+        );
+        $this->db->where('id_history', $id_peminjaman)
+             ->update('tb_history', $data);
 
-    //     if (is_null($check)){
-    //         $data = array(
-    //             'id_pengembalian'  => NULL,
-    //             'id_peminjaman'    => $id_peminjaman,
-    //             'bayar'            => $bayar,
-    //             'tgl_pulang'       => $tgl_pulang,
-    //             'tgl_haruskembali' => $tgl_haruskembali,
-    //             'tgl_kembali'      => NULL,
-    //             'created_by'       => $this->session->userdata('id'),
-    //             'created_on'       => date("Y-m-d H:i:s")
-    
-    //         );
-    //         $this->db->insert('pengembalian', $data);
-    
-    //         if ($this->db->affected_rows() > 0) {
-    //             return TRUE;
-    //         } else {
-    //             return FALSE;
-    //         }
-    //     } else {
-    //         return FALSE;
-    //     }
-    // }
+        if ($this->db->affected_rows() > 0) {
+            return TRUE;
+        } else{
+            return FALSE;
+        }
+    }
 
     public function search_no_adm($norm)
     {

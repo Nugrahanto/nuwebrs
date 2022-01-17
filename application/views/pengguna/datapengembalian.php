@@ -65,7 +65,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                             </div>
-                            <input class="form-control" id="tgl_kembali_date" name="tgl_kembali" placeholder="Masukkan tanggal (dd-mm-yyyy)"/>
+                            <input class="form-control" id="tgl_kembali_date" name="tgl_kembali" placeholder="Pilih Tanggal BRM Kembali"/>
                         </div>
                     </div>
                     <input type="submit" class="btn btn-primary me-2" name="submit" value="Ubah">

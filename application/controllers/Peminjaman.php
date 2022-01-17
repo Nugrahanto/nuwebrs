@@ -38,6 +38,7 @@ class peminjaman extends CI_Controller
         } else if ($this->session->userdata('level') == 2) {
             $data['title'] = 'Data Peminjaman';
             $data['main_view'] = 'rawatinap/datapeminjaman';
+            $data['ruangan'] = $this->peminjamanModel->get_ruangan();
             $data['notifterlambat'] = $this->notiflambatModel->notifterlambat();
             $data['notiftoday'] = $this->notiflambatModel->notiftoday();
             $data['get_notiftoday'] = $this->notiflambatModel->get_notiftoday();
@@ -70,6 +71,11 @@ class peminjaman extends CI_Controller
                         <div class="alert alert-danger" role="alert">
                         Gagal menambahkan peminjaman baru</div>');
                     redirect('peminjaman', 'refresh');
+                } else if ($this->peminjamanModel->do_insert() == 2) {
+                    $this->session->set_flashdata('message', '
+                        <div class="alert alert-danger" role="alert">
+                        No. RM minimal 6 digit</div>');
+                    redirect('peminjaman', 'refresh');
                 } else {
                     $this->session->set_flashdata('message', '
                         <div class="alert alert-danger" role="alert">
@@ -87,10 +93,12 @@ class peminjaman extends CI_Controller
             $result = $this->peminjamanModel->search_no_rm($_GET['term']);
             if (count($result) > 0) {
                 foreach ($result as $row) {
+                    $tgl_lahir = date('d-m-Y', strtotime($row->tgl_lahir));
                     $arr_result[] = array(
                         'label'         => $row->no_rm,
+                        'id_pasien'   => $row->id_pasien,
                         'nama_pasien'   => $row->nama_pasien,
-                        'tgl_lahir'     => $row->tgl_lahir,
+                        'tgl_lahir'     => $tgl_lahir,
                         'jekel'         => $row->jekel,
                     );
                     echo json_encode($arr_result);

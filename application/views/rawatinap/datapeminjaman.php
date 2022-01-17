@@ -11,6 +11,7 @@
                         $this->session->unset_userdata('message');
                     } ?>
                     <form method="post" role="form" enctype="multipart/form-data" action="<?php echo base_url(); ?>peminjaman/tambah_peminjaman">
+                    <input type="text" id="id_pasien" name="id_pasien" hidden>
                     <div class="form-group">
                         <label for="no_rm_auto">Nomor RM</label>
                         <input type="text" class="form-control" id="no_rm_auto" name="no_rm" placeholder="Masukkan Nomor RM" required/>
@@ -53,11 +54,10 @@
                         <label for="ruangan">Ruangan</label>
                         <select class="ruangan form-control" id="ruangan" name="ruangan" required>
                             <option selected disabled value="">Pilih Ruangan</option>
-                            <option value="Maternal">Maternal</option>
-                            <option value="Neo">Neo</option>
-                            <option value="General">General</option>
-                            <option value="Anak">Anak</option>
-                            <option value="Pavilium">Pavilium</option>
+                            <?php 
+                            foreach ($ruangan as $data) { ?>
+                                <option value="<?= $data->id_ruangan; ?>"><?= $data->nama_ruangan; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <input type="submit" class="btn btn-primary me-2" name="submit" value="Tambah">

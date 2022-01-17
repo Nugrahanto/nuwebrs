@@ -5,7 +5,8 @@ class laporanpeminjamanModel extends CI_Model
 {
     public function get_laporanpeminjaman()
     {
-        return $this->db->join('tb_pasien', 'tb_history.id_pasien = tb_pasien.id_pasien')
+        return $this->db->order_by('id_history', 'DESC')
+                ->join('tb_pasien', 'tb_history.id_pasien = tb_pasien.id_pasien')
                 ->join('tb_ruangan', 'tb_history.id_ruangan = tb_ruangan.id_ruangan')
                 ->get('tb_history')
                 ->result();
