@@ -732,15 +732,7 @@ $level = "";
 $jumlahPeng = null;
 foreach ($penggunaChart as $data)
 {
-  $lvl = "";
-  if ($data->level == "1") { 
-    $lvl = "Admin";
-  } else if ($data->level == "2"){
-    $lvl = "Unit RI";
-  } else if ($data->level == "3"){
-    $lvl = "Kepala RM";
-  }
-    $level     .= "'$lvl'". ", ";
+    $level     .= "'$data->nama_level'". ", ";
     $jumPeng       = $data->count;
     $jumlahPeng   .= "$jumPeng". ", ";
 }
@@ -782,7 +774,7 @@ $ruangan = "";
 $jumlahRu = null;
 foreach ($ruanganpeminjamanChart as $data)
 {
-  $ruang    = $data->ruangan;
+  $ruang    = $data->nama_ruangan;
   $ruangan  .= "'$ruang'". ", ";
   $jumRu      = $data->count;
   $jumlahRu   .= "$jumRu". ", ";
@@ -841,7 +833,7 @@ $ruangan = "";
 $jumlahRu = null;
 foreach ($ruanganpengembalianChart as $data)
 {
-  $ruang    = $data->ruangan;
+  $ruang    = $data->nama_ruangan;
   $ruangan  .= "'$ruang'". ", ";
   $jumRu      = $data->count;
   $jumlahRu   .= "$jumRu". ", ";
@@ -900,7 +892,7 @@ $ruangan = "";
 $jumlahRu = null;
 foreach ($ruanganketerlambatanChart as $data)
 {
-  $ruang    = $data->ruangan;
+  $ruang    = $data->nama_ruangan;
   $ruangan  .= "'$ruang'". ", ";
   $jumRu      = $data->count;
   $jumlahRu   .= "$jumRu". ", ";
@@ -970,49 +962,56 @@ foreach ($ruanganketerlambatanChart as $data)
                 $weekNumber = date("W");
                 $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber)
                         ->where('DAYOFWEEK(tgl_pinjam)', 1)
-                        ->from('peminjaman')
+                        ->where('tgl_kembali', NULL)
+                        ->from('tb_history')
                         ->count_all_results();
                 echo $day;
               ?>, <?php 
                 $weekNumber = date("W");
                 $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber)
                         ->where('DAYOFWEEK(tgl_pinjam)', 2)
-                        ->from('peminjaman')
+                        ->where('tgl_kembali', NULL)
+                        ->from('tb_history')
                         ->count_all_results();
                 echo $day;
               ?>, <?php 
                 $weekNumber = date("W");
                 $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber)
                         ->where('DAYOFWEEK(tgl_pinjam)', 3)
-                        ->from('peminjaman')
+                        ->where('tgl_kembali', NULL)
+                        ->from('tb_history')
                         ->count_all_results();
                 echo $day;
               ?>, <?php 
                 $weekNumber = date("W");
                 $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber)
                         ->where('DAYOFWEEK(tgl_pinjam)', 4)
-                        ->from('peminjaman')
+                        ->where('tgl_kembali', NULL)
+                        ->from('tb_history')
                         ->count_all_results();
                 echo $day;
               ?>, <?php 
                 $weekNumber = date("W");
                 $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber)
                           ->where('DAYOFWEEK(tgl_pinjam)', 5)
-                          ->from('peminjaman')
+                          ->where('tgl_kembali', NULL)
+                          ->from('tb_history')
                           ->count_all_results();
                 echo $day;
               ?>, <?php 
                 $weekNumber = date("W");
                 $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber)
                           ->where('DAYOFWEEK(tgl_pinjam)', 6)
-                          ->from('peminjaman')
+                          ->where('tgl_kembali', NULL)
+                          ->from('tb_history')
                           ->count_all_results();
                 echo $day;
               ?>, <?php 
                 $weekNumber = date("W");
                 $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber)
                         ->where('DAYOFWEEK(tgl_pinjam)', 7)
-                        ->from('peminjaman')
+                        ->where('tgl_kembali', NULL)
+                        ->from('tb_history')
                         ->count_all_results();
                 echo $day;
               ?>
@@ -1034,49 +1033,56 @@ foreach ($ruanganketerlambatanChart as $data)
               $weekNumber = date("W");
               $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber-1)
                         ->where('DAYOFWEEK(tgl_pinjam)', 1)
-                        ->from('peminjaman')
+                        ->where('tgl_kembali', NULL)
+                        ->from('tb_history')
                         ->count_all_results();
               echo $day;
             ?>, <?php 
               $weekNumber = date("W");
               $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber-1)
                         ->where('DAYOFWEEK(tgl_pinjam)', 2)
-                        ->from('peminjaman')
+                        ->where('tgl_kembali', NULL)
+                        ->from('tb_history')
                         ->count_all_results();
               echo $day;
             ?>, <?php 
               $weekNumber = date("W");
               $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber-1)
                         ->where('DAYOFWEEK(tgl_pinjam)', 3)
-                        ->from('peminjaman')
+                        ->where('tgl_kembali', NULL)
+                        ->from('tb_history')
                         ->count_all_results();
               echo $day;
             ?>, <?php 
               $weekNumber = date("W");
               $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber-1)
                         ->where('DAYOFWEEK(tgl_pinjam)', 4)
-                        ->from('peminjaman')
+                        ->where('tgl_kembali', NULL)
+                        ->from('tb_history')
                         ->count_all_results();
               echo $day;
             ?>, <?php 
               $weekNumber = date("W");
               $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber-1)
                         ->where('DAYOFWEEK(tgl_pinjam)', 5)
-                        ->from('peminjaman')
+                        ->where('tgl_kembali', NULL)
+                        ->from('tb_history')
                         ->count_all_results();
               echo $day;
             ?>, <?php 
               $weekNumber = date("W");
               $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber-1)
                         ->where('DAYOFWEEK(tgl_pinjam)', 6)
-                        ->from('peminjaman')
+                        ->where('tgl_kembali', NULL)
+                        ->from('tb_history')
                         ->count_all_results();
               echo $day;
             ?>, <?php 
               $weekNumber = date("W");
               $day = $this->db->where('WEEK(tgl_pinjam)', $weekNumber-1)
                         ->where('DAYOFWEEK(tgl_pinjam)', 7)
-                        ->from('peminjaman')
+                        ->where('tgl_kembali', NULL)
+                        ->from('tb_history')
                         ->count_all_results();
               echo $day;
             ?>

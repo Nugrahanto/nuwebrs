@@ -3,86 +3,92 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class chartModel extends CI_Model {
     
-    // public function get_count_peminjaman()
-    // {
-    //     date_default_timezone_set('Asia/Jakarta');
-    //     $weekNumber = date("W");
-    //     return $this->db->from('peminjaman')
-    //                     ->count_all_results();
-    // }
+    public function get_count_peminjaman()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $weekNumber = date("W");
+        return $this->db->where('tgl_pinjam !=', NULL)
+                        ->where('tgl_kembali', NULL)
+                        ->from('tb_history')
+                        ->count_all_results();
+    }
 
-    // public function yesterday_get_count_peminjaman()
-    // {
-    //     date_default_timezone_set('Asia/Jakarta');
-    //     $weekNumber = date("W");
-    //     return $this->db->where('WEEK(tgl_pinjam)', $weekNumber-1)
-    //                     ->from('peminjaman')
-    //                     ->count_all_results();
-    // }
+    public function yesterday_get_count_peminjaman()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $weekNumber = date("W");
+        return $this->db->where('WEEK(tgl_pinjam)', $weekNumber-1)
+                        ->where('tgl_pinjam !=', NULL)
+                        ->where('tgl_kembali', NULL)
+                        ->from('tb_history')
+                        ->count_all_results();
+    }
 
-    // public function get_count_pengembalian()
-    // {
-    //     date_default_timezone_set('Asia/Jakarta');
-    //     $weekNumber = date("W");
-    //     return $this->db->from('pengembalian')
-    //                     ->count_all_results();
-    // }
+    public function get_count_pengembalian()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $weekNumber = date("W");
+        return $this->db->where('tgl_kembali !=', NULL)
+                        ->from('tb_history')
+                        ->count_all_results();
+    }
 
-    // public function yesterday_get_count_pengembalian()
-    // {
-    //     date_default_timezone_set('Asia/Jakarta');
-    //     $weekNumber = date("W");
-    //     return $this->db->where('WEEK(tgl_kembali)', $weekNumber-1)
-    //                     ->from('pengembalian')
-    //                     ->count_all_results();
-    // }
+    public function yesterday_get_count_pengembalian()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $weekNumber = date("W");
+        return $this->db->where('WEEK(tgl_kembali)', $weekNumber-1)
+                        ->where('tgl_kembali !=', NULL)
+                        ->from('tb_history')
+                        ->count_all_results();
+    }
 
-    // public function get_count_keterlambatan()
-    // {
-    //     date_default_timezone_set('Asia/Jakarta');
-    //     $weekNumber = date("W");
-    //     return $this->db->where('tgl_kembali > tgl_haruskembali')
-    //                     ->from('pengembalian')
-    //                     ->count_all_results();
-    // }
+    public function get_count_keterlambatan()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $weekNumber = date("W");
+        return $this->db->where('tgl_kembali > tgl_haruskembali')
+                        ->from('tb_history')
+                        ->count_all_results();
+    }
 
-    // public function yesterday_get_count_keterlambatan()
-    // {
-    //     date_default_timezone_set('Asia/Jakarta');
-    //     $weekNumber = date("W");
-    //     return $this->db->where('WEEK(tgl_kembali)', $weekNumber-1)
-    //                     ->where('tgl_kembali > tgl_haruskembali')
-    //                     ->from('pengembalian')
-    //                     ->count_all_results();
-    // }
+    public function yesterday_get_count_keterlambatan()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $weekNumber = date("W");
+        return $this->db->where('WEEK(tgl_kembali)', $weekNumber-1)
+                        ->where('tgl_kembali > tgl_haruskembali')
+                        ->from('tb_history')
+                        ->count_all_results();
+    }
 
     public function get_pengguna()
     {
-        $sql = "SELECT id_level, COUNT(*) as count FROM tb_pegawai GROUP BY id_level ORDER BY 1 DESC";
+        $sql = "SELECT tb_pegawai.id_level, tb_level.nama_level, COUNT(*) as count FROM tb_pegawai JOIN tb_level ON tb_level.id_level=tb_pegawai.id_level GROUP BY id_level ORDER BY 1 DESC";
         return $query = $this->db->query($sql)->result();
     }
 
-    // public function get_ruangan_peminjaman()
-    // {
-    //     $sql = "SELECT ruangan, COUNT(*) as count FROM peminjaman GROUP BY ruangan ORDER BY ruangan ASC";
-    //     return $query = $this->db->query($sql)->result();
-    // }
+    public function get_ruangan_peminjaman()
+    {
+        $sql = "SELECT tb_history.id_ruangan, tb_ruangan.nama_ruangan, COUNT(*) as count FROM tb_history JOIN tb_ruangan ON tb_ruangan.id_ruangan=tb_history.id_ruangan WHERE tgl_kembali IS NULL GROUP BY id_ruangan ORDER BY id_ruangan ASC";
+        return $query = $this->db->query($sql)->result();
+    }
 
-    // public function get_ruangan_pengembalian()
-    // {
-    //     date_default_timezone_set('Asia/Jakarta');
-    //     $weekNumber = date("W");
-    //     $sql = "SELECT ruangan, COUNT(*) as count FROM pengembalian LEFT JOIN peminjaman ON peminjaman.id_peminjaman = pengembalian.id_peminjaman GROUP BY ruangan ORDER BY ruangan ASC";
-    //     return $query = $this->db->query($sql)->result();
-    // }
+    public function get_ruangan_pengembalian()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $weekNumber = date("W");
+        $sql = "SELECT tb_history.id_ruangan, tb_ruangan.nama_ruangan, COUNT(*) as count FROM tb_history JOIN tb_ruangan ON tb_ruangan.id_ruangan=tb_history.id_ruangan WHERE tgl_kembali IS NOT NULL GROUP BY id_ruangan ORDER BY id_ruangan ASC";
+        return $query = $this->db->query($sql)->result();
+    }
 
-    // public function get_ruangan_keterlambatan()
-    // {
-    //     date_default_timezone_set('Asia/Jakarta');
-    //     $weekNumber = date("W");
-    //     $sql = "SELECT ruangan, COUNT(*) as count FROM pengembalian LEFT JOIN peminjaman ON peminjaman.id_peminjaman = pengembalian.id_peminjaman WHERE tgl_kembali > tgl_haruskembali GROUP BY ruangan ORDER BY ruangan ASC";
-    //     return $query = $this->db->query($sql)->result();
-    // }
+    public function get_ruangan_keterlambatan()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $weekNumber = date("W");
+        $sql = "SELECT tb_history.id_ruangan, tb_ruangan.nama_ruangan, COUNT(*) as count FROM tb_history JOIN tb_ruangan ON tb_ruangan.id_ruangan=tb_history.id_ruangan WHERE tgl_kembali IS NOT NULL AND tgl_kembali > tgl_haruskembali GROUP BY id_ruangan ORDER BY id_ruangan ASC";
+        return $query = $this->db->query($sql)->result();
+    }
 
     public function get_weekly_linechart()
     {
