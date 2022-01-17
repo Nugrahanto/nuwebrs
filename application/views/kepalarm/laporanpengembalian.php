@@ -32,7 +32,7 @@
                             <td><?= $data->nama_pasien ?></td>
                             <td><?= $data->tgl_lahir ?></td>
                             <td><?= $data->jekel ?></td>
-                            <td><?= $data->ruangan ?></td>
+                            <td><?= $data->nama_ruangan ?></td>
                             <td><?= $data->bayar ?></td>
                             <td><?= $data->tgl_pulang ?></td>
                             <td><?= $data->tgl_haruskembali ?></td>
