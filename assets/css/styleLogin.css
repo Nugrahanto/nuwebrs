@@ -1,0 +1,43 @@
+.brand-logo img{
+    height: 110px;
+}
+.container-form{
+    padding: 3rem!important;
+}
+@media (max-width: 992px) {
+    .container-form{
+        padding: 1.5rem!important;
+    }
+    .brand-logo img{
+        width: auto;
+        height: 80px;
+    }
+}
+@media (max-width: 425px) {
+    .container-form{
+        padding: .5rem!important;
+    }
+    .brand-logo img{
+        margin-bottom: 1rem;
+        width: auto;
+        height: 50px;
+    }
+    .container-main {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+    }
+    .container-body {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+@media (min-width: 992px) {
+
+}

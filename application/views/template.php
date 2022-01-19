@@ -42,7 +42,7 @@
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
         <div class="me-3">
-          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
+          <button class="navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
             <span class="icon-menu"></span>
           </button>
         </div>
@@ -54,8 +54,9 @@
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-top"> 
         <ul class="navbar-nav">
-          <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-            <h1 class="welcome-text"><span class="text-black fw-bold"><?= $this->session->userdata('username'); ?></span></h1>
+          <li class="nav-item font-weight-semibold d-none d-lg-block ms-0 pt-2">
+            <h1 class="welcome-text"><span class="text-black fw-bold"> Sistem Reminder <br>
+            <small class="lead small">Peminjaman dan Pengembalian Berkas Rekam Medis Rawat Inap</small></span></h1>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -109,7 +110,7 @@
             </div>
           </li>
           <?php } ?>
-          <li class="nav-item dropdown d-none d-lg-block user-dropdown">
+          <li class="nav-item dropdown d-lg-block user-dropdown">
             <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="icon-user"></i> </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
@@ -145,7 +146,7 @@
               <span class="menu-title">Data Pengguna</span>
             </a>
           </li>
-          <li class="nav-item <?php if($this->uri->segment(1) == "peminjaman"){ echo 'active';}?>">
+          <li class="nav-item <?php if($this->uri->segment(1) == "peminjaman" || $this->uri->segment(2) != ""){ echo 'active';}?>">
             <a class="nav-link" href="<?php echo base_url(); ?>peminjaman">
               <i class="mdi mdi-folder-plus menu-icon"></i>
               <span class="menu-title">Data Peminjaman</span>
@@ -177,13 +178,6 @@
               </ul>
             </div>
           </li>
-          <!-- <li class="nav-item nav-category">Lainnya</li>
-          <li class="nav-item <?php if($this->uri->segment(1) == "grafik"){ echo 'active';}?>">
-            <a class="nav-link" href="index.html">
-              <i class="menu-icon mdi mdi-chart-line"></i>
-              <span class="menu-title" >Grafik</span>
-            </a>
-          </li> -->
         <?php } else if ($this->session->userdata('level') == 2) { ?>
           <li class="nav-item <?php if($this->uri->segment(1) == "dashboard"){ echo 'active';}?>">
           <a class="nav-link" href="<?php echo base_url(); ?>dashboard">
@@ -204,13 +198,6 @@
               <span class="menu-title">Data Kepulangan</span>
             </a>
           </li>
-          <!-- <li class="nav-item nav-category">Lainnya</li>
-          <li class="nav-item <?php if($this->uri->segment(1) == "grafik"){ echo 'active';}?>">
-            <a class="nav-link" href="index.html">
-              <i class="menu-icon mdi mdi-chart-line"></i>
-              <span class="menu-title">Grafik</span>
-            </a>
-          </li> -->
         <?php } else { ?>
           <li class="nav-item <?php if($this->uri->segment(1) == "dashboard"){ echo 'active';}?>">
             <a class="nav-link" href="<?php echo base_url(); ?>dashboard">
@@ -234,13 +221,6 @@
               </ul>
             </div>
           </li>
-          <!-- <li class="nav-item nav-category">Lainnya</li>
-          <li class="nav-item <?php if($this->uri->segment(1) == "grafik"){ echo 'active';}?>">
-            <a class="nav-link" href="index.html">
-              <i class="menu-icon mdi mdi-chart-line"></i>
-              <span class="menu-title">Grafik</span>
-            </a>
-          </li> -->
         <?php } ?>
         </ul>
       </nav>
@@ -252,7 +232,7 @@
           <div class="modal-dialog" role="document">
               <div class="modal-content">
                   <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Detail Notifikasi</h5>
+                      <h5 class="modal-title" id="exampleModalLabel">Notifikasi</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                       </button>
@@ -273,7 +253,7 @@
           <div class="modal-dialog" role="document">
               <div class="modal-content">
                   <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Detail Notifikasi</h5>
+                      <h5 class="modal-title" id="exampleModalLabel">Notifikasi</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                       </button>
@@ -295,7 +275,7 @@
           <div class="modal-dialog" role="document">
               <div class="modal-content">
                   <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Detail Notifikasi</h5>
+                      <h5 class="modal-title" id="exampleModalLabel">Notifikasi</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                       </button>
@@ -304,13 +284,17 @@
                       <?php
                       foreach ($get_notiftoday as $data) { ?>
                           <div>
-                              <p> Berkas <?= $data->no_rm ?> atas nama <?= $data->nama_pasien ?> di ruangan <?= $data->nama_ruangan ?> harus kembali hari ini</p>
+                              <span class="text-notif"> Berkas <?= $data->no_rm ?> atas nama <?= $data->nama_pasien ?> di ruangan <?= $data->nama_ruangan ?> harus kembali hari ini</span>
+                              <button class="btn-detail text-primary" id="detailnotifikasi" data-toggle="modal" data-target="#notifModal" data-dismiss="modal" data-id="<?= $data->id_history ?>" data-idpass="<?=$data->id_pasien?>" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=date('d-m-Y', strtotime($data->tgl_lahir))?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->nama_ruangan?>" data-bayar="<?=$data->bayar?>" data-tglpulang="<?=date('d-m-Y', strtotime($data->tgl_pulang))?>" data-tglharuskembali="<?=date('d-m-Y', strtotime($data->tgl_haruskembali))?>" data-tglkembali="<?php if(!empty($data->tgl_kembali)){echo date('d-m-Y', strtotime($data->tgl_kembali));}?>" data-notelp="<?= $data->telp?>">
+                                <i class="fa fa-external-link"></i></button>
                           </div>
                       <?php } ?>
                       <?php
                       foreach ($get_notifterlambat as $data) { ?>
                           <div>
-                              <p class="text-danger"> Berkas <?= $data->no_rm ?> atas nama <?= $data->nama_pasien ?> di ruangan <?= $data->nama_ruangan ?> batas waktu pengembalian telah terlewat</p>
+                              <span class="text-danger text-notif"> Berkas <?= $data->no_rm ?> atas nama <?= $data->nama_pasien ?> di ruangan <?= $data->nama_ruangan ?> batas waktu pengembalian telah terlewat</span>
+                              <button class="btn-detail text-primary" id="detailnotifikasi" data-toggle="modal" data-target="#notifModal" data-dismiss="modal" data-id="<?= $data->id_history ?>" data-idpass="<?=$data->id_pasien?>" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=date('d-m-Y', strtotime($data->tgl_lahir))?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->nama_ruangan?>" data-bayar="<?=$data->bayar?>" data-tglpulang="<?=date('d-m-Y', strtotime($data->tgl_pulang))?>" data-tglharuskembali="<?=date('d-m-Y', strtotime($data->tgl_haruskembali))?>" data-tglkembali="<?php if(!empty($data->tgl_kembali)){echo date('d-m-Y', strtotime($data->tgl_kembali));}?>" data-notelp="<?= $data->telp?>">
+                                <i class="fa fa-external-link"></i></button>
                           </div>
                       <?php } ?>
                   </div>
@@ -340,6 +324,77 @@
             $this->load->view($main_view);
         ?>
         <!-- partial -->
+        <!-- Modal -->
+        <div class="modal fade" id="notifModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Detail Notifikasi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <input type="text" readonly class="form-control-plaintext" id="id_pengembalian" hidden>
+                  <input type="text" readonly class="form-control-plaintext" id="id_pasien" hidden>
+                  <div class="row">
+                    <p class="col-5 col-sm-4">Nomor RM</p>
+                    <div class="col-7 col-sm-8">
+                      <p id="no_rm" class="h5"></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <p class="col-5 col-sm-4">Nama Pasien</p>
+                    <div class="col-7 col-sm-8">
+                      <p id="nama_pasien" class="h5"></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <p class="col-5 col-sm-4">Tanggal Lahir</p>
+                    <div class="col-7 col-sm-8">
+                      <p id="tgl_lahir_date" class="h5"></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <p class="col-5 col-sm-4">Jenis Kelamin</p>
+                    <div class="col-7 col-sm-8">
+                      <p id="jekel" class="h5"></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <p class="col-5 col-sm-4">Ruangan</p>
+                    <div class="col-7 col-sm-8">
+                      <p id="ruangan" class="h5"></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <p class="col-5 col-sm-4">Pembayaran</p>
+                    <div class="col-7 col-sm-8">
+                      <p id="bayar" class="h5"></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <p class="col-5 col-sm-4">Tanggal Pulang</p>
+                    <div class="col-7 col-sm-8">
+                      <p id="tgl_pulang" class="h5"></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <p class="col-5 col-sm-4">Tanggal Harus Kembali</p>
+                    <div class="col-7 col-sm-8">
+                      <p id="tgl_haruskembali" class="h5"></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <p class="col-5 col-sm-4">Nomor Telp Pegawai</p>
+                    <div class="col-7 col-sm-8">
+                      <p id="notelp" class="h5"></p>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
@@ -454,6 +509,40 @@
         ]
     });
     $('.buttons-pdf, .buttons-excel, .buttons-print').addClass('btn btn-primary me-1');
+  </script>
+  <script type="text/javascript">
+    $('.exportketerlambatanfilter').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'print',
+                text: 'Print',
+                action: function ( e, dt, node, config ) {
+                    window.open('laporanketerlambatan/cetak?isfiltering=filter');
+                }
+            },
+            {
+                extend: 'excel',
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                }
+            }
+        ]
+    });
+    $('.buttons-pdf, .buttons-excel, .buttons-print').addClass('btn btn-primary me-1');
+  </script>
+  <script type="text/javascript">
+    $('#ruangan').on('change', function(){
+      var x = document.getElementById("tableexportketerlambatan");
+      var y = document.getElementById("tableexportketerlambatanfilter");
+
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+        y.style.display = "block";
+      }
+    });
   </script>
   <script type="text/javascript">
     $('.exportpengguna').DataTable({
@@ -681,6 +770,36 @@
         var uname = $(this).data('username');
         $('#uname').text(uname);
         $('#id').val(id);
+      });
+    });
+  </script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+      $(document).on('click','#detailnotifikasi',function(){  
+        var id = $(this).data('id');
+        var idpass = $(this).data('idpass');
+        var norm = $(this).data('norm');
+        var namapasien = $(this).data('namapasien');
+        var tgllahir = $(this).data('tgllahir');
+        var jekel = $(this).data('jekel');
+        var ruangan = $(this).data('ruangan');
+        var bayar = $(this).data('bayar');
+        var tglpulang = $(this).data('tglpulang');
+        var tglharuskembali= $(this).data('tglharuskembali');
+        var notelp= $(this).data('notelp');
+
+        $('#id_pengembalian').val(id);
+        $('#id_pasien').val(idpass);
+        $('#no_rm').text(norm);
+        $('#nama_pasien').text(namapasien);
+        $('#tgl_lahir_date').text(tgllahir);
+        $('#jekel').text(jekel);
+        $('#ruangan').text(ruangan);
+        $('#bayar').text(bayar);
+        $('#tgl_pulang').text(tglpulang);
+        $('#tgl_haruskembali').text(tglharuskembali);
+        $('#notelp').text(notelp);
       });
     });
   </script>
@@ -1118,7 +1237,13 @@ foreach ($ruanganketerlambatanChart as $data)
                   maxTicksLimit: 4,
                   fontSize: 10,
                   color:"#6B778C"
-                }
+                },
+                scaleLabel: {
+                  display: true,
+                  fontColor: '#3C3750',
+                  fontSize: 10,
+                  labelString: 'Jumlah Berkas',
+                },
             }],
             xAxes: [{
               gridLines: {
@@ -1131,7 +1256,13 @@ foreach ($ruanganketerlambatanChart as $data)
                 maxTicksLimit: 7,
                 fontSize: 10,
                 color:"#6B778C"
-              }
+              },
+              scaleLabel: {
+                display: true,
+                fontColor: '#3C3750',
+                fontSize: 10,
+                labelString: 'Hari',
+              },
           }],
         },
         legend:false,

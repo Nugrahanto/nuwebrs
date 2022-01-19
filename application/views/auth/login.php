@@ -17,23 +17,23 @@
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/styleLogin.css">
     <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/favicon.png" />
 
 </head>
 
 <body class="bg-gradient-primary">
-<div class="container">
+<div class="container container-main">
 
 <!-- Outer Row -->
-<div class="row justify-content-center">
+<div class="row justify-content-center container-body">
 
-    <div class="col-xl-10 col-lg-12 col-md-9">
-
+    <div class="col-xl-10 col-lg-12 col-md-12">
         <div class="card o-hidden border-1 shadow-lg my-5">
             <div class="card-body p-5">
                 <!-- Nested Row within Card Body -->
-                <div class="text-center">
-                    <img src="<?= base_url() ?>/assets/images/logo.png" width="auto" height="110px"> </=>
+                <div class="text-center brand-logo">
+                    <img src="<?= base_url() ?>/assets/images/logo.png">
                 </div>
 
                 <?php 
@@ -42,8 +42,8 @@
                         echo $message;
                         $this->session->unset_userdata('message');
                     } ?>
-                <div class="ol-xl-10 col-lg-12 col-md-9">
-                    <div class="p-5">
+                <div class="col-xl-12 col-lg-12 col-md-12">
+                    <div class="container-form">
                         <form class="user" method="post" action="<?= base_url('auth'); ?>">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="username" id="username" placeholder="Masukkan Username" value="<?= set_value('username'); ?>">

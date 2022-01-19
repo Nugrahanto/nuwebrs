@@ -14,6 +14,8 @@ class laporanketerlambatan extends CI_Controller
             $data['title'] = 'Laporan Keterlambatan';
             $data['main_view'] = 'pengguna/laporanketerlambatan';
             $data['laporanketerlambatan'] = $this->laporanketerlambatanModel->get_laporanketerlambatan();
+            $data['laporanketerlambatanfilter'] = $this->laporanketerlambatanModel->get_laporanketerlambatanfilter();
+
             $data['ruangan'] = $this->laporanketerlambatanModel->get_ruangan();
             $data['notiftoday'] = $this->notifModel->notiftoday();
             $data['notifyesterday'] = $this->notifModel->notifyesterday();
@@ -62,14 +64,28 @@ class laporanketerlambatan extends CI_Controller
 	}
 
     public function cetak() {
+        $uri = base_url(uri_string());
+        $filter = "";
+        if (!empty($_GET)){
+            $filter = $_GET['isfiltering'];
+        }
+
         if ($this->session->userdata('level') == 1) {
             $data['title'] = 'Cetak Laporan Keterlambatan';
-            $data['laporanketerlambatan'] = $this->laporanketerlambatanModel->get_laporanketerlambatan();
+            if($filter == ""){
+                $data['laporanketerlambatan'] = $this->laporanketerlambatanModel->get_laporanketerlambatan();
+            } else {
+                $data['laporanketerlambatan'] = $this->laporanketerlambatanModel->get_laporanketerlambatanfilter();
+            }
 
             $this->load->view('print/laporanketerlambatan', $data);
         } else if ($this->session->userdata('level') == 3) {
             $data['title'] = 'Cetak Laporan Keterlambatan';
-            $data['laporanketerlambatan'] = $this->laporanketerlambatanModel->get_laporanketerlambatan();
+            if($filter == ""){
+                $data['laporanketerlambatan'] = $this->laporanketerlambatanModel->get_laporanketerlambatan();
+            } else {
+                $data['laporanketerlambatan'] = $this->laporanketerlambatanModel->get_laporanketerlambatanfilter();
+            }
 
             $this->load->view('print/laporanketerlambatan', $data);
         } else {

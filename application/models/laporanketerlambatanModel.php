@@ -44,4 +44,18 @@ class laporanketerlambatanModel extends CI_Model
         return $this->db->where('id_history', $id_pengembalian)
                         ->delete('tb_history');
     }
+
+    public function get_laporanketerlambatanfilter() {
+        $count = "select max(count), id_ruangan from (SELECT id_ruangan, COUNT(*) as count FROM tb_history WHERE tgl_kembali > tgl_haruskembali GROUP BY id_ruangan) t";
+        $sql = $this->db->query($count)->result();
+        $id_ruangan = $sql[0]->id_ruangan;
+
+        return $this->db->order_by('tb_history.id_history', 'DESC')
+                    ->where('tb_history.id_ruangan', $id_ruangan)
+                    ->where('tgl_kembali > tgl_haruskembali')
+                    ->join('tb_pasien', 'tb_history.id_pasien = tb_pasien.id_pasien')
+                    ->join('tb_ruangan', 'tb_history.id_ruangan = tb_ruangan.id_ruangan')
+                    ->get('tb_history')
+                    ->result();
+    }
 }

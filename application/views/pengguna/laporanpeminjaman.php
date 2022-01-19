@@ -1,4 +1,5 @@
         <div class="content-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between border-bottom mb-4"></div>
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Laporan Peminjaman</h4>
@@ -10,45 +11,43 @@
                     } ?>
               <div class="row">
                 <div class="col-12">
-                  <div class="table-responsive">
-                    <table id="" class="table exportpeminjaman">
-                      <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nomor RM</th>
-                            <th>Nama Pasien</th>
-                            <th>Tanggal Lahir</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Ruangan</th>
-                            <th>Tanggal Pinjam BRM</th>
-                            <th>Aksi</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                        $no = 1;
-                        foreach ($laporanpeminjaman as $data) { ?>
-                        <tr>
-                            <td><?=$no?></td>
-                            <td><?= $data->no_rm ?></td>
-                            <td><?= $data->nama_pasien ?></td>
-                            <td><?=date('Y-m-d', strtotime($data->tgl_lahir))?></td>
-                            <td><?= $data->jekel ?></td>
-                            <td><?= $data->nama_ruangan ?></td>
-                            <td><?=date('Y-m-d', strtotime($data->tgl_pinjam))?></td>
-                            <td>
-                            <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanpeminjaman" data-toggle="modal" data-target="#editModal" data-id="<?= $data->id_history ?>" data-idpass="<?=$data->id_pasien?>" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=date('d-m-Y', strtotime($data->tgl_lahir))?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->id_ruangan?>" data-tglpinjam="<?=$data->tgl_pinjam?>">
-                                Edit 
-                            </button>
-                            <button type="button" class="btn btn-sm btn-outline-danger" id="deletepeminjaman" data-toggle="modal" data-target="#deleteModal" data-id="<?=$data->id_history?>" data-norm="<?=$data->no_rm?>">
-                              Hapus
-                            </button>
-                            </td>
-                        </tr>
-                        <?php $no++; } ?>
-                      </tbody>
-                    </table>
-                  </div>
+                  <table id="" class="table table-responsive exportpeminjaman">
+                    <thead>
+                      <tr>
+                          <th>No</th>
+                          <th>Nomor RM</th>
+                          <th>Nama Pasien</th>
+                          <th>Tanggal Lahir</th>
+                          <th>Jenis Kelamin</th>
+                          <th>Ruangan</th>
+                          <th>Tanggal Pinjam BRM</th>
+                          <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      $no = 1;
+                      foreach ($laporanpeminjaman as $data) { ?>
+                      <tr>
+                          <td><?=$no?></td>
+                          <td><?= $data->no_rm ?></td>
+                          <td><?= $data->nama_pasien ?></td>
+                          <td><?=date('Y-m-d', strtotime($data->tgl_lahir))?></td>
+                          <td><?= $data->jekel ?></td>
+                          <td><?= $data->nama_ruangan ?></td>
+                          <td><?=date('Y-m-d', strtotime($data->tgl_pinjam))?></td>
+                          <td>
+                          <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanpeminjaman" data-toggle="modal" data-target="#editModal" data-id="<?= $data->id_history ?>" data-idpass="<?=$data->id_pasien?>" data-norm="<?=$data->no_rm?>" data-namapasien="<?=$data->nama_pasien?>" data-tgllahir="<?=date('d-m-Y', strtotime($data->tgl_lahir))?>" data-jekel="<?=$data->jekel?>" data-ruangan="<?=$data->id_ruangan?>" data-tglpinjam="<?=$data->tgl_pinjam?>">
+                              Edit 
+                          </button>
+                          <button type="button" class="btn btn-sm btn-outline-danger" id="deletepeminjaman" data-toggle="modal" data-target="#deleteModal" data-id="<?=$data->id_history?>" data-norm="<?=$data->no_rm?>">
+                            Hapus
+                          </button>
+                          </td>
+                      </tr>
+                      <?php $no++; } ?>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>

@@ -1,4 +1,5 @@
         <div class="content-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between border-bottom mb-4"></div>
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Laporan Keterlambatan</h4>

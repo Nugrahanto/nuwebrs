@@ -1,4 +1,5 @@
 <div class="content-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between border-bottom mb-4"></div>
     <div class="row">
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
@@ -21,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="text" class="form-control" id="password" name="password" placeholder="Password">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                     </div>
                     <div class="form-group">
                         <label for="notelp">No. Telpon</label>

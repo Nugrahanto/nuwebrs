@@ -1,4 +1,5 @@
 <div class="content-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between border-bottom mb-4"></div>
     <div class="row">
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
