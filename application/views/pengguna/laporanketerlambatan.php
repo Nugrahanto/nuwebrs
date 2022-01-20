@@ -11,7 +11,7 @@
                     } ?>
               <div class="row">
                 <div class="form-group col-md-3">
-                    <select class="form-control" id="ruangan" name="ruangan" required>
+                    <select class="form-control" id="filterruangan" name="filterruangan" required>
                       <option selected disabled value="">Filter</option>
                       <option value="id_ruangan">Ruangan Paling Banyak Terlambat</option>
                     </select>

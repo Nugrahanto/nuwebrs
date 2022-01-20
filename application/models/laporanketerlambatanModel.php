@@ -46,7 +46,7 @@ class laporanketerlambatanModel extends CI_Model
     }
 
     public function get_laporanketerlambatanfilter() {
-        $count = "select max(count), id_ruangan from (SELECT id_ruangan, COUNT(*) as count FROM tb_history WHERE tgl_kembali > tgl_haruskembali GROUP BY id_ruangan) t";
+        $count = "select max(count), id_ruangan from (SELECT id_ruangan, COUNT(*) as count FROM tb_history WHERE tgl_kembali > tgl_haruskembali GROUP BY id_ruangan ORDER BY count DESC, id_ruangan ASC) t";
         $sql = $this->db->query($count)->result();
         $id_ruangan = $sql[0]->id_ruangan;
 

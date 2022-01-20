@@ -532,7 +532,7 @@
     $('.buttons-pdf, .buttons-excel, .buttons-print').addClass('btn btn-primary me-1');
   </script>
   <script type="text/javascript">
-    $('#ruangan').on('change', function(){
+    $('#filterruangan').on('change', function(){
       var x = document.getElementById("tableexportketerlambatan");
       var y = document.getElementById("tableexportketerlambatanfilter");
 
