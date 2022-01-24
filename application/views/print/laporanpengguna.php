@@ -41,7 +41,7 @@
             foreach ($laporanpengguna as $data) { ?>
             <tr>
                 <td><?=$no?></td>
-                <td><?= $data->nama_pegawai ?></td>
+                <td><?= $data->nama_petugas ?></td>
                 <td><?= $data->username ?></td>
                 <td><?= $data->telp ?></td>
                 <td><?= $data->nama_level ?></td>
