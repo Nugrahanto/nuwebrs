@@ -20,15 +20,15 @@ class penggunaModel extends CI_Model
         $passwordhash = password_hash($password, PASSWORD_DEFAULT);
 
         $data = array(
-            'id_pegawai' => NULL,
+            'id_petugas' => NULL,
             'id_level' => $level,
-            'nama_pegawai' => $nama,
+            'nama_petugas' => $nama,
             'username' => $username,
             'password' => $passwordhash,
             'telp' => $notelp,
             'status' => 1
         );
-        $this->db->insert('tb_pegawai', $data);
+        $this->db->insert('tb_petugas', $data);
 
         if ($this->db->affected_rows() > 0) {
             return TRUE;
