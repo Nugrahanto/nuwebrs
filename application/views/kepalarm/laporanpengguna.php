@@ -30,7 +30,7 @@
                       foreach ($laporanpengguna as $data) { ?>
                       <tr>
                           <td><?=$no?></td>
-                          <td><?= $data->nama_pegawai ?></td>
+                          <td><?= $data->nama_petugas ?></td>
                           <td><?= $data->username ?></td>
                           <td><?= str_repeat ('*', strlen ($data->password)) ?></td>
                           <td><?= $data->telp ?></td>
