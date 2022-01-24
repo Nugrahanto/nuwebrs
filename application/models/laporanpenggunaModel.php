@@ -5,8 +5,8 @@ class laporanpenggunaModel extends CI_Model
 {
     public function get_laporanpengguna()
     {
-        return $this->db->join('tb_level', 'tb_level.id_level = tb_pegawai.id_level')
-                ->get('tb_pegawai')
+        return $this->db->join('tb_level', 'tb_level.id_level = tb_petugas.id_level')
+                ->get('tb_petugas')
                 ->result();
     }
 
@@ -30,15 +30,15 @@ class laporanpenggunaModel extends CI_Model
 
         $data = array(
             'id_level' => $level,
-            'nama_pegawai' => $nama,
+            'nama_petugas' => $nama,
             'username' => $username,
             'password' => $passwordhash,
             'telp' => $notelp,
             'status' => $status
             );
 
-        $this->db->where('id_pegawai', $id_pengguna)
-                 ->update('tb_pegawai', $data);
+        $this->db->where('id_petugas', $id_pengguna)
+                 ->update('tb_petugas', $data);
 
         if ($this->db->affected_rows() > 0) {
 			return TRUE;
@@ -48,7 +48,7 @@ class laporanpenggunaModel extends CI_Model
     }
     public function delete_laporanpengguna($id_pengguna) 
     {
-        return $this->db->where('id_pegawai', $id_pengguna)
-                        ->delete('tb_pegawai');
+        return $this->db->where('id_petugas', $id_pengguna)
+                        ->delete('tb_petugas');
     }
 }
