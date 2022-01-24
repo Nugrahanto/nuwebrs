@@ -5,13 +5,13 @@ class AuthModel extends CI_Model {
 
 	public function login($username, $password){
         $query = $this->db->where('username', $username)
-						  ->get('tb_pegawai');
+						  ->get('tb_petugas');
 
         if ($query->num_rows() > 0) {
             if (password_verify($password, $query->row()->password)) {
                 $data = array(
                     'username' => $query->row()->username,
-                    'id' => $query->row()->id_pegawai,
+                    'id' => $query->row()->id_tb_petugas,
                     'level' => $query->row()->id_level,
                     'status' => $query->row()->status,
                     'logged_in' => TRUE
