@@ -4,7 +4,7 @@
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Tambah Peminjaman</h4>
+                    <h4 class="card-title">Tambah Data Peminjaman</h4>
                     <?php 
                     $message = $this->session->flashdata('message'); 
                     if (isset($message)) {
