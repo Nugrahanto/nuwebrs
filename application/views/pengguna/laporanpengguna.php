@@ -30,7 +30,7 @@
                       foreach ($laporanpengguna as $data) { ?>
                       <tr>
                           <td><?=$no?></td>
-                          <td><?= $data->nama_pegawai ?></td>
+                          <td><?= $data->nama_petugas ?></td>
                           <td><?= $data->username ?></td>
                           <td><?= str_repeat ('*', strlen ($data->password)) ?></td>
                           <td><?= $data->telp ?></td>
@@ -48,10 +48,10 @@
                               ?>
                           </td>
                           <td>
-                            <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanpengguna" data-toggle="modal" data-target="#editModal" data-id="<?=$data->id_pegawai?>" data-nama="<?=$data->nama_pegawai?>" data-username="<?=$data->username?>" data-password="<?=$data->password?>" data-telp="<?=$data->telp?>" data-level="<?=$data->id_level?>" data-status="<?=$data->status?>">
+                            <button type="button" class="btn btn-sm btn-outline-primary btn-edit" id="laporanpengguna" data-toggle="modal" data-target="#editModal" data-id="<?=$data->id_petugas?>" data-nama="<?=$data->nama_petugas?>" data-username="<?=$data->username?>" data-password="<?=$data->password?>" data-telp="<?=$data->telp?>" data-level="<?=$data->id_level?>" data-status="<?=$data->status?>">
                                 Edit 
                             </button>
-                            <button type="button" class="btn btn-sm btn-outline-danger" id="deletepengguna" data-toggle="modal" data-target="#deleteModal" data-id="<?=$data->id_pegawai?>" data-username="<?=$data->username?>">
+                            <button type="button" class="btn btn-sm btn-outline-danger" id="deletepengguna" data-toggle="modal" data-target="#deleteModal" data-id="<?=$data->id_petugas?>" data-username="<?=$data->username?>">
                               Hapus
                             </button>
                           </td>
@@ -78,7 +78,7 @@
                 <div class="modal-body">
                   <input type="text" id="id_pengguna" name="id_pengguna" hidden>
                   <div class="form-group">
-                      <label for="nama">Nama Pegawai</label>
+                      <label for="nama">Nama Petugas</label>
                       <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama" required>
                   </div>
                   <div class="form-group">
