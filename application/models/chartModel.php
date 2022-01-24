@@ -64,7 +64,7 @@ class chartModel extends CI_Model {
 
     public function get_pengguna()
     {
-        $sql = "SELECT tb_pegawai.id_level, tb_level.nama_level, COUNT(*) as count FROM tb_pegawai JOIN tb_level ON tb_level.id_level=tb_pegawai.id_level GROUP BY id_level ORDER BY 1 DESC";
+        $sql = "SELECT tb_petugas.id_level, tb_level.nama_level, COUNT(*) as count FROM tb_petugas JOIN tb_level ON tb_level.id_level=tb_petugas.id_level GROUP BY id_level ORDER BY 1 DESC";
         return $query = $this->db->query($sql)->result();
     }
 
