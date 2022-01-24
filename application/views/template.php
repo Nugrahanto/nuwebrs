@@ -56,7 +56,8 @@
         <ul class="navbar-nav">
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0 pt-2">
             <h1 class="welcome-text"><span class="text-black fw-bold"> Sistem Reminder <br>
-            <small class="lead small">Peminjaman dan Pengembalian Berkas Rekam Medis Rawat Inap</small></span></h1>
+            <small class="lead small">Peminjaman dan Pengembalian Berkas Rekam Medis Rawat Inap</small>
+            <small class="lead small">Rumah Sakit Graha Sehat</small></span></h1>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -386,7 +387,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <p class="col-5 col-sm-4">Nomor Telp Pegawai</p>
+                    <p class="col-5 col-sm-4">Nomor Telp Peminjam</p>
                     <div class="col-7 col-sm-8">
                       <p id="notelp" class="h5"></p>
                     </div>
