@@ -35,7 +35,7 @@ class notiflambatModel extends CI_Model
                         ->where('tgl_kembali =', null)
                         ->join('tb_pasien', 'tb_history.id_pasien = tb_pasien.id_pasien')
                         ->join('tb_ruangan', 'tb_history.id_ruangan = tb_ruangan.id_ruangan')
-                        ->join('tb_pegawai', 'tb_history.created_by = tb_pegawai.id_pegawai')
+                        ->join('tb_petugas', 'tb_history.created_by = tb_petugas.id_petugas')
                         ->get('tb_history')
                         ->result();
     }
@@ -48,7 +48,7 @@ class notiflambatModel extends CI_Model
                         ->where('tgl_kembali =', null)
                         ->join('tb_pasien', 'tb_history.id_pasien = tb_pasien.id_pasien')
                         ->join('tb_ruangan', 'tb_history.id_ruangan = tb_ruangan.id_ruangan')
-                        ->join('tb_pegawai', 'tb_history.created_by = tb_pegawai.id_pegawai')
+                        ->join('tb_petugas', 'tb_history.created_by = tb_petugas.id_petugas')
                         ->get('tb_history')
                         ->result();
     }
