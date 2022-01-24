@@ -4,7 +4,7 @@
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Tambah Pengguna</h4>
+                    <h4 class="card-title">Tambah Data Pengguna</h4>
                     <?php 
                     $message = $this->session->flashdata('message'); 
                     if (isset($message)) {
@@ -25,7 +25,7 @@
                         <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <label for="notelp">No. Telpon</label>
+                        <label for="notelp">No. Telepon</label>
                         <input type="text" class="form-control" id="notelp" name="notelp" placeholder="No. Telpon">
                     </div>
                     <div class="form-group">
