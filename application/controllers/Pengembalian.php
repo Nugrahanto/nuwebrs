@@ -13,7 +13,7 @@ class pengembalian extends CI_Controller
 
     public function index()
     {
-        if ($this->session->userdata('level') == 1) {
+        if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('level') == 1) {
             $data['title'] = 'Data Pengembalian';
             $data['main_view'] = 'pengguna/datapengembalian';
             $data['notiftoday'] = $this->notifModel->notiftoday();
@@ -22,7 +22,7 @@ class pengembalian extends CI_Controller
             $data['get_notifyesterday'] = $this->notifModel->get_notifyesterday();
 
             $this->load->view('template', $data);
-        } else if ($this->session->userdata('level') == 2) {
+        } else if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('level') == 2) {
             $data['title'] = 'Data Pengembalian';
             $data['main_view'] = 'rawatinap/datapengembalian';
             $data['notifterlambat'] = $this->notiflambatModel->notifterlambat();

@@ -64,7 +64,7 @@ class Dashboard extends CI_Controller
             $data['dataWeekly'] = $this->chartModel->get_weekly_linechart();
 
             $this->load->view('template', $data);
-        } else {
+        } else if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('level') == 3) {
             $data['title'] = 'Beranda';
             $data['main_view'] = 'dashboard/main_dashboard';
 
@@ -84,6 +84,8 @@ class Dashboard extends CI_Controller
             $data['dataWeekly'] = $this->chartModel->get_weekly_linechart();
             
             $this->load->view('template', $data);
+        } else {
+            redirect('dashboard','refresh');
         }
     }
 

@@ -13,7 +13,7 @@ class peminjaman extends CI_Controller
 
     public function index()
     {
-        if ($this->session->userdata('level') == 1) {
+        if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('level') == 1) {
             $id = $this->uri->segment(2);
             if ($id != NULL) {
                 $data['title'] = 'Data Peminjaman';
@@ -35,7 +35,7 @@ class peminjaman extends CI_Controller
 
                 $this->load->view('template', $data);
             }
-        } else if ($this->session->userdata('level') == 2) {
+        } else if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('level') == 2) {
             $data['title'] = 'Data Peminjaman';
             $data['main_view'] = 'rawatinap/datapeminjaman';
             $data['ruangan'] = $this->peminjamanModel->get_ruangan();

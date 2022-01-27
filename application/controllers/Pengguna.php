@@ -12,7 +12,7 @@ class pengguna extends CI_Controller
 
     public function index()
     {
-        if ($this->session->userdata('level') == 1) {
+        if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('level') == 1) {
 
             $data['title'] = 'Data Pengguna';
             $data['main_view'] = 'pengguna/datapengguna';

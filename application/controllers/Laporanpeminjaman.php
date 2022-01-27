@@ -10,7 +10,7 @@ class laporanpeminjaman extends CI_Controller
         $this->load->model('laporanpeminjamanModel');
     }
     public function index() {
-        if ($this->session->userdata('level') == 1) {
+        if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('level') == 1) {
             $data['title'] = 'Laporan Peminjaman';
             $data['main_view'] = 'pengguna/laporanpeminjaman';
             $data['laporanpeminjaman'] = $this->laporanpeminjamanModel->get_laporanpeminjaman();
@@ -21,7 +21,7 @@ class laporanpeminjaman extends CI_Controller
             $data['get_notifyesterday'] = $this->notifModel->get_notifyesterday();
 
             $this->load->view('template', $data);
-        } else if ($this->session->userdata('level') == 3) {
+        } else if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('level') == 3) {
             $data['title'] = 'Laporan Peminjaman';
             $data['main_view'] = 'kepalarm/laporanpeminjaman';
             $data['laporanpeminjaman'] = $this->laporanpeminjamanModel->get_laporanpeminjaman();

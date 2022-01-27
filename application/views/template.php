@@ -533,16 +533,20 @@
     $('.buttons-pdf, .buttons-excel, .buttons-print').addClass('btn btn-primary me-1');
   </script>
   <script type="text/javascript">
-    $('#filterruangan').on('change', function(){
-      var x = document.getElementById("tableexportketerlambatan");
-      var y = document.getElementById("tableexportketerlambatanfilter");
+    $(document).ready(function() {
+      $('#filterruangan').prop('selectedIndex',0);
 
-      if (x.style.display === "none") {
-        x.style.display = "block";
-      } else {
-        x.style.display = "none";
-        y.style.display = "block";
-      }
+      $('#filterruangan').on('change', function(){
+        var x = document.getElementById("tableexportketerlambatan");
+        var y = document.getElementById("tableexportketerlambatanfilter");
+
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+          y.style.display = "block";
+        }
+      });
     });
   </script>
   <script type="text/javascript">

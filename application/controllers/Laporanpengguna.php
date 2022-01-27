@@ -11,7 +11,7 @@ class laporanpengguna extends CI_Controller
     }
     public function index()
     {
-        if ($this->session->userdata('level') == 1) {
+        if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('level') == 1) {
             $data['title'] = 'Laporan Pengguna';
             $data['main_view'] = 'pengguna/laporanpengguna';
             $data['laporanpengguna'] = $this->laporanpenggunaModel->get_laporanpengguna();
@@ -22,7 +22,7 @@ class laporanpengguna extends CI_Controller
             $data['get_notifyesterday'] = $this->notifModel->get_notifyesterday();
 
             $this->load->view('template', $data);
-        } else if ($this->session->userdata('level') == 3) {
+        } else if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('level') == 3) {
             $data['title'] = 'Laporan Pengguna';
             $data['main_view'] = 'kepalarm/laporanpengguna';
             $data['laporanpengguna'] = $this->laporanpenggunaModel->get_laporanpengguna();

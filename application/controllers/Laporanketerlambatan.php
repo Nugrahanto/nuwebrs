@@ -10,7 +10,7 @@ class laporanketerlambatan extends CI_Controller
         $this->load->model('laporanketerlambatanModel');
     }
     public function index() {
-        if ($this->session->userdata('level') == 1) {
+        if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('level') == 1) {
             $data['title'] = 'Laporan Keterlambatan';
             $data['main_view'] = 'pengguna/laporanketerlambatan';
             $data['laporanketerlambatan'] = $this->laporanketerlambatanModel->get_laporanketerlambatan();
@@ -23,10 +23,11 @@ class laporanketerlambatan extends CI_Controller
             $data['get_notifyesterday'] = $this->notifModel->get_notifyesterday();
 
             $this->load->view('template', $data);
-        } else if ($this->session->userdata('level') == 3) {
+        } else if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('level') == 3) {
             $data['title'] = 'Laporan Keterlambatan';
             $data['main_view'] = 'kepalarm/laporanketerlambatan';            
             $data['laporanketerlambatan'] = $this->laporanketerlambatanModel->get_laporanketerlambatan();
+            $data['laporanketerlambatanfilter'] = $this->laporanketerlambatanModel->get_laporanketerlambatanfilter();
 
             $this->load->view('template', $data);
         } else {
