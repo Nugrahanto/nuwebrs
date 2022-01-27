@@ -11,7 +11,7 @@ class AuthModel extends CI_Model {
             if (password_verify($password, $query->row()->password)) {
                 $data = array(
                     'username' => $query->row()->username,
-                    'id' => $query->row()->id_tb_petugas,
+                    'id' => $query->row()->id_petugas,
                     'level' => $query->row()->id_level,
                     'status' => $query->row()->status,
                     'logged_in' => TRUE
