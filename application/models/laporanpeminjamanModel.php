@@ -3,9 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class laporanpeminjamanModel extends CI_Model
 {
+   
     public function get_laporanpeminjaman()
     {
         return $this->db->order_by('id_history', 'DESC')
+                ->where('tgl_pinjam !=', NULL)
+                ->where('tgl_kembali', NULL)
                 ->join('tb_pasien', 'tb_history.id_pasien = tb_pasien.id_pasien')
                 ->join('tb_ruangan', 'tb_history.id_ruangan = tb_ruangan.id_ruangan')
                 ->get('tb_history')
